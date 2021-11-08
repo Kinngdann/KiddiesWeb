@@ -1,0 +1,118 @@
+@import '../../utils/config.scss';
+
+.winner {
+    background: #ffffff;
+    padding: $largeSpace 0;
+    display: flex;
+    justify-content: space-evenly;
+
+    & > div {
+        width: 25%;
+        max-width: 360px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__col1 {
+        &__img {
+            width: 100px;
+            margin-right: 1rem;
+        }
+
+        &__text {
+            color: $textColor;
+
+            h2 {
+                font-size: 3em;
+                font-weight: 700;
+            }
+
+            h3 {
+                font-size: 2em;
+                font-weight: 700;
+            }
+        }
+
+        &__line {
+            border-top: .5rem solid $brandColorRed;
+            width: 20%;
+            margin-left: 0;
+            transition: all ease-out .3s;
+        }
+    }
+
+    &__col2, &__col3 {
+        background: #fafafa;
+        padding: 4rem 2rem;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 300;
+        transition: all ease-out .5s;
+
+        & p > span {
+            font-weight: 500;
+        }
+
+        &:hover {
+            background: #ffffff;
+            box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
+        }
+
+        &__img {
+            width: 100px;
+        }
+    }
+
+    &__col3__img {
+        width: 70px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        .winner__col1__line {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .winner {
+        flex-direction: column;
+        align-items: center;
+
+        & > div {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        &__col1 {
+            &__text {
+                width: 80%;
+                margin: 0 auto;
+                text-align: center;
+                text-align: center;
+
+                h1 {
+                    font-size: 3em;
+                }
+
+                h3 {
+                    font-size: 1.5em;
+                }
+            }
+           
+
+            &__img {
+                display: none;
+            }
+        }
+
+        &__col2, &__col3 {
+            font-size: 1em;
+        }
+    }
+}

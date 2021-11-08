@@ -1,0 +1,45 @@
+@import '../utils/config.scss';
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__img {
+        height: 20rem;
+        overflow: hidden;
+    }
+
+    &__text {
+        width: 30%;
+        color: #ffffff;
+        position: absolute;
+        margin: 0 auto;
+        text-align: center;
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        &__link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+
+            &__link {
+                text-decoration: none;
+                color: #ffffff;
+            }
+
+            &__arrow {
+                background: #ffffff;
+                margin: 0 1rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 1rem;
+            }
+        }
+    }
+}

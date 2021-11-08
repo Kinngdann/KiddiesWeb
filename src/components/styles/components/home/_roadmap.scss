@@ -1,0 +1,76 @@
+@import '../../utils/config.scss';
+
+.roadmap {
+    border: red 2px solid;
+    padding: 5rem 10rem;
+
+    &__row1 {
+        border: red 2px solid;
+        width: 50%;
+        margin: 5rem auto;
+        text-align: center;
+
+        h2 {
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+    }
+
+    &__row2 {
+        border: red 2px solid;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__col1 {
+            display: flex;
+            flex-direction: column;
+
+            &__item {
+                text-align: right;
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 3rem;
+
+                &__img {
+                    margin-left: 2rem;
+                }
+            }
+        }
+
+        &__col2 {
+            margin: 0 3rem;
+        }
+
+        &__col3 {
+            display: flex;
+            flex-direction: column;
+
+            &__item {
+                text-align: left;
+                display: flex;
+                align-self: flex-start;
+                margin-bottom: 3rem;
+
+                &__img {
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .roadmap {
+        padding: 5rem 2rem;
+
+        // &__row1 {
+            
+        // }
+    }
+}

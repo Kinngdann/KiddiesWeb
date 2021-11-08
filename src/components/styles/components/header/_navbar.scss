@@ -1,0 +1,143 @@
+@import '../../utils/config.scss';
+
+
+.navbar {
+  background: #ffffff;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 54px;
+  padding: 2rem 0;
+  box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__col1 {
+    // border: rgb(0, 0, 0) 3px dashed;
+    width: 10%;
+  }
+
+  &__col2 {
+    width: 60%;
+    background: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    transition: transform .3s ease-in;
+  
+    &__container {
+      // border: rgb(134, 79, 79) 3px dashed;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    &__link {
+      font-size: 1.2em;
+      text-decoration: none;
+      color: $textColor;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      transition: background .3s ease-in;
+
+      &:hover {
+        background: $brandColorBlue;
+        color: #ffffff;
+      }
+
+      .active {
+        background: $brandColorBlue;
+      }
+    }
+  }
+
+  &__col3 {
+      display: none;
+      position: absolute;
+      margin-right: 1rem;
+      display: block;
+      right: 0;
+
+    & > div {
+      background: #000000;
+      width: 25px;
+      height: 3px;
+      margin: 3px;
+      cursor: pointer;
+      transition: all .3s ease-in;
+    }
+  }
+
+  .navbar--active {
+    transform: translateX(0%);
+  }
+
+  .toggle {
+    .line1 {
+      transform: rotate(45deg) translate(-5px, 4px);
+    }
+    .line2 {
+      opacity: 0;
+    }
+    .line3 {
+      transform: rotate(-45deg) translate(-5px, -4px);
+    }
+  }
+}
+
+
+
+@media (max-width: 960px) {
+  .navbar {
+    // justify-content: space-between;
+    // justify-content: center;
+
+    &__col1 {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    &__col2 {
+      width: 100%;
+      height: 100%;
+      background: rgb(243, 241, 241);
+      position: fixed;
+      top: 0;  
+      transform: translateX(100%);
+      transition: transform .3s ease-in;
+    
+      &__container {
+        height: 50%;
+        width: 50%;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-around;
+      }
+  
+      &__link {
+        text-transform: uppercase;
+  
+        &:hover {
+          color: $brandColorBlue;
+          background: none;
+        }
+      }
+    }
+  }
+
+  .toggle {
+    .line1 {
+      transform: rotate(45deg) translate(-5px, 4px);
+    }
+    .line2 {
+      opacity: 0;
+    }
+    .line3 {
+      transform: rotate(-45deg) translate(-5px, -4px);
+    }
+  }
+}

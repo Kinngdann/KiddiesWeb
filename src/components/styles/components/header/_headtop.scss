@@ -1,0 +1,65 @@
+@import '../../utils/config.scss';
+
+.headtop {
+    width: 100vw;
+    background: $brandColorBlue;
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+
+    &__text {
+        width: 70%;
+        display: flex;
+        justify-content: space-evenly;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            transition: all .3s ease-in;
+            cursor: pointer;
+
+            & > img {
+                margin-right: .5rem;
+            }
+
+            &:hover {
+                color: $textColor;
+            }
+
+            h4 {
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__social {
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+        &__icon {
+            padding-right: 2rem;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .headtop__text {
+        display: none;
+    }
+
+    .headtop__social {
+        width: 50%;
+        justify-content: space-evenly;
+
+        &__icon {
+            padding: 0;
+        }
+    }
+}

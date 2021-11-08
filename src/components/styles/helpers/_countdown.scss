@@ -1,0 +1,92 @@
+@import '../utils/config.scss';
+
+.countdown {
+    background: $offWhite;
+    padding: 5em 0;
+    color: $textColor;
+
+    &__text {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__time {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+
+        & > div {
+            color: #ffffff;
+            padding: 3rem;
+            width: 20vw;
+            margin: 2rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h2 {
+                font-size: 3em;
+            }
+        }
+
+        &__days {
+            background: $brandColorRed;
+        }
+
+        &__hours {
+            background: #f6ab32;
+        }
+
+        &__minutes {
+            background: $brandColorBlue;
+        }
+
+        &__seconds {
+            background: #079173;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .countdown {
+        &__text {
+            width: 100%;
+
+            p {
+                font-size: 1em;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        &__time {
+            width: 100%;
+
+            & > div {
+                width: 20vw;
+                height: 20vw;
+                margin: .5rem;
+
+                h2 {
+                    font-size: 2em;
+                }
+
+                h3 {
+                    font-size: .5em;
+                }
+            }
+        }
+    }
+}
+

@@ -1,6 +1,6 @@
 
 const input = {
-    word: '',
+    search: '',
     sortBy: 'name'
 }
 
@@ -9,7 +9,7 @@ const sortReducer = (state = input, action) => {
         case 'SEARCH':
             return {
                 ...state,
-                word: action.word,
+                word: action.search,
             }
         case 'SORT':
             return {

@@ -1,0 +1,140 @@
+@import '../../utils/config.scss';
+
+.form-div {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    margin: 0 20vw;
+    border-radius: 5px;
+}
+
+.register * {
+    box-sizing: border-box;
+    line-height: 2rem;
+}
+
+.register input,
+.register select,
+.register label,
+.register textarea {
+    display: block;
+}
+
+.register input[type = 'checkbox'],
+.register input[type = 'radio'] {
+    display: inline;
+}
+
+.register input:not([type = 'radio']),
+.register select,
+.last-child {
+    margin-bottom: 3rem;
+}
+
+.register input,
+.register select {
+    margin-top: 1rem;
+}
+
+.register input:not([type = 'submit']),
+.register select {  
+    border-radius: .5rem;
+    padding: .2rem;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+}
+
+.register a {
+    text-decoration: none;
+    color: $brandColorBlue;
+    transition: color ease-in .1s;
+
+    &:hover {
+        color: $brandColorRed;
+    }
+}
+
+.register input[type = 'text']{
+    text-transform: capitalize;
+}
+
+.register input[type = 'text'],
+.register input[type = 'tel'],
+.register input[type = 'email'],
+.register input[type = 'submit'],
+.register textarea,
+.register select {
+    padding: 1rem;
+    width: 50vw;
+    max-width: 70vw;
+    line-height: 3rem;
+    font-weight: 100;
+    // box-shadow: 5px 10px #f3f3f3;
+
+    // &:focus {
+    //     border: 1px solid $brandColorRed
+    // }
+}
+
+.register select {
+    padding: 1.4rem ;
+}
+
+.register textarea {
+    height: 20rem;
+    border-radius: .4rem;
+    margin: 1rem 0 3rem 0;
+}
+
+.register label {
+    font-weight: 600;
+    color: $textColor;
+    font-size: large;
+}
+
+.radio-label {
+    font-weight: 100;
+}
+
+.register span {
+    font-weight:100;
+}
+
+.register input[type = 'submit']{
+    background: $brandColorBlue;
+    color: #ffffff;
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 5rem;
+    transition: background, .5s ease-in;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background: darken($color: $brandColorBlue, $amount: 10%)
+    }
+
+    &:disabled {
+        background: lighten($color: $brandColorBlue, $amount: 20%);
+        cursor: not-allowed;
+    }
+}
+
+.register p {
+    display: inline;
+    font-weight: 500;
+}
+
+.register .parent {
+    margin-top: $largeSpace
+}
+
+section h2 {
+    text-align: center;
+    color: $textColor;
+    letter-spacing: .3rem;
+}
+
+.pic-label:only-child {
+    margin-bottom: 50rem;
+}

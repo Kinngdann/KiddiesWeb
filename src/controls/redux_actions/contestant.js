@@ -24,25 +24,8 @@ const addVote = ({id, no}) => ({
     no
 })
 
-const editContestant = ({id, name, sex, age, location, description, pictures, tel, whatsapp, parentName, email, relationship}) => ({
-    type: 'EDIT_CONTESTANT',
-    id,
-    updated: {
-        name, 
-        sex, 
-        age, 
-        location, 
-        description, 
-        pictures, 
-        tel, 
-        whatsapp, 
-        parentName, 
-        email, 
-        relationship
-    }
-})
 
-export {addContestant, addVote, editContestant};
+export {addContestant, addVote};
 
 
 // const userData = {

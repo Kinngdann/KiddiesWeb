@@ -1,7 +1,7 @@
 
-const searchContestants = ({word = ''}) => ({
+const searchContestants = ({search = ''}) => ({
     type: 'SEARCH',
-    word,
+    search,
 })
 
 const sortContestants = ({sortBy = ''}) => ({

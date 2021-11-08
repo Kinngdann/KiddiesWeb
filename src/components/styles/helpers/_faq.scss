@@ -1,0 +1,34 @@
+@import '../utils/config.scss';
+
+
+.faq {
+    padding: 5rem 0;
+    background: #ffffff;
+
+    &__container {
+        width: 90%;
+        margin: 0 auto;
+        border: 3px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__img {
+            width: 40%;
+            border: 3px solid red;
+            border-radius: 20rem 20rem 0  0;
+            overflow: hidden;
+        }
+
+        &__text {
+            width: 50%;
+            border: 3px solid red;
+        }
+    }
+
+    h1 {
+        margin-bottom: 3rem;
+        text-align: center;
+        color: $textColor;
+    }
+}
