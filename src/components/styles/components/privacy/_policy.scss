@@ -1,0 +1,26 @@
+@import '../../utils/config.scss';
+
+.policy {
+    .container {
+        background: #ffffff;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 5rem;
+        padding: 5rem;
+        text-align: justify;
+    }
+}
+
+@media (max-width: $mobile) {
+    .policy {
+        .container {
+            text-align: left;
+            width: 100%;
+            padding: 2rem;
+
+            ul {
+                margin: 0;
+            }
+        }
+    }
+}

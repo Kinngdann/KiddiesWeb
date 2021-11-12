@@ -19,12 +19,12 @@ class Accordion extends React.Component {
     const {title, content} = this.props
 
     return (
-        <div className="accordion-item">
-          <div className="accordion-title" onClick={this.toggle}>
-            <div> <h3> {title} </h3> </div>
+        <div className = 'accordion-item'>
+          <div className = 'accordion-title' onClick = {this.toggle}>
+            <div> <h4> {title} </h4> </div>
             <div>{this.state.toggle? '-' : '+'}</div>
           </div>
-          {this.state.toggle && <div className="accordion-content">{content}</div>}
+          {this.state.toggle && <div className = 'accordion-content' >{<p>{content}</p>}</div>}
         </div>
       )
   } 

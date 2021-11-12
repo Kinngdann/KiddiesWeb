@@ -23,7 +23,7 @@ class AddVotes extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        const vote = Math.floor(this.state.amount / 50)
+        // const vote = Math.floor(this.state.amount / 50)
         // API Call
     }
 

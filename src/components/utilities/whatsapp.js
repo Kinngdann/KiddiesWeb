@@ -1,12 +1,11 @@
 import React from 'react'
-import wa from '../header/icons/wa.svg';
+import whatsapp from './images/whatsapp.svg';
 import '../styles/helpers/_whatsapp.scss';
-import { Link } from "react-router-dom";
 
 const Whatsapp = () => {
     return (
         <div className = 'wa'>
-            <Link to = '/contestants'> <img src = {wa} width = '50' className = 'wa__icon' /> </Link>
+            <a href = 'https://wa.me/message/TL45QZQF2XXLE1'><img src = {whatsapp} width = '50' className = 'wa__icon' alt = 'whatsapp icon' /></a>
         </div>
     )
 }

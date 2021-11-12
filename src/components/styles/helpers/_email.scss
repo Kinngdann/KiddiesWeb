@@ -1,0 +1,39 @@
+@import '../utils/config.scss';
+
+.form {
+    margin-top: 1.5rem;
+
+    input[type='email'], input[type='text'], label {
+        display: block;
+        width: 100%;
+        line-height: 2rem;
+        font-weight: 100;
+        border-radius: .5rem;
+    }
+
+    input {
+        margin-bottom: 2rem;
+        padding: .5rem 1rem;
+        border: 1px solid #dddddd;
+    }
+
+    input[type='submit'] {
+        display: block;
+        padding: 1rem 2rem;
+    }
+
+    &__textarea {
+        width: 100%;
+        height: 5rem;
+        border-radius: .5rem;
+        padding: .5rem 1rem;
+        border: 1px solid #dddddd;
+        margin-bottom: 2rem;
+    }
+
+    label {
+        // font-weight: 600;
+        color: $textColor;
+    }
+}
+

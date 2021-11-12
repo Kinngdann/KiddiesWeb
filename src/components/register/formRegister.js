@@ -1,8 +1,10 @@
 import React from 'react';
 import ImageUploading from "react-images-uploading";
 import { Link } from 'react-router-dom';
+import Loader from '../utilities/loader'
 import axios from 'axios'
 import ID from './getID'
+import RegModal from './regModal'
 import '../styles/components/register/_register.scss'
 
 
@@ -11,6 +13,8 @@ class FormRegister extends React.Component{
         super()
 
         this.state = {
+            loader: true,
+            active: false,
             name: '',
             age: 'undefined',
             sex: '',
@@ -26,6 +30,12 @@ class FormRegister extends React.Component{
             tc: false,
             imageList: null,
         }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({loader: false})
+        }, 2000)
     }
 
     setName = (e) => {
@@ -102,7 +112,9 @@ class FormRegister extends React.Component{
     }
 
     onSubmit = (e) => {
+        this.setState({loader: true})
         e.preventDefault()
+
 
         const userData = {
             id: ID(),
@@ -128,7 +140,7 @@ class FormRegister extends React.Component{
             'user', JSON.stringify(userData)
         )
 
-        if (this.state.imageList !== null){
+        if (this.state.imageList){
 
             const file = this.state.imageList[0].file
             formData.append(
@@ -139,17 +151,25 @@ class FormRegister extends React.Component{
         }
         
         axios.post('http://143.244.174.52:4000/api/user/saveUserData', formData).then(
-            response => console.log(response)
+            (response) => {
+                console.log(response)
+                if (response.request.status === 200){
+                    this.setState({loader: false, active: true})
+                }
+            }
+
         )
     }
 
     render(){
         return(
             <div className = 'form-div'>
+                <Loader load = {this.state.loader} />
+                <RegModal active = {this.state.active} />
                 <form onSubmit = {this.onSubmit} className = 'register'>
                     <section className = 'contestant'>
-                        <h2> Contestant Details </h2>
-                        <label> Full Name 
+                        <h2> Contestant </h2>
+                        <label> Name 
                             <input type = 'text' value = {this.state.name} onChange = {this.setName} placeholder = 'Contestant Name' required/> 
                         </label>
                         <label> Contestant Age
@@ -177,7 +197,7 @@ class FormRegister extends React.Component{
                         </label>
 
                         <label> City of Residence
-                            <input type = 'text' value = {this.state.location} onChange = {this.setLocation} placeholder = 'Location' /> 
+                            <input type = 'text' value = {this.state.location} onChange = {this.setLocation} placeholder = 'City' /> 
                         </label>
 
                         <label> Does this Contestant deserve the crown?
@@ -218,12 +238,12 @@ class FormRegister extends React.Component{
                     </section>
 
                     <section className = 'parent'>
-                        <h2> Parent / Guardian Details </h2>
-                        <label> Name <input type = 'text' value = {this.state.parentName} onChange = {this.setParentName} placeholder = 'Parent Name' /> </label>
+                        <h2> Parent/Guardian </h2>
+                        <label> Name <input type = 'text' value = {this.state.parentName} onChange = {this.setParentName} placeholder = 'Parent Name (optional)' /> </label>
                         <label> Phone Number <input type = 'tel' value = {this.state.tel} onChange = {this.setTel} maxLength = '11' required  placeholder = 'Phone Number'/> </label>
                         <label> <input type = 'checkbox' onChange = {this.isWhatsapp} /> Phone number same as whatsapp number </label>
                         {!this.state.isWhatsapp && <label> Whatsapp Number <input type = 'tel' onChange = {this.setWhatsapp} required placeholder = 'Whatsapp Contact' /> </label>}
-                        <label> Email <input type = 'email' value = {this.state.email} onChange = {this.setEmail} placeholder = 'Email Address'/> </label>
+                        <label> Email <input type = 'email' value = {this.state.email} onChange = {this.setEmail} placeholder = 'Email Address (optional)'/> </label>
 
                         <label> Relationship with Contestant 
                             <select onChange = {this.setRelationship} required>
@@ -235,7 +255,7 @@ class FormRegister extends React.Component{
                             </select>
                         </label>
 
-                        <input type = 'checkbox' name = 'checkbox' onChange = {this.isTC} /> <p className = 'terms'> This Contestant is a Nigerian and I agree to the <Link to = '#'> Privacy Policy </Link> </p>
+                        <input type = 'checkbox' name = 'checkbox' onChange = {this.isTC} className = 'terms' /> <p> I agree to the <Link to = '/privacy'> Privacy Policy </Link> </p>
                         <input type = 'submit' value = 'Register' disabled = {!(this.state.tc)} />
                     </section>
                 </form>

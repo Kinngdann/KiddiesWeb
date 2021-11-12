@@ -1,0 +1,14 @@
+@import '../../utils/config.scss';
+
+.error {
+    &__img {
+        margin: 3rem auto;
+        display: flex;
+        justify-content: center;
+        width: 50%;
+    }
+
+    &__text {
+        text-align: center;
+    }
+}

@@ -18,9 +18,9 @@ class Countdown extends React.Component {
     }
 
     startTimer = () => {
-        let interval;
-        const endDate = new Date("November 4, 2021").getTime();
-        interval = setInterval(() => {
+        // let interval;
+        const endDate = new Date("November 13, 2021").getTime();
+        let interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = endDate - now;
             const days = Math.floor(distance / (24 * 60 * 60 * 1000));
@@ -28,10 +28,10 @@ class Countdown extends React.Component {
             const minutes = Math.floor((distance % (60 * 60 * 1000)) / (1000 * 60))
             const seconds = Math.floor((distance % (60 * 1000)) / 1000)
 
-            if (distance <= 0) {
-                clearInterval(interval = null);
-            } else {
+            if (distance > 0){
                 this.setState({days, hours, minutes, seconds})
+            } else {
+                clearInterval(interval);
             }
         })
     }

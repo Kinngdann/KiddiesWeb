@@ -1,8 +1,9 @@
+import Error from './404/error'
 
 const NotFound = () => {
     return (
         <div> 
-            <h1> Page Not found! </h1>
+            <Error />
         </div>
     )
 }

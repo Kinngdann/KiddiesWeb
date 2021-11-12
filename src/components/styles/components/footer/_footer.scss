@@ -1,0 +1,92 @@
+@import '../../utils/config.scss';
+
+.footer {
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-top: 3rem;
+
+    &__row1 {
+        display: flex;
+        justify-content: space-evenly;
+    
+        & > div {
+            // border: olivedrab 2px solid;
+            width: 23%;
+            margin: 5rem 0;
+        
+            h3 {
+                margin-bottom: 1rem;
+            }
+        }
+
+        &__col1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+        }
+
+        &__col2 {
+            text-align: center;
+
+             p {
+                 font-size: 1.3em;
+                 line-height: 2.5rem;
+             }
+        }
+
+        &__col3 {
+
+            .container {
+                // border: springgreen 2px solid;
+                width: 35%;
+                margin: 0 auto;
+
+                ul {
+                    padding: 0;
+    
+                    li {
+                        list-style: none;
+                        padding-bottom: .5rem;
+    
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__row2 {
+        background: $offBlack;
+        color: #ffffff;
+        padding: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: $mobile) {
+    .footer{
+        padding: 5rem 0 0 0;
+
+        &__row1 {
+            flex-direction: column;
+
+            & > div {
+                width: 90%;
+                margin: 0 auto;
+                // text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            &__col1 {
+                
+                img {
+                    width: 40%;
+                }
+            }
+        }
+    }
+}

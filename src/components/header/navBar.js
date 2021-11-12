@@ -33,9 +33,9 @@ class NavBar extends React.Component {
                     <div className = 'navbar__col2__container'>
                         <NavLink to = './' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Home </NavLink>
                         <NavLink to = '/contestants' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Contestants </NavLink>
-                        <NavLink to = '/elite' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Elite Board </NavLink>
+                        <NavLink to = '/elites' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Elite Board </NavLink>
                         <NavLink to = '/about' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > About </NavLink>
-                        <NavLink to = '/terms' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > T&C </NavLink>
+                        <NavLink to = '/privacy' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Privacy </NavLink>
                         <NavLink to = '/register' className = 'navbar__col2__link' exact onClick = {this.closeMobileMenu} > Register </NavLink>
                     </div>
                 </div>

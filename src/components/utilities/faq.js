@@ -1,32 +1,30 @@
 import React from 'react';
 import Accordion from './accordion';
 import '../styles/helpers/_faq.scss'
-import picture from './images/cutie.jpeg'
+import picture from './images/faq.jpeg'
 
 const App = () => {
 
   const accordionData = [
     {
-      title: 'Section 1',
-      content: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis sapiente
-      laborum cupiditate possimus labore, hic temporibus velit dicta earum
-      suscipit commodi eum enim atque at? Et perspiciatis dolore iure
-      voluptatem.`
+      title: 'What is this Contest About?',
+      content: `The contest is designed on centered around love, the love a mother shares with her Child
+      is second to none. We created this platform to help Parents prove to the world how much they love their child and how
+      far they're willing to go for them. This contest also help showcase the great qualities of a child`
     },
     {
-      title: 'Section 2',
-      content: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia veniam
-      reprehenderit nam assumenda voluptatem ut. Ipsum eius dicta, officiis
-      quaerat iure quos dolorum accusantium ducimus in illum vero commodi
-      pariatur? Impedit autem esse nostrum quasi, fugiat a aut error cumque
-      quidem maiores doloremque est numquam praesentium eos voluptatem amet!
-      Repudiandae, mollitia id reprehenderit a ab odit!`
+      title: 'What are the requirement(s) to register my Child?',
+      content: `Your Child must be in the range of 0 - 10 years old. Please see our Terms & Condition for more information.`
     },
     {
-      title: 'Section 3',
-      content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
-      quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
-      dolor ut sequi minus iste? Quas?`
+      title: 'What is the revenue generated through voting used for?',
+      content: `We will use part of it to help the less priviledged, the homeless, especially children. The other part will be use to organize
+      Programs and Competitions for Children.`
+    },
+    {
+      title: 'How do I register?',
+      content: `Kindly navigate to "Register" fill out the information correctly, a follow up call will be made to you by 
+      your Child's Account Manager, briefing you about the competition.`
     }
   ];
 
@@ -34,9 +32,11 @@ const App = () => {
   return (
     <div className = 'faq'>
       <div className = 'faq__container'>
-        <div className = 'faq__container__img'> <img src = {picture} width = '700' /> </div>
+        <div className = 'faq__container__img'> 
+          <img src = {picture} width = '700' alt = '' /> 
+        </div>
         <div className = 'faq__container__text'>
-          <h1> Frequently Asked Questions </h1>
+          <h1> FAQs </h1>
           <div className="accordion">
             {accordionData.map(({ title, content }) => (
               <Accordion title={title} content={content} />

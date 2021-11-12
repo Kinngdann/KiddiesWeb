@@ -1,0 +1,29 @@
+@import '../utils/config.scss';
+
+.video {
+    background: #f7f3e5;
+    padding: 5rem 1rem;
+
+    &__title {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &__item {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media(max-width: $mobile) {
+
+    .video {
+        padding: 2rem 1rem;
+
+        &__title {
+            font-size: .8em;
+        }
+    }
+
+}

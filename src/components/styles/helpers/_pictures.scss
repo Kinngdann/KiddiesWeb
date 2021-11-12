@@ -1,0 +1,35 @@
+@import '../utils/config.scss';
+
+.pictures {
+    margin-top: 3rem;
+    // display: flex;
+
+    &__row1 {
+        display: flex;
+
+        & > div {
+            border-radius: 3rem;
+            border: steelblue 2px solid;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .pic1 {
+            // width: ;
+        }
+    }
+
+    &__row2 {
+        display: flex;
+
+        & > div {
+            border-radius: 3rem;
+            border: steelblue 2px solid;
+            overflow: hidden;
+        }
+
+        .pic4 {
+            
+        }
+    }
+}

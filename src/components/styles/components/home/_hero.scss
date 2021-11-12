@@ -1,8 +1,10 @@
 @import '../../utils/config.scss';
 
 .hero {
-    // background: #ffffff;
-    padding: 5rem 5rem;
+    background: url('../../../home/pictures/hero.jpeg');
+    background-size: cover;
+    background-position: 0% 40%;
+    padding: 15rem 0 15rem 15rem;
     display: flex;
     align-items: center;
 
@@ -11,22 +13,17 @@
         max-width: 670px;
 
         &__text {
-            color: $textColor;
-
-            h3 {
-                font-size: 1.8em;
-                font-weight: 500;
-
-                span {
-                    color: $brandColorBlue;
-                    font-weight: 500;
-                }
-            }
-
             h1 {
                 font-size: 4em;
-                font-weight: 700;
                 margin-bottom: 2rem;
+            }
+
+            h3 {
+                font-size: 2em;
+            }
+
+            span { 
+                color: $brandColorBlue;
             }
         }
 
@@ -42,33 +39,31 @@
 
     &__col2 {
         width: 60%;
-
-        &__img {
-            max-width: 100%;
-        }
+        // display: flex;
+        // justify-content: center;
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: $mobile) {
     .hero {
-        // width: 100%;
-        padding: 3rem 1rem;
+        padding: 5rem 1rem;
         flex-direction: column;
+        background: #ffffff;
 
         &__col1 {
             width: 100%;
+            text-align: center;
 
-            &__text {
-                text-align: center;
-
-                h3 {
-                    font-size: 1em;
-                }
-
-                h1 {
-                    font-size: 2em;
-                    line-height: 1.2em;
-                }
+            h1 {
+                font-size: 2em;
+                font-weight: 700;
+                margin-bottom: 2rem;
+            }
+        
+            h3 {
+                font-size: 1em;
+                font-weight: 700;
+                margin-bottom: 2rem;
             }
 
             &__btn {
@@ -79,10 +74,6 @@
                     margin-right: 0;
                 }
             }
-        }
-
-        &__col2 {
-            display: none;
         }
     }
 }

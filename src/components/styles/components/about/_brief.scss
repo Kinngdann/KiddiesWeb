@@ -1,69 +1,32 @@
 @import '../../utils/config.scss';
 
 .brief {
+    padding: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    margin: $largeSpace 0;
-
-    &__row1 {
-        text-align: center;
+    &__col1 {
         width: 50%;
-        margin: 0 auto;
 
-        h4 {
-            font-size: 2em;
-        }
-
-        h2 {
-            font-size: 4em;
-        }
-    }
-
-    &__row2 {
-        margin: 0 auto;
-        width: 90%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        &__img {
-            width: 40%;
-            transition: all ease-out .3s;
-            border-radius: 10rem;
-            overflow: hidden;
-
-            &__img {
-                width: 100%;
+        &__title {
+            h1 {
+                font-size: 2em;
             }
 
-            &:hover {
-                transform: scale(1.05);
+            h3 {
+                font-size: 1em;
+                margin-bottom: 1rem;
             }
         }
 
         &__text {
-            width: 50%;
-
-            p {
-                line-height: 3rem;
-                text-align: justify;
-            }
-
-            h2 {
-                margin-bottom: 2rem;
-            }
-
             ul {
-
-                margin: 0;
                 padding: 0;
 
-                & > li {
-                    list-style-type: none;
+                li {
+                    list-style: none;
                 }
-            }
-
-            &__btn {
-                margin-top: 3rem;
             }
         }
 
@@ -72,50 +35,41 @@
             align-items: center;
             margin-bottom: 1rem;
 
-            & > img {
-                width: 1.5em;
+            .bullet {
+                width: 0;
+                height: 0;
+                border-top: 5px solid transparent;
+                border-left: 10px solid $brandColorOrange;
+                border-bottom: 5px solid transparent;
                 margin-right: 1rem;
             }
-
-            & > p {
+            
+            p {
                 margin: 0;
             }
         }
     }
+
+    &__col2 {
+
+        border-radius: 10rem 0 10rem 0;
+        overflow: hidden;
+    }
 }
 
-@media (max-width: 960px) {
+@media (max-width: $mobile) {
     .brief {
-        margin: 3rem 0;
-
-        &__row1 {
-
-            width:  100%;
-            h4 {
-                font-size: 1.5em;
-            }
-
-            h2 {
-                font-size: 2.5em;
-            }
+        flex-direction: column;
+        padding: 4rem 2rem;
+        
+        &__col1 {
+            width: 100%;
         }
 
-        &__row2 {
-
-            flex-direction: column;
-
-            &__img {
-                width: 100%;
-                box-sizing: border-box;
-
-                &__img {
-                    width: 100%;
-                }
-            }
-
-            &__text {
-                width: 100%;
-            }
+        &__col2 {
+            width: 100%;
+            border-radius: 5rem 0 5rem 0;
+            margin-top: 3rem;
         }
     }
 }

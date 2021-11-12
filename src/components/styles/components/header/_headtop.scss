@@ -3,7 +3,7 @@
 .headtop {
     width: 100vw;
     background: $brandColorBlue;
-    padding: 1.5rem;
+    padding: 2rem;
     color: white;
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@
             }
 
             &:hover {
-                color: $textColor;
+                color: $offWhite;
             }
 
             h4 {
@@ -44,7 +44,7 @@
         justify-content: flex-end;
         
         &__icon {
-            padding-right: 2rem;
+            margin-right: 1rem;
         }
     }
 }
@@ -57,9 +57,5 @@
     .headtop__social {
         width: 50%;
         justify-content: space-evenly;
-
-        &__icon {
-            padding: 0;
-        }
     }
 }

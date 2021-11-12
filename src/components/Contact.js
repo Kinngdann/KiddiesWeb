@@ -1,9 +1,11 @@
-
+import ComingSoon from './utilities/comingSoon'
+import Countdown from './utilities/countdown'
 
 const Contact = () => {
     return (
         <div> 
-            <h1> Contact us </h1>
+            <ComingSoon />
+            <Countdown />
         </div>
     )
 }

@@ -13,21 +13,21 @@ const Winner = () => {
                     <img src = {cup} alt = 'cup-icon' />
                 </div>
                 <div className = 'winner__col1__text'>
-                    <h2>WINNER</h2>
-                    <h3>GETS</h3>
+                    <h1 className = 'rmv'> WINNER </h1>
+                    <h3 className = 'rmv'> GETS </h3>
                     <hr className = 'winner__col1__line' />
                 </div>
             </div>
 
             <div className = 'winner__col2'>
                 <img src = {crown} alt = 'crown-icon' className = 'winner__col2__img' />
-                <p> The Winner will be Crowned <br/> <span> “Mr or Miss Crown <br/> 2020/21” </span></p>
+                <p> The Winner will be Crowned <br/> <span> “Mr or Miss Crown <br/> 2021/22” </span></p>
             </div>
 
             <div className = 'winner__col3'>
                 <img src = {gift} alt = 'gift-icon' className = 'winner__col3__img'/>
                 <p> Cash prize of <br/> <span> N500,000.00 </span>
-                an iPad, and other benefits.
+                , iPad, and other benefits.
                 Lots and lots of gifts</p>
             </div>
         </div>

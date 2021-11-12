@@ -1,10 +1,8 @@
 import React from 'react'
-import Loader from '../utilities/loader';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import filterContestants from '../../controls/filterContestants'
-import pic from './beautiful.jpeg';
 
 class AllContestants extends React.Component {
 
@@ -53,14 +51,9 @@ class AllContestants extends React.Component {
   }
 
  render () {
-  const {loader} = this.state;
-
     return ( 
-
-
       <div>
-
-      <form onSubmit = {e => e.preventDefault()}>
+          <form onSubmit = {e => e.preventDefault()}>
             <input type = 'text' value = {this.state.search} onChange = {this.setSearch} />
             <select onChange = {this.setSortBy}>
                 <option value = 'name'> Name (A-Z) </option>
@@ -72,10 +65,10 @@ class AllContestants extends React.Component {
           {this.state.contestants.map((contestant, index) => {
             return (
               <div key = {index}>
-                  <img src = {pic} alt = 'profile' width = '100'/>
+                  <img src = {`http://143.244.174.52:4000/${contestant.pictures}`} alt = 'contestant' width = '200'/>
                   <h3> {contestant.name} </h3>
                   <p> {contestant.sex} </p>
-                  <Link to = {`user/${contestant.id}`}> VIEW </Link>
+                  <Link to = {`contestant/${contestant.id}`}> VIEW </Link>
               </div>
             )
           })}
@@ -90,3 +83,4 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps)(AllContestants)
+// http://143.244.174.52:4000/

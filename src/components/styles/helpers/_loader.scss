@@ -14,8 +14,14 @@
     align-items: center;
     text-align: center;
 
-    h3 {
-        color: $textColor;
-        margin-top: 1rem;
-    }
+    // h3 {
+    //     color: $textColor;
+    //     margin-top: 1rem;
+    // }
+}
+
+.unload {
+    background: none;
+    position: static;
+    z-index: 0;
 }

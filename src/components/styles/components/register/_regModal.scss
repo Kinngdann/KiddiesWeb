@@ -1,0 +1,9 @@
+@import '../../utils/config.scss';
+
+.ReactModal__Content {
+    margin-top: 5rem;
+    background: #ffffff;
+    width: 40%;
+    margin: 0 auto;
+    border: 2px $offWhite solid;
+}

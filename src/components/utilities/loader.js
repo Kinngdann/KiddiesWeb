@@ -8,10 +8,12 @@ const override = css`
   border-color: red;
 `;
 
-const Loader = () => {
+const Loader = (props) => {
+
+  console.log(props)
 
   const properties = {
-    loading: true,
+    loading: props.load,
     color: '#2094d2',
     speedMultiplier: 2,
     css: override,
@@ -19,11 +21,10 @@ const Loader = () => {
   }  
 
   return (
-      <div className = 'loader'>
-        <div className = "sweet-loading">
+      <div className = {properties.loading? 'loader' : 'unload'}>
+        <div>
             <ClockLoader {...properties} />
-            <h3> Loading </h3>
-      </div>
+        </div>
     </div>
   );
 }

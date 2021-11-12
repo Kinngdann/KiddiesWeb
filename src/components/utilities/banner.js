@@ -9,7 +9,7 @@ const Banner = (props) => {
     return (
         <div className = 'banner'>
             <div className = 'banner__img'>
-                <img src = {image} alt = 'background image'/>
+                <img src = {image} alt = ''/>
             </div>
             <div className = 'banner__text'>
                 <h1> {title} </h1>

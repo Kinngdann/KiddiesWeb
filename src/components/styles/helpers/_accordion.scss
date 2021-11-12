@@ -2,7 +2,7 @@
 
 .accordion-item {
   width: 100%;
-  border: 3px solid red;
+  // border: 3px solid red;
   // max-width: 600px;
   margin: 1rem auto;
 }
@@ -25,10 +25,6 @@
 .accordion-title,
 .accordion-content {
   padding: 1rem;
-}
-
-.accordion-content {
-  background-color: $offWhite;
 }
 
 @media screen and (max-width: 700px) {

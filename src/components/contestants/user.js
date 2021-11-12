@@ -1,19 +1,20 @@
 import React from 'react';
 import axios from 'axios';
 import pic from './beautiful.jpeg';
+import Loader from '../utilities/loader';
 
 class User extends React.Component {
     constructor(props){
         super()
 
         this.state = {
+            loader: true,
             id: props.match.params.id,
             contestant: {},
+            allUsers: [],
             vote: '',
             newVotes: '',
             picture: '',
-
-            allUsers: [],
             position: ''
         }
     }
@@ -24,11 +25,6 @@ class User extends React.Component {
     //     bytes.forEach((b) => binary += String.fromCharCode(b));
     //     return window.btoa(binary);
     // };
-
-    componentDidMount(){
-        this.fetchUser()
-        this.loadAllUsers()
-    }
 
     fetchUser = () => {
         axios.get(`http://143.244.174.52:4000/api/user/getSingleUserData/${this.state.id}`, {
@@ -51,6 +47,40 @@ class User extends React.Component {
         )
     }
 
+    loadAllUsers = () => {
+        axios.get('http://143.244.174.52:4000/api/user/getUserData').then(
+            (response) => {
+                const users = response.data.data
+                this.setState({ allUsers: users.sort((a, b) => {
+                    return b.votes.stageOne > a.votes.stageOne? 1 : -1;
+                })})
+
+        }).catch( (error) => console.log(error) )
+    }
+
+    setPosition = () => {
+        const {vote, allUsers} = this.state
+
+        allUsers.map((user, index) => {
+            if (user.votes.stageOne === vote){
+                // alert('Found Position!')
+                this.setState({ position: index + 1})
+            }
+        })
+    }
+
+    componentDidMount(){
+        this.fetchUser()
+        this.loadAllUsers()
+        this.setPosition()
+
+        setTimeout(() => {
+            this.setState({loader: false})
+        }, 2000);
+    }
+
+    
+
     setVote = (e) => {
         const newVotes = parseInt(e.target.value)
         this.setState({ newVotes })
@@ -67,37 +97,19 @@ class User extends React.Component {
         )
     }
 
-    loadAllUsers = () => {
-        axios.get('http://143.244.174.52:4000/api/user/getUserData').then(
-            (response) => {
-                const users = response.data.data
-                this.setState({ allUsers: users.sort((a, b) => {
-                    return b.votes.stageOne > a.votes.stageOne? 1 : -1;
-                })})
-
-        }).catch( (error) => console.log(error) )
-    }
-
-    setPosition = () => {
-        const {vote, allUsers} = this.state
-
-        allUsers.map((user, index) => {
-            if (vote === user.votes.stageOne){
-                console.log('Found!')
-                this.setState({ position: index + 1})
-            }
-        })
-    }
+    
 
     render() {     
         const { contestant, vote, position } = this.state;
 
         return (
             <div>
+                <Loader load = {this.state.loader} />
                 <img src = {pic} alt = '' width = '100'/>
                 <h3> {contestant.name} </h3>
                 <blockquote> {contestant.description} </blockquote>
-                <h4> Number of votes: {vote} </h4>   
+                <h4> Number of votes: {vote} </h4> 
+                <h4> Position: {position}</h4>  
                  
                 <form onSubmit = {this.onSubmit}>
                     <input type = 'number' value = {this.state.newVotes} onChange = {this.setVote} />

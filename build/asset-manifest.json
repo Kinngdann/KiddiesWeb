@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.22c27103.chunk.css",
+    "main.js": "/static/js/main.0b4ebb79.chunk.js",
+    "main.js.map": "/static/js/main.0b4ebb79.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.96b28639.js",
+    "runtime-main.js.map": "/static/js/runtime-main.96b28639.js.map",
+    "static/css/2.679831fc.chunk.css": "/static/css/2.679831fc.chunk.css",
+    "static/js/2.88716075.chunk.js": "/static/js/2.88716075.chunk.js",
+    "static/js/2.88716075.chunk.js.map": "/static/js/2.88716075.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.22c27103.chunk.css.map": "/static/css/main.22c27103.chunk.css.map",
+    "static/js/2.88716075.chunk.js.LICENSE.txt": "/static/js/2.88716075.chunk.js.LICENSE.txt",
+    "static/media/404.0884e9ae.svg": "/static/media/404.0884e9ae.svg",
+    "static/media/beautiful.02358c8a.jpeg": "/static/media/beautiful.02358c8a.jpeg",
+    "static/media/child.6e964d86.jpeg": "/static/media/child.6e964d86.jpeg",
+    "static/media/crown.ddfa9c15.svg": "/static/media/crown.ddfa9c15.svg",
+    "static/media/cup.e38444a9.svg": "/static/media/cup.e38444a9.svg",
+    "static/media/cutie.6e964d86.jpeg": "/static/media/cutie.6e964d86.jpeg",
+    "static/media/faq.0bc9df97.jpeg": "/static/media/faq.0bc9df97.jpeg",
+    "static/media/fb.28640687.svg": "/static/media/fb.28640687.svg",
+    "static/media/gift.8781c76d.svg": "/static/media/gift.8781c76d.svg",
+    "static/media/_hero.scss": "/static/media/hero.448a8837.jpeg",
+    "static/media/ig.6b36efd1.svg": "/static/media/ig.6b36efd1.svg",
+    "static/media/location.52a0d53f.svg": "/static/media/location.52a0d53f.svg",
+    "static/media/logo.cbac15d8.svg": "/static/media/logo.cbac15d8.svg",
+    "static/media/mail.8c09ac29.svg": "/static/media/mail.8c09ac29.svg",
+    "static/media/roadmap.02358c8a.jpeg": "/static/media/roadmap.02358c8a.jpeg",
+    "static/media/tel.d71cb580.svg": "/static/media/tel.d71cb580.svg",
+    "static/media/wa.de3f8bea.svg": "/static/media/wa.de3f8bea.svg",
+    "static/media/whatsapp.24c13f80.svg": "/static/media/whatsapp.24c13f80.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.96b28639.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.88716075.chunk.js",
+    "static/css/main.22c27103.chunk.css",
+    "static/js/main.0b4ebb79.chunk.js"
+  ]
+}

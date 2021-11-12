@@ -2,18 +2,13 @@
 
 .countdown {
     background: $offWhite;
-    padding: 5em 0;
+    padding: 4em 0;
     color: $textColor;
 
     &__text {
         width: 50%;
-        margin: 0 auto;
+        margin: 2rem auto;
         text-align: center;
-
-        h1 {
-            font-size: 4em;
-            margin-bottom: 3rem;
-        }
     }
 
     &__time {
@@ -24,10 +19,10 @@
 
         & > div {
             color: #ffffff;
-            padding: 3rem;
-            width: 20vw;
             margin: 2rem;
-            border-radius: 1rem;
+            padding: 3rem;
+            width: 20%;
+            border-radius: 7rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,7 +34,7 @@
         }
 
         &__days {
-            background: $brandColorRed;
+            background: $brandColorBlue;
         }
 
         &__hours {
@@ -47,17 +42,19 @@
         }
 
         &__minutes {
-            background: $brandColorBlue;
+            background: #079173;
         }
 
         &__seconds {
-            background: #079173;
+            background: $brandColorRed;
         }
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: $mobile) {
     .countdown {
+        padding: 2em 0;
+
         &__text {
             width: 100%;
 
@@ -72,20 +69,22 @@
 
         &__time {
             width: 100%;
+            flex-wrap: wrap;
 
             & > div {
-                width: 20vw;
-                height: 20vw;
-                margin: .5rem;
+                width: 30%;
+                height: 30%;
+                margin: 1rem;
 
                 h2 {
                     font-size: 2em;
                 }
 
                 h3 {
-                    font-size: .5em;
+                    font-size: 1em;
                 }
             }
+
         }
     }
 }
