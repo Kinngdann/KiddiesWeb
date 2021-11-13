@@ -6,10 +6,9 @@ import '../styles/components/register/_regModal.scss'
 class RegModal extends React.Component {
 
     constructor(props){
-        console.log('see here', props)
         super()
         this.state = {
-            active: props.active,
+            active: props.active
         }
     }
 
@@ -25,14 +24,11 @@ class RegModal extends React.Component {
                     preventScroll = {true}
                     className = {'ReactModal__Content'}
                 >
+                    
                     <h1> TITLE </h1>
                     <h1> TITLE </h1>
                     <h1> TITLE </h1>
-                    <h1> TITLE </h1>
-                    <h1> TITLE </h1>
-                    <h1> TITLE </h1>
-                    <h1> TITLE </h1>
-                    <p> Your registration is successful </p>
+                    <p> Your registration was successful </p>
                     <Link to = './'> <input type = 'button' value = 'Great!' onClick = {this.toggle} className = 'btn--primary'/> </Link>
                 </Modal>
             </div>

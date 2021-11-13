@@ -14,7 +14,7 @@ class FormRegister extends React.Component{
 
         this.state = {
             loader: true,
-            active: false,
+            modal: false,
             name: '',
             age: 'undefined',
             sex: '',
@@ -112,9 +112,12 @@ class FormRegister extends React.Component{
     }
 
     onSubmit = (e) => {
-        this.setState({loader: true})
         e.preventDefault()
+        this.setState({loader: true})
+        // this.setState({modal: true})
 
+
+        //Api call to validate registration
 
         const userData = {
             id: ID(),
@@ -154,7 +157,8 @@ class FormRegister extends React.Component{
             (response) => {
                 console.log(response)
                 if (response.request.status === 200){
-                    this.setState({loader: false, active: true})
+                    this.setState({loader: false})
+                    console.log('registered successfully')
                 }
             }
 
@@ -165,7 +169,7 @@ class FormRegister extends React.Component{
         return(
             <div className = 'form-div'>
                 <Loader load = {this.state.loader} />
-                <RegModal active = {this.state.active} />
+                <RegModal active = {this.state.modal} />
                 <form onSubmit = {this.onSubmit} className = 'register'>
                     <section className = 'contestant'>
                         <h2> Contestant </h2>
