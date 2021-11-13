@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import pic from './beautiful.jpeg';
 import Loader from '../utilities/loader';
 
 class User extends React.Component {
