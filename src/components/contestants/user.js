@@ -58,16 +58,16 @@ class User extends React.Component {
         }).catch( (error) => console.log(error) )
     }
 
-    setPosition = () => {
-        const {vote, allUsers} = this.state
+    // setPosition = () => {
+    //     const {vote, allUsers} = this.state
 
-        allUsers.map((user, index) => {
-            if (user.votes.stageOne === vote){
-                // alert('Found Position!')
-                this.setState({ position: index + 1})
-            }
-        })
-    }
+    //     allUsers.map((user, index) => {
+    //         if (user.votes.stageOne === vote){
+    //             // alert('Found Position!')
+    //             this.setState({ position: index + 1})
+    //         }
+    //     })
+    // }
 
     componentDidMount(){
         this.fetchUser()

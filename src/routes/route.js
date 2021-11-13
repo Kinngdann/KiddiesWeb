@@ -1,5 +1,6 @@
 import React from 'react'
-// import Loader from '../components/utilities/loader'
+import Signin from '../components/admin/authentication/signin'
+import ProtectedRoute from '../components/admin/authentication/protectedRoute'
 import Gap from '../components/utilities/gap'
 import Header from '../components/Header'
 import NavBar from '../components/header/navBar'
@@ -7,13 +8,13 @@ import About from '../components/About'
 import Contact from '../components/Contact'
 import Contestants from '../components/Contestants'
 import Home from '../components/Home'
-// import Elite from '../components/Elite'
+import Elite from '../components/Elite'
 // import Terms from '../components/Terms'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
 import User from '../components/contestants/user'
 import Admin from '../components/Admin'
-import AddVotes from '../components/admin/addVotes'
+// import AddVotes from '../components/admin/addVotes'
 import UploadImage from '../playground'
 import ComingSoon from '../components/utilities/comingSoon'
 import Whatsapp from '../components/utilities/whatsapp'
@@ -37,7 +38,7 @@ const Nav = () => {
                 <Whatsapp />
                 <Switch>
                     <Route exact path = '/' component = {Home}/>
-                    <Route exact path = '/elites' component = {ComingSoon} />
+                    <Route exact path = '/elites' component = {Elite} />
                     <Route exact path = '/about' component = {About} />
                     <Route exact path = '/contact' component = {Contact} />
                     <Route exact path = '/contestants' component = {Contestants} />
@@ -45,8 +46,8 @@ const Nav = () => {
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
-                    <Route exact path = '/admin' component = {Admin} />
-                    <Route exact path = '/admin/:addvotes' component = {AddVotes} />
+                    <Route exact path = '/signin' component = {Signin} />
+                    <ProtectedRoute exact path = '/admin' component = {Admin} />
                     <Route exact path = '/upload' component = {UploadImage} />
                     <Route component = {NotFound} />
                 </Switch>

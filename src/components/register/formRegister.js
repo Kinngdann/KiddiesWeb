@@ -157,7 +157,6 @@ class FormRegister extends React.Component{
                     this.setState({loader: false, active: true})
                 }
             }
-
         )
     }
 
