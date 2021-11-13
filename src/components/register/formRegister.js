@@ -117,7 +117,8 @@ class FormRegister extends React.Component{
         // this.setState({modal: true})
 
 
-        //Api call to validate registration
+        //Api call to validate user
+
 
         const userData = {
             id: ID(),
@@ -153,15 +154,14 @@ class FormRegister extends React.Component{
             )
         }
         
-        axios.post('http://143.244.174.52:4000/api/user/saveUserData', formData).then(
+        axios.post('http://143.244.174.52:4000/api/user/saveUserData/', formData).then(
             (response) => {
                 console.log(response)
                 if (response.request.status === 200){
                     this.setState({loader: false})
-                    console.log('registered successfully')
+                    alert('successful!')
                 }
             }
-
         )
     }
 

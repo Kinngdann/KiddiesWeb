@@ -88,7 +88,7 @@ class User extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        axios.put(`http://143.244.174.52:4000/api/user/updateUserData/${this.state.id}`, {
+        axios.put(`https://143.244.174.52:4000/api/user/updateUserData/${this.state.id}`, {
             'votes.stageOne': this.state.vote + this.state.newVotes
         }).then(
             response => {console.log(response)
@@ -105,11 +105,11 @@ class User extends React.Component {
         return (
             <div>
                 <Loader load = {this.state.loader} />
-                <img src = {pic} alt = '' width = '100'/>
-                <h3> {contestant.name} </h3>
+                <img src = {`http://143.244.174.52:4000/${contestant.pictures}`} alt = '' width = '100'/>
+                <h3>Name: {contestant.name} id: {contestant.id} </h3>
                 <blockquote> {contestant.description} </blockquote>
                 <h4> Number of votes: {vote} </h4> 
-                <h4> Position: {position}</h4>  
+                <h4> Position: {position}</h4>
                  
                 <form onSubmit = {this.onSubmit}>
                     <input type = 'number' value = {this.state.newVotes} onChange = {this.setVote} />
