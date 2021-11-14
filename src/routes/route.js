@@ -13,8 +13,12 @@ import Elite from '../components/Elite'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
 import User from '../components/contestants/user'
+
 import Admin from '../components/Admin'
-// import AddVotes from '../components/admin/addVotes'
+import AddVotes from '../components/admin/addVotes'
+import GetUsersData from '../components/admin/getUsersData'
+import GetLog from '../components/admin/getLog'
+
 import UploadImage from '../playground'
 import ComingSoon from '../components/utilities/comingSoon'
 import Whatsapp from '../components/utilities/whatsapp'
@@ -37,7 +41,7 @@ const Nav = () => {
                 <NavBar />
                 <Whatsapp />
                 <Switch>
-                    <Route exact path = '/' component = {Home}/>
+                    <Route exact path = '/' component = {Home} />
                     <Route exact path = '/elites' component = {Elite} />
                     <Route exact path = '/about' component = {About} />
                     <Route exact path = '/contact' component = {Contact} />
@@ -47,7 +51,12 @@ const Nav = () => {
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
                     <Route exact path = '/signin' component = {Signin} />
+
                     <ProtectedRoute exact path = '/admin' component = {Admin} />
+                    <Route exact path = '/admin/:addvote' component = {AddVotes} />
+                    <Route exact path = '/admin/:getdata' component = {GetUsersData} />
+                    <Route exact path = '/admin/:getlog' component = {GetLog} />
+                    
                     <Route exact path = '/upload' component = {UploadImage} />
                     <Route component = {NotFound} />
                 </Switch>

@@ -18,9 +18,9 @@ class Admin extends React.Component {
             <div className = 'admin'>
                 <h1> Admin Panel </h1>
                 <div className = 'admin__container'>
-                    <div> <Link to = '/addvote'> <h3> Add Vote </h3> </Link></div>
-                    <div> <Link to = '/getdata'> <h3> Get User Data </h3> </Link></div>
-                    <div> <Link to = '/getlog'> <h3> Get User Log </h3> </Link></div>
+                    <div> <Link to = '/admin/addvote'> <h3> Add Vote </h3> </Link></div>
+                    <div> <Link to = '/admin/getdata'> <h3> Get User Data </h3> </Link></div>
+                    <div> <Link to = '/admin/getlog'> <h3> Get User Log </h3> </Link></div>
                 </div>
             </div>
         )
