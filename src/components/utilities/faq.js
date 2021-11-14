@@ -38,8 +38,8 @@ const App = () => {
         <div className = 'faq__container__text'>
           <h1> FAQs </h1>
           <div className="accordion">
-            {accordionData.map(({ title, content }) => (
-              <Accordion title={title} content={content} />
+            {accordionData.map(({ title, content}) => (
+              <Accordion title = {title} content = {content}/>
             ))}
           </div>
         </div>

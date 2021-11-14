@@ -21,10 +21,12 @@ class AllContestants extends React.Component {
     axios.get('http://143.244.174.52:4000/api/user/getUserData')
     .then((response) => {
         const {search, sortBy} = this.props.sort
-        this.setState({ users: response.data.data})
-        this.setState({ contestants : filterContestants(this.state.users, {search, sortBy})})
-        this.setState({loader: !this.state.loader})
-        console.log('done!')
+
+        this.setState(() => ({
+          users: response.data.data,
+          contestant: filterContestants(this.state.users, {search, sortBy}),
+          loader: false
+        }))
     })
     .catch( (error) =>  {
         console.log(error);

@@ -74,7 +74,7 @@
     width: 100%;
     max-width: 70vw;
     line-height: 3rem;
-    font-weight: 100;
+    font-weight: 500;
 }
 
 .register select {
@@ -116,8 +116,10 @@
     }
 
     &:disabled {
-        background: lighten($color: $brandColorBlue, $amount: 20%);
+        background: #dfdfdf;
         cursor: not-allowed;
+        font-weight: 600;
+        color: #464646
     }
 }
 

@@ -7,16 +7,18 @@ import ID from './getID'
 import RegModal from './regModal'
 import '../styles/components/register/_register.scss'
 
-
 class FormRegister extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
-            loader: true,
+            regUsers: '',
+            userLimit: 20,
+            id: '',
             modal: false,
+            loader: true,
             name: '',
-            age: 'undefined',
+            age: '',
             sex: '',
             location: '',
             description: '',
@@ -29,6 +31,7 @@ class FormRegister extends React.Component{
             relationship: '',
             tc: false,
             imageList: null,
+            message: ''
         }
     }
 
@@ -36,6 +39,15 @@ class FormRegister extends React.Component{
         setTimeout(() => {
             this.setState({loader: false})
         }, 2000)
+
+        axios.get('http://143.244.174.52:4000/api/user/getUserData')
+        .then((response) => {
+            const users = response.data.data
+            this.setState({regUsers: users.length})
+        })
+        .catch( (error) =>  {
+            console.log(error);
+        })
     }
 
     setName = (e) => {
@@ -111,65 +123,76 @@ class FormRegister extends React.Component{
         console.log(imageList)
     }
 
+    rmvModal = () => {
+        this.setState({modal: false})
+    }
+
     onSubmit = (e) => {
         e.preventDefault()
         this.setState({loader: true})
-        // this.setState({modal: true})
 
-
-        //Api call to validate user
-
-
-        const userData = {
-            id: ID(),
-            name: this.state.name,
-            age: this.state.age,
-            sex: this.state.sex,
-            location: this.state.location,
-            description: this.state.description,
-            tel: this.state.tel,
-            whatsapp: this.state.whatsapp || this.state.tel,
-            parentName: this.state.parentName,
-            email: this.state.email,
-            relationship: this.state.relationship,
-            votes: {
-                stageOne: 0,
-                stageTwo: 0,
-                stageThree: 0
-            }
-        }
-
-        const formData = new FormData()
-        formData.append(
-            'user', JSON.stringify(userData)
-        )
-
-        if (this.state.imageList){
-
-            const file = this.state.imageList[0].file
-            formData.append(
-                'image',
-                file,
-                'pic'
-            )
-        }
-        
-        axios.post('http://143.244.174.52:4000/api/user/saveUserData/', formData).then(
-            (response) => {
-                console.log(response)
-                if (response.request.status === 200){
-                    this.setState({loader: false})
-                    alert('successful!')
+        const check = localStorage.getItem('isRegistered')
+        if (check) {
+            this.setState({loader: false, message: 'We\'re sorry, we only accept one contestant/household', modal: true})
+        } else {
+            const userData = {
+                id: ID(),
+                name: this.state.name,
+                age: this.state.age,
+                sex: this.state.sex,
+                location: this.state.location,
+                description: this.state.description,
+                tel: this.state.tel,
+                whatsapp: this.state.whatsapp || this.state.tel,
+                parentName: this.state.parentName,
+                email: this.state.email,
+                relationship: this.state.relationship,
+                votes: {
+                    stageOne: 0,
+                    stageTwo: 0,
+                    stageThree: 0
                 }
             }
-        )
+    
+            const formData = new FormData()
+            formData.append(
+                'user', JSON.stringify(userData)
+            )
+    
+            if (this.state.imageList){
+                const file = this.state.imageList[0].file
+                formData.append(
+                    'image',
+                    file,
+                    'pic'
+                )
+            }
+            
+            // http://143.244.174.52:4000/api/user/saveUserData/
+            axios.post('https://www.kiddiescrown.com/api/user/saveUserData', formData).then(
+                (response) => {
+                    console.log(response)
+                    if (response.request.status === 200){
+                        localStorage.setItem('isRegistered', 'true')
+                        this.setState(() => ({
+                            loader: false, 
+                            message: 'Your registration was successful!',
+                            modal: true,
+                            id: response.data.data.id
+                        }))
+                    }
+                }
+            )
+        }
     }
+
+    
 
     render(){
         return(
             <div className = 'form-div'>
+                <RegModal active = {this.state.modal} id = {this.state.id} rmvModal = {this.rmvModal} message = {this.state.message} />
                 <Loader load = {this.state.loader} />
-                <RegModal active = {this.state.modal} />
                 <form onSubmit = {this.onSubmit} className = 'register'>
                     <section className = 'contestant'>
                         <h2> Contestant </h2>
@@ -259,8 +282,8 @@ class FormRegister extends React.Component{
                             </select>
                         </label>
 
-                        <input type = 'checkbox' name = 'checkbox' onChange = {this.isTC} className = 'terms' /> <p> I agree to the <Link to = '/privacy'> Privacy Policy </Link> </p>
-                        <input type = 'submit' value = 'Register' disabled = {!(this.state.tc)} />
+                        <input type = 'checkbox' name = 'checkbox' onChange = {this.isTC} className = 'terms' required /> <p> I agree to the <Link to = '/privacy'> Privacy Policy </Link> </p>
+                        <input type = 'submit' value = {this.state.regUsers === this.state.userLimit? 'SUSPENDED' : 'Register'} disabled = {this.state.regUsers === this.state.userLimit} />
                     </section>
                 </form>
             </div>
