@@ -1,0 +1,49 @@
+@import '../../utils/config.scss';
+
+.admin {
+    text-align: center;
+    background: #ffffff;
+
+    &__container {
+        width: 80%;
+        display: flex;
+        margin:  0 auto;
+        justify-content: center;
+
+        & > div {
+            padding: 2rem;
+            width: 20%;
+            height: 20vw;
+            margin: 3rem;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s ease-in;
+    
+            a {
+                text-decoration: none;
+                color: $textColor;
+            }
+    
+            &:hover {
+                background: #ffffff;
+                box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
+            }
+        }
+    }
+}
+
+@media(max-width: $mobile){
+    .admin {
+        &__container {
+            flex-direction: column;
+            align-items: center;
+
+            & > div {
+                width: 50%;
+                height: 50vw;
+            }
+        }
+    }
+}
