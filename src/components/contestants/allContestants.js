@@ -18,15 +18,20 @@ class AllContestants extends React.Component {
   }
 
   componentDidMount(){
-    axios.get('http://143.244.174.52:4000/api/user/getUserData')
+    axios.get('https://www.kiddiescrown.com/api/user/getUserData')
     .then((response) => {
         const {search, sortBy} = this.props.sort
+        const users = response.data.data
 
-        this.setState(() => ({
-          users: response.data.data,
-          contestant: filterContestants(this.state.users, {search, sortBy}),
-          loader: false
-        }))
+        // this.setState(() => ({
+        //   users: response.data.data,
+        //   contestant: filterContestants(this.state.users, {search, sortBy}),
+        //   loader: false
+        // }))
+
+        this.setState({users})
+        this.setState({contestant: filterContestants(this.state.users, {search, sortBy})})
+        this.setState({loader: false})
     })
     .catch( (error) =>  {
         console.log(error);
