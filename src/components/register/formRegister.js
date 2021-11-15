@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../utilities/loader'
 import axios from 'axios'
-import ID from './getID'
+// import ID from './getID'
 import RegModal from './regModal'
 import '../styles/components/register/_register.scss'
 
@@ -118,16 +118,11 @@ class FormRegister extends React.Component{
         console.log(this.state.privacy)
     }
 
-    // setImages = (imageList, addUpdateIndex) => {
-    //     this.setState(() => ({ imageList }))
-    //     console.log(imageList)
-    // }
-
     setImage = (e) => {
         const file = e.target.files[0]
         const imagePath = URL.createObjectURL(file)
         this.setState(() => ({ file, imagePath }))
-      }
+    }
 
     rmvModal = () => {
         this.setState({modal: false})
@@ -142,7 +137,6 @@ class FormRegister extends React.Component{
             this.setState({loader: false, message: 'We\'re sorry, we only accept one contestant/household', modal: true})
         } else {
             const userData = {
-                id: ID(),
                 name: this.state.name,
                 age: this.state.age,
                 sex: this.state.sex,
@@ -183,7 +177,7 @@ class FormRegister extends React.Component{
                             loader: false, 
                             message: 'Your registration was successful!',
                             modal: true,
-                            id: response.data.data.id
+                            // id: response.data.data.id
                         }))
                     }
                 }

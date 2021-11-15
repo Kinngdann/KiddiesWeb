@@ -1,6 +1,6 @@
 import React from 'react'
 // import ImageUploading from "react-images-uploading";
-import axios from 'axios';
+// import axios from 'axios';
 
 
 // import React from 'react';
