@@ -30,7 +30,11 @@ class FormRegister extends React.Component{
             email: '',
             relationship: '',
             tc: false,
-            imageList: null,
+
+            // imageList: null,
+            file: null,
+            imagePath: '',
+
             message: ''
         }
     }
@@ -118,10 +122,16 @@ class FormRegister extends React.Component{
         console.log(this.state.privacy)
     }
 
-    setImages = (imageList, addUpdateIndex) => {
-        this.setState(() => ({ imageList }))
-        console.log(imageList)
-    }
+    // setImages = (imageList, addUpdateIndex) => {
+    //     this.setState(() => ({ imageList }))
+    //     console.log(imageList)
+    // }
+
+    setImage = (e) => {
+        const file = e.target.files[0]
+        const imagePath = URL.createObjectURL(file)
+        this.setState(() => ({ file, imagePath }))
+      }
 
     rmvModal = () => {
         this.setState({modal: false})
@@ -159,8 +169,8 @@ class FormRegister extends React.Component{
                 'user', JSON.stringify(userData)
             )
     
-            if (this.state.imageList){
-                const file = this.state.imageList[0].file
+            if (this.state.file){
+                const file = this.state.file
                 formData.append(
                     'image',
                     file,
@@ -168,7 +178,6 @@ class FormRegister extends React.Component{
                 )
             }
             
-            // http://143.244.174.52:4000/api/user/saveUserData/
             axios.post('https://www.kiddiescrown.com/api/user/saveUserData', formData).then(
                 (response) => {
                     console.log(response)
@@ -237,30 +246,8 @@ class FormRegister extends React.Component{
                         
 
                         <label className = 'pic-label'> Upload Picture of Contestant
-                            <ImageUploading value = {this.state.imageList} onChange = {this.setImages} dataURLKey = "data_url" acceptType = {['jpg', 'jpeg', 'png']} maxFileSize = {5242880} >
-                                {
-                                    ({ imageList, onImageUpload,  onImageUpdate, onImageRemove, errors }) => (
-                                        <div> 
-                                            <button onClick = {onImageUpload}> Click to upload pictures </button> &nbsp;
-                        
-                                            { errors && <div>
-                                                {errors.maxNumber && <span> Kindly select not more than 1 images </span>}
-                                                {errors.acceptType && <span> Your selected file type is not allow </span>}
-                                                {errors.maxFileSize && <span> Each image file should not exceed 5mb </span>}
-                                            </div>}
-                        
-                                            {imageList.map((image, index) => (
-                                                <div key = {index}>
-                                                    <img src = {image.data_url} alt = '' width = '200' />
-                                                    <div>
-                                                        <input type = 'button' value = 'Remove' onClick = {() => onImageRemove(index)} />
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )
-                                }
-                            </ImageUploading>
+                            <input type = 'file' accept = 'image/png, image/jpeg' onChange = {this.setImage} />
+                            <img src = {this.state.imagePath} alt = '' width = '150' />
                         </label>
                     </section>
 

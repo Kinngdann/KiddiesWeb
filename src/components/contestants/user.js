@@ -18,23 +18,11 @@ class User extends React.Component {
         }
     }
 
-    // arrayBufferToBase64 = (buffer) => {
-    //     let binary = '';
-    //     const bytes = [].slice.call(new Uint8Array(buffer));
-    //     bytes.forEach((b) => binary += String.fromCharCode(b));
-    //     return window.btoa(binary);
-    // };
-
     fetchUser = () => {
-        axios.get(`http://143.244.174.52:4000/api/user/getSingleUserData/${this.state.id}`, {
+        axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${this.state.id}`, {
         }).then(
             (response) => {
                 const user = response.data.data
-
-                // const base64Flag = 'data:image/jpeg;base64,';
-                // const imageStr = this.arrayBufferToBase64(response.data.data.pictures);
-                // this.setState({contestant: user, vote: user.votes.stageOne, img: base64Flag + imageStr})
-
                 this.setState(() => ({
                     contestant: user,
                     vote: user.votes.stageOne,
@@ -71,7 +59,7 @@ class User extends React.Component {
     componentDidMount(){
         this.fetchUser()
         this.loadAllUsers()
-        this.setPosition()
+        // this.setPosition()
 
         setTimeout(() => {
             this.setState({loader: false})
@@ -87,7 +75,7 @@ class User extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        axios.put(`https://143.244.174.52:4000/api/user/updateUserData/${this.state.id}`, {
+        axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
             'votes.stageOne': this.state.vote + this.state.newVotes
         }).then(
             response => {console.log(response)
@@ -102,6 +90,7 @@ class User extends React.Component {
         const { contestant, vote, position } = this.state;
 
         return (
+            // http://143.244.174.52:4000/${contestant.pictures}
             <div>
                 <Loader load = {this.state.loader} />
                 <img src = {`http://143.244.174.52:4000/${contestant.pictures}`} alt = '' width = '100'/>

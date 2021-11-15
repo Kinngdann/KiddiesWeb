@@ -1,46 +1,46 @@
-// import React from 'react'
+import React from 'react'
 // import ImageUploading from "react-images-uploading";
-// import axios from 'axios';
+import axios from 'axios';
 
 
-import React from 'react';
-import { PaystackButton } from 'react-paystack';
+// import React from 'react';
+// import { PaystackButton } from 'react-paystack';
 
-const config = {
-  reference: (new Date()).getTime().toString(),
-  email: "user@example.com",
-  amount: 20000,
-  publicKey: 'pk_test_5e3696a3645df2464029ea462a20dd5a2e7a2a22',
-};
+// const config = {
+//   reference: (new Date()).getTime().toString(),
+//   email: "user@example.com",
+//   amount: 20000,
+//   publicKey: 'pk_test_5e3696a3645df2464029ea462a20dd5a2e7a2a22',
+// };
 
-const UploadImage = () => {
-  // you can call this function anything
-  const handlePaystackSuccessAction = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
-  };
+// const UploadImage = () => {
+//   // you can call this function anything
+//   const handlePaystackSuccessAction = (reference) => {
+//     // Implementation for whatever you want to do with reference and after success call.
+//     console.log(reference);
+//   };
 
-  // you can call this function anything
-  const handlePaystackCloseAction = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log('closed')
-  }
+//   // you can call this function anything
+//   const handlePaystackCloseAction = () => {
+//     // implementation for  whatever you want to do when the Paystack dialog closed.
+//     console.log('closed')
+//   }
 
-  const componentProps = {
-      ...config,
-      text: 'Paystack',
-      onSuccess: (reference) => handlePaystackSuccessAction(reference),
-      onClose: handlePaystackCloseAction,
-  };
+//   const componentProps = {
+//       ...config,
+//       text: 'Paystack',
+//       onSuccess: (reference) => handlePaystackSuccessAction(reference),
+//       onClose: handlePaystackCloseAction,
+//   };
 
-  return (
-    <div>
-      <PaystackButton {...componentProps} />
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <PaystackButton {...componentProps} />
+//     </div>
+//   );
+// }
 
-export default UploadImage;
+// export default UploadImage;
 
 // class UploadImage extends React.Component {
 //   // http://143.244.174.52:4000/api/user/deleteSingleUserData/id request: delete
@@ -65,10 +65,11 @@ export default UploadImage;
 //     formData.append(
 //       'image',
 //       this.state.pic,
-//       '010'
+//       '002'
 //     )
 
-//     axios.put('http://143.244.174.52:4000/api/user/uploadCampaignPic/010', formData ).then(
+//     // 'http://143.244.174.52:4000/api/user/uploadCampaignPic/002'
+//     axios.put('https://www.kiddiescrown.com/api/user/uploadCampaignPic/002', formData).then(
 //       response => console.log(response)
 //     )
 //   }
@@ -88,62 +89,60 @@ export default UploadImage;
 // export default UploadImage;
 
 
-// class UploadImage extends React.Component {
+class UploadImage extends React.Component {
 
-//   constructor(){
-//     super()
-//     this.state = {
-//       files: null,
-//       imagePath: '',
-//       name: ''
-//     }
-//   }
+  constructor(){
+    super()
+    this.state = {
+      file: null,
+      imagePath: '',
+      name: ''
+    }
+  }
 
-//   setName = (e) => {
-//     const name = e.target.value
-//     this.setState({ name })
-//   }
+  setName = (e) => {
+    const name = e.target.value
+    this.setState({ name })
+  }
   
-//   setImage = (e) => {
-//     const files = e.target.files[0]
-//     const imagePath = URL.createObjectURL(files)
-//     this.setState(() => ({ files, imagePath }))
-//   }
+  setImage = (e) => {
+    const file = e.target.files[0]
+    const imagePath = URL.createObjectURL(file)
+    this.setState(() => ({ file, imagePath }))
+  }
 
-//   removeImage = () => {
-//     this.setState(() => ({ imagePath: '', files: !this.state.files }))
-//   }
+  removeImage = () => {
+    this.setState(() => ({ imagePath: '', files: !this.state.files }))
+  }
 
-//   onSubmit = (e) => {
-//     e.preventDefault()
+  onSubmit = (e) => {
+    e.preventDefault()
+    const file = this.state.file
+    console.log(file)
 
-//     const formData = new FormData()
-//     formData.append(
-//       'imageFile',
-//       this.state.files,
-//       'user'
-//     )
+    const formData = new FormData()
+    formData.append(
+      'imageFile',
+      file,
+      'user'
+    )
 
-//     formData.append(
-//       'name', this.state.name
-//     )
-
-//     axios.post('http://143.244.174.52:4000/api/user/saveUserData', formData).then(
-//         (response => console.log(response.data))
-//     )
-//   }
+    // axios.post('http://www.kiddiescrown.com/api/user/saveUserData', formData).then(
+    //     (response => console.log(response.data))
+    // )
+  }
 
   
-//   render(){
-//     return (
-//       <form onSubmit = {this.onSubmit}>
-//         <label> Name <input type = 'text' value = {this.state.name} onChange = {this.setName} /> </label> <br/>
-//         <input type = 'file' accept = 'image/png, image/jpeg' onChange = {this.setImage} /> <br/>
-//         <img src = {this.state.imagePath} alt = '' width = '150' />
-//         { this.state.imagePath && <div><input type = 'button' value = 'remove' onClick = {this.removeImage} /> <input type = 'submit' value = 'submit' /> </div> }
-//       </form>
-//     )
-//   }
-// }
+  render(){
+    return (
+      <form onSubmit = {this.onSubmit}>
+        <label> Name <input type = 'text' value = {this.state.name} onChange = {this.setName} /> </label> <br/>
+        <input type = 'file' accept = 'image/png, image/jpeg' onChange = {this.setImage} /> <br/>
+        <img src = {this.state.imagePath} alt = '' width = '150' />
+        { this.state.imagePath && <div><input type = 'button' value = 'remove' onClick = {this.removeImage} /> <input type = 'submit' value = 'submit' /> </div> }
+      </form>
+    )
+  }
+}
 
-// export default UploadImage
+export default UploadImage

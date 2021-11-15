@@ -23,15 +23,11 @@ class AllContestants extends React.Component {
         const {search, sortBy} = this.props.sort
         const users = response.data.data
 
-        // this.setState(() => ({
-        //   users: response.data.data,
-        //   contestant: filterContestants(this.state.users, {search, sortBy}),
-        //   loader: false
-        // }))
-
-        this.setState({users})
-        this.setState({contestant: filterContestants(this.state.users, {search, sortBy})})
-        this.setState({loader: false})
+        this.setState(() => ({
+          users: response.data.data,
+          contestants: filterContestants(users, {search, sortBy}),
+          loader: false
+        }))
     })
     .catch( (error) =>  {
         console.log(error);

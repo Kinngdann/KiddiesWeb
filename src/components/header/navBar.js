@@ -31,7 +31,7 @@ class NavBar extends React.Component {
 
                 <div className = {!toggle? 'navbar__col2' : 'navbar__col2 navbar--active'}>
                     <div className = 'navbar__col2__container'>
-                        <NavLink to = './' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Home </NavLink>
+                        <NavLink to = '/' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Home </NavLink>
                         <NavLink to = '/contestants' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Contestants </NavLink>
                         <NavLink to = '/elites' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > Elite Board </NavLink>
                         <NavLink to = '/about' className = 'navbar__col2__link' activeClassName = 'active' exact onClick = {this.closeMobileMenu} > About </NavLink>
