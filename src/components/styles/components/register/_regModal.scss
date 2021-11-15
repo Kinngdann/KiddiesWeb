@@ -2,8 +2,27 @@
 
 .ReactModal__Content {
     margin-top: 5rem;
+    padding: 3rem;
     background: #ffffff;
     width: 40%;
     margin: 0 auto;
-    border: 2px $offWhite solid;
+    text-align: center;
+    box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
+    outline: none;
+}
+
+.ReactModal__Overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: $mobile){
+    .ReactModal__Content {
+        width: 70%;
+
+        h1 {
+            font-size: 1.5em;
+        }
+    }
 }

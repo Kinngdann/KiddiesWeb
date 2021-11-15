@@ -15,7 +15,7 @@ class FormRegister extends React.Component{
             regUsers: '',
             userLimit: 20,
             id: '',
-            modal: false,
+            modal: true,
             loader: true,
             name: '',
             age: '',

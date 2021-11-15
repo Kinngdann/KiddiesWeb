@@ -14,12 +14,9 @@ const RegModal = (props) => {
                 shouldFocusAfterRender = {true}
                 preventScroll = {true}
                 contentLabel = 'Registration status'
+                closeTimeoutMS = {300}
                 className = {'ReactModal__Content'}
             >
-                <h1> TITLE </h1>
-                <h1> TITLE </h1>
-                <h1> TITLE </h1>
-                <h1> TITLE </h1>
                 <h1> Registration Status </h1>
                 <p> {props.message} </p>
                 {props.id && <h3> ID: {props.id} </h3>}
