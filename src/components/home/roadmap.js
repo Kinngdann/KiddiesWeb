@@ -1,7 +1,11 @@
 import React from 'react'
 import '../styles/components/home/_roadmap.scss'
 import roadmap from './pictures/roadmap.jpeg'
-import icon from './pictures/gift.svg'
+import icon1 from './pictures/Asset1.svg'
+import icon2 from './pictures/Asset2.svg'
+import icon3 from './pictures/Asset3.svg'
+import icon4 from './pictures/Asset4.svg'
+
 
 const Roadmap = () => {
     return (
@@ -25,7 +29,7 @@ const Roadmap = () => {
                         </div>
 
                         <div className = 'roadmap__row2__col1__item__img'>
-                            <img src = {icon} width = '50' alt = '' />
+                            <img src = {icon1} width = '100' alt = '' />
                         </div>
                     </div>
 
@@ -40,7 +44,7 @@ const Roadmap = () => {
                         </div>
 
                         <div className = 'roadmap__row2__col1__item__img'>
-                            <img src = {icon} width = '50' alt = '' />
+                            <img src = {icon2} width = '100' alt = '' />
                         </div>
                     </div>
 
@@ -54,7 +58,7 @@ const Roadmap = () => {
 
                    <div className = 'roadmap__row2__col3__item'>
                         <div className = 'roadmap__row2__col3__item__img'>
-                            <img src = {icon} width = '50' alt = ''/>
+                            <img src = {icon3} width = '100' alt = ''/>
                         </div>
 
                         <div> 
@@ -70,7 +74,7 @@ const Roadmap = () => {
                     <div className = 'roadmap__row2__col3__item'>
 
                         <div className = 'roadmap__row2__col3__item__img'>
-                            <img src = {icon} width = '50' alt = '' />
+                            <img src = {icon4} width = '100' alt = '' />
                         </div>
                         
                         <div> 

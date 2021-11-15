@@ -10,7 +10,7 @@ const Winner = () => {
         <div className = 'winner'>
             <div className = 'winner__col1'>
                 <div className = 'winner__col1__img'>
-                    <img src = {cup} alt = 'cup-icon' />
+                    <img src = {cup} alt = 'cup-icon' width = '150'/>
                 </div>
                 <div className = 'winner__col1__text'>
                     <h1 className = 'rmv'> WINNER </h1>
@@ -26,9 +26,9 @@ const Winner = () => {
 
             <div className = 'winner__col3'>
                 <img src = {gift} alt = 'gift-icon' className = 'winner__col3__img'/>
-                <p> Cash prize of <br/> <span> N500,000.00 </span>
+                <p> Cash prize of <br/> <span> N500,000.00</span>
                 , iPad, and other benefits.
-                Lots and lots of gifts</p>
+                Lots and lots of gifts </p>
             </div>
         </div>
     )

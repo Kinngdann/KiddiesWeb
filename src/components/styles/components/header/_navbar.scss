@@ -63,6 +63,8 @@
 
 @media (max-width: $mobile) {
   .navbar {
+      width: 100vw;
+
     &__col1 {
       width: 50%;
       display: flex;
@@ -98,11 +100,9 @@
     }
 
       &__col3 {
-        display: none;
         position: absolute;
-        margin-right: 1rem;
         display: block;
-        right: 0;
+        right: 1rem;
 
       & > div {
         background: $offBlack;

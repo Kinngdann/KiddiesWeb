@@ -1,5 +1,6 @@
 import Hero from './home/hero'
 import Winner from './home/winner'
+import Top5 from './home/top5'
 import Countdown from './utilities/countdown'
 import Roadmap from './home/roadmap'
 import Faq from './utilities/faq'
@@ -29,6 +30,7 @@ class Home extends React.Component {
                 <Loader load = {this.state.loader} />
                 <Hero />
                 <Winner />
+                <Top5 />
                 <Video />
                 <Countdown />
                 <Roadmap />

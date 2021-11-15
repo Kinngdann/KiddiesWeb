@@ -2,18 +2,13 @@ import React from "react";
 
 class Signin extends React.Component {
     
-
     constructor(){
         super()
         this.state = {
             username: '',
             password: '',
             errorMsg: '',
-            // invalidMsg: ''
         }
-        
-        // const history = useHistory()
-        console.log('auth', localStorage.getItem('isAuthenticated'))
     }
 
     setUserName = (e) => {
@@ -28,12 +23,11 @@ class Signin extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        if (this.state.username === '' || this.state.password === "") {
+        if (this.state.username === '' || this.state.password === '') {
             this.setState({errorMsg: 'Empty username/password field'})
         } else if (this.state.username === "admin" && this.state.password === "1234") {
-            // localStorage.setItem("isAuthenticated", "true");
             sessionStorage.setItem('isAuthenticated', 'true')
-            window.location.pathname = "/admin";
+            window.location.pathname = '/admin';
         } else {
             this.setState({invalidMsg: 'details are incorrect'})
         }

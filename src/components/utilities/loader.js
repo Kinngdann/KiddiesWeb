@@ -9,9 +9,6 @@ const override = css`
 `;
 
 const Loader = (props) => {
-
-  console.log(props)
-
   const properties = {
     loading: props.load,
     color: '#2094d2',

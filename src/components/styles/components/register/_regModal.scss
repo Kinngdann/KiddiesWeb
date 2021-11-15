@@ -9,6 +9,15 @@
     text-align: center;
     box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
     outline: none;
+
+    p {
+        // color:rgb(52, 155, 121);
+        font-weight: 600;
+    }
+
+    h2 {
+        margin-bottom: 2rem;
+    }
 }
 
 .ReactModal__Overlay {

@@ -1,5 +1,4 @@
 import React from 'react'
-import Banner from './utilities/banner'
 import Brief from './about/brief'
 import Video from './utilities/video'
 import Countdown from './utilities/countdown'
@@ -25,7 +24,6 @@ class About extends React.Component {
         return (
             <div> 
                 <Loader load = {this.state.loader} />
-                <Banner title = 'About' />
                 <Brief />
                 <Video />
                 <Countdown />

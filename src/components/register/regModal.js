@@ -19,7 +19,7 @@ const RegModal = (props) => {
             >
                 <h1> Registration Status </h1>
                 <p> {props.message} </p>
-                {props.id && <h3> ID: {props.id} </h3>}
+                {props.id && <h2> ID: {props.id} </h2>}
                 <Link to = '/'> <input type = 'button' value = 'Okay' onClick = {props.rmvModal} className = 'btn--primary'/> </Link>
             </Modal>
         </div>

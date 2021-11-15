@@ -32,7 +32,7 @@
             &__item {
                 text-align: right;
                 display: flex;
-                align-items: flex-start;
+                align-items: center;
                 margin-bottom: 3rem;
 
                 &__img {
@@ -60,7 +60,7 @@
             &__item {
                 text-align: left;
                 display: flex;
-                align-self: flex-start;
+                align-items: center;
                 margin-bottom: 3rem;
 
                 &__img {

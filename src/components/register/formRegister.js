@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../utilities/loader'
 import axios from 'axios'
-// import ID from './getID'
 import RegModal from './regModal'
 import '../styles/components/register/_register.scss'
 
@@ -11,9 +10,9 @@ class FormRegister extends React.Component{
         super(props)
 
         this.state = {
+            id: '',
             regUsers: '',
             userLimit: 20,
-            id: '',
             modal: false,
             loader: true,
             name: '',
@@ -174,10 +173,10 @@ class FormRegister extends React.Component{
                     if (response.request.status === 200){
                         localStorage.setItem('isRegistered', 'true')
                         this.setState(() => ({
+                            id: response.data.data.id,
                             loader: false, 
                             message: 'Your registration was successful!',
                             modal: true,
-                            // id: response.data.data.id
                         }))
                     }
                 }
@@ -245,7 +244,7 @@ class FormRegister extends React.Component{
                         <h2> Parent/Guardian </h2>
                         <label> Name <input type = 'text' value = {this.state.parentName} onChange = {this.setParentName} placeholder = 'Parent Name (optional)' /> </label>
                         <label> Phone Number <input type = 'tel' value = {this.state.tel} onChange = {this.setTel} maxLength = '11' required  placeholder = 'Phone Number'/> </label>
-                        <label> <input type = 'checkbox' onChange = {this.isWhatsapp} /> Phone number same as whatsapp number </label>
+                        <label> <input type = 'checkbox' onChange = {this.isWhatsapp} /> Same as whatsapp number? </label>
                         {!this.state.isWhatsapp && <label> Whatsapp Number <input type = 'tel' onChange = {this.setWhatsapp} required placeholder = 'Whatsapp Contact' /> </label>}
                         <label> Email <input type = 'email' value = {this.state.email} onChange = {this.setEmail} placeholder = 'Email Address (optional)'/> </label>
 
