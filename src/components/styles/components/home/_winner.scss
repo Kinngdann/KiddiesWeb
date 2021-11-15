@@ -1,7 +1,7 @@
 @import '../../utils/config.scss';
 
 .winner {
-    background: #ffffff;
+    background: #f5fcff;
     padding: 5rem 0;
     display: flex;
     justify-content: space-evenly;
@@ -35,7 +35,8 @@
     }
 
     &__col2, &__col3 {
-        background: #fafafa;
+        background: #ffffff;
+        border: 2px #f0f0f0 solid;
         padding: 4rem 2rem;
         flex-direction: column;
         justify-content: center;
@@ -48,7 +49,7 @@
         }
 
         &:hover {
-            background: #ffffff;
+            // background: #ffffff;
             box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
         }
 

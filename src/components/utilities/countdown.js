@@ -41,7 +41,7 @@ class Countdown extends React.Component {
         return (
             <div className = 'countdown'>
                 <div className = 'countdown__text'>
-                    <h1> Registration Starts </h1>
+                    <h1> Registration Ends </h1>
                 </div>
 
                 <div className = 'countdown__time'>

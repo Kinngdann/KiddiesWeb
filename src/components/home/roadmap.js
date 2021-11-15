@@ -11,8 +11,8 @@ const Roadmap = () => {
     return (
         <div className = 'roadmap'>
             <div className = 'roadmap__row1'>
-                <h1> Activity Roadmap </h1>
-                <h3> How CUTE is your Child? Let's lead you through to the journey </h3>
+                <h1> Activities Roadmap </h1>
+                <h3> Let's walk you through to the journey </h3>
             </div>
 
             <div className = 'roadmap__row2'>

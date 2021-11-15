@@ -12,7 +12,7 @@ class FormRegister extends React.Component{
         this.state = {
             id: '',
             regUsers: '',
-            userLimit: 20,
+            userLimit: 500,
             modal: false,
             loader: true,
             name: '',
@@ -178,6 +178,8 @@ class FormRegister extends React.Component{
                             message: 'Your registration was successful!',
                             modal: true,
                         }))
+                    } else {
+                        this.setState({loader: false})
                     }
                 }
             )
