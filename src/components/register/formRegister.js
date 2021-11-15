@@ -1,5 +1,4 @@
 import React from 'react';
-import ImageUploading from "react-images-uploading";
 import { Link } from 'react-router-dom';
 import Loader from '../utilities/loader'
 import axios from 'axios'
@@ -15,7 +14,7 @@ class FormRegister extends React.Component{
             regUsers: '',
             userLimit: 20,
             id: '',
-            modal: true,
+            modal: false,
             loader: true,
             name: '',
             age: '',
@@ -30,11 +29,8 @@ class FormRegister extends React.Component{
             email: '',
             relationship: '',
             tc: false,
-
-            // imageList: null,
             file: null,
             imagePath: '',
-
             message: ''
         }
     }
