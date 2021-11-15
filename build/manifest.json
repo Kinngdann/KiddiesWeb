@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Kiddies Crown App",
+  "short_name": "Kiddies Crown",
+  "name": "This webapp was built using react",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,6 +11,11 @@
       "src": "logo.svg",
       "type": "svg",
       "sizes": "192x192"
+    },
+    {
+      "src": "logo.svg",
+      "type": "svg",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
