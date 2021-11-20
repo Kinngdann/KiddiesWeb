@@ -56,7 +56,7 @@ const Roadmap = () => {
 
                 <div className = 'roadmap__row2__col3'>
 
-                   <div className = 'roadmap__row2__col3__item'>
+                    <div className = 'roadmap__row2__col3__item'>
                         <div className = 'roadmap__row2__col3__item__img'>
                             <img src = {icon3} width = '100' alt = ''/>
                         </div>

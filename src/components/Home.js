@@ -1,3 +1,4 @@
+import React from 'react'
 import Hero from './home/hero'
 import Winner from './home/winner'
 import Top5 from './home/top5'
@@ -7,7 +8,6 @@ import Faq from './utilities/faq'
 import Video from './utilities/video'
 import Action from './utilities/action'
 import Loader from './utilities/loader'
-import React from 'react'
 
 class Home extends React.Component {
 

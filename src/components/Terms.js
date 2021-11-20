@@ -1,12 +1,11 @@
-import Construction from './utilities/construction'
-
+import React from 'react'
 
 const Terms = () => {
     return (
-        <div> 
-            <Construction />
+        <div>
+            <h1> Terms and Condition </h1>
         </div>
     )
 }
 
-export default Terms;
+export default Terms

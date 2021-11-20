@@ -67,6 +67,7 @@
 .register input[type = 'text'],
 .register input[type = 'tel'],
 .register input[type = 'email'],
+.register input[type = 'file'],
 .register input[type = 'submit'],
 .register textarea,
 .register select {
@@ -140,6 +141,10 @@
 
 .pic-label:only-child {
     margin-bottom: 50rem;
+}
+
+.register .register_thin {
+    font-weight: 100;
 }
 
 @media (max-width: $mobile) {
