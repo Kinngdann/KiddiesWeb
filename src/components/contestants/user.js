@@ -1,6 +1,7 @@
-import React from 'react';
-import axios from 'axios';
-import Loader from '../utilities/loader';
+import React from 'react'
+import axios from 'axios'
+import Loader from '../utilities/loader'
+import '../styles/components/contestants/_user.scss'
 
 class User extends React.Component {
     constructor(props){
@@ -90,7 +91,6 @@ class User extends React.Component {
         const { contestant, vote, position } = this.state;
 
         return (
-            // http://143.244.174.52:4000/${contestant.pictures}
             <div>
                 <Loader load = {this.state.loader} />
                 <img src = {`http://143.244.174.52:4000/${contestant.pictures}`} alt = '' width = '100'/>

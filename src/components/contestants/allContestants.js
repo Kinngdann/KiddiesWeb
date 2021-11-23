@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import axios from 'axios';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { connect } from 'react-redux'
 import filterContestants from '../../controls/filterContestants'
+// import '../styles/components/contestants/_allcontestants.scss'
 
 class AllContestants extends React.Component {
 
@@ -65,16 +66,20 @@ class AllContestants extends React.Component {
             <input type = 'button' value = 'Clear' onClick = {this.clearSearch} />
           </form>
 
-          {this.state.contestants.map((contestant, index) => {
-            return (
-              <div key = {index}>
-                  <img src = {`http://143.244.174.52:4000/${contestant.pictures}`} alt = 'contestant' width = '200'/>
-                  <h3> {contestant.name} </h3>
-                  <p> {contestant.sex} </p>
-                  <Link to = {`contestant/${contestant.id}`}> VIEW </Link>
-              </div>
-            )
-          })}
+          <div className = 'contestant'>
+            {this.state.contestants.map((contestant, index) => {
+              return (
+                <div key = {index} className = 'contestant__item'>
+                  <div className = 'wrapper'>
+                    <div className = 'contestant__item__img'> <img src = {`http://143.244.174.52:4000/${contestant.pictures}`} alt = 'contestant' width = '250'/> </div>
+                    <h3> {contestant.name} </h3>
+                    <p> {contestant.sex} </p>
+                    <Link to = {`contestant/${contestant.id}`}> VIEW </Link>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
           
       </div>
     )

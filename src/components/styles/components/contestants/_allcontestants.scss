@@ -1,0 +1,36 @@
+@import '../../utils/config.scss';
+
+.contestant {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__item {
+        width: 35vh;
+        height: 50vh;
+        margin: 3rem;
+        padding: 1rem ;
+        text-align: center;
+        background: #ffffff;
+        transition: all ease-out .5s;
+
+        &:hover {
+            box-shadow: 0 5px 12px rgb(0 0 0 / 0.2);
+        }
+
+        &__img {
+            width: 23rem;
+            height: 23rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 1rem auto;
+            border: rgb(219, 219, 219) 2px solid;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
