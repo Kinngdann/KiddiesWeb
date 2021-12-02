@@ -6,10 +6,9 @@
     justify-content: space-around;
 
     &__item {
-        width: 35vh;
-        height: 50vh;
+        width: 30rem;
+        height: 45rem;
         margin: 3rem;
-        padding: 1rem ;
         text-align: center;
         background: #ffffff;
         transition: all ease-out .5s;
@@ -30,7 +29,82 @@
                 width: 100%;
             }
         }
+
+        .wrapper {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            .link {
+                width: 40%;
+                border-radius: 5rem;
+                margin: 0 auto;
+                padding: 1rem;
+                margin-top: 2rem;
+                background: $textColor;
+                transition: background ease-in .3s;
+
+                &:hover {
+                    background: #000000;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            h3 {
+                color: #ffffff
+            }
+
+            .name {
+                color: $textColor;
+                margin-bottom: 2rem;
+                font-size: 700;
+            }
+        }
     }
 }
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.btn--prev {
+    background: transparent;
+    padding: 1.3rem 3rem;
+    border-radius: .5rem;
+    transition: all .2s ease-in;
+    outline: none;
+    font-weight: 700;
+    border: 2px solid $offBlack;
+    margin-right: 2rem;
+}
+
+.btn--next {
+    background: $offBlack;
+    padding: 1.5rem 3.2rem;
+    border-radius: .5rem;
+    color: $offWhite;
+    transition: background .2s ease-in;
+    font-weight: 700;
+    border: none;
+}
+
+
+
+// @media(max-width: $mobile) {
+//     .contestant {
+//         &__item {
+//             width: 20rem;
+//             height: 50rem;
+
+//             .wrapper {
+//                 overflow: hidden;
+//             }
+//         }
+//     }
+// }
 
 

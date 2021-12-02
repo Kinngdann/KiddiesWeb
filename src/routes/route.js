@@ -45,8 +45,8 @@ const Nav = () => {
                     <Route exact path = '/elites' component = {ComingSoon} />
                     <Route exact path = '/about' component = {About} />
                     <Route exact path = '/contact' component = {Contact} />
-                    <Route exact path = '/contestants' component = {ComingSoon} />
-                    <Route exact path = '/contestant/:id' component = {ComingSoon} /> 
+                    <Route exact path = '/contestants' component = {Contestants} />
+                    <Route exact path = '/contestant/:id' component = {User} /> 
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />

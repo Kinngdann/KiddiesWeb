@@ -257,7 +257,7 @@ class FormRegister extends React.Component{
                             </select>
                         </label>
 
-                        <input type = 'submit' value = {this.state.regUsers === this.state.userLimit? 'SUSPENDED' : 'Register'} disabled = {this.state.regUsers === this.state.userLimit} />
+                        <input type = 'submit' value = 'REGISTRATION CLOSED' disabled />
                     </section>
                 </form>
             </div>

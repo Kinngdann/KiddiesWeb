@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap");
+html {
+  font-size: 62.5%;
+  color: #404145;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-size: 1.6rem;
+  background: whitesmoke;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6, body nav, body input, body textarea {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body p, body a, body li, body label {
+  font-family: 'Raleway', sans-serif;
+}
+
+body p {
+  line-height: 2.5rem;
+}
+
+.btn--primary {
+  background: #252525;
+  padding: 1.5rem 3.2rem;
+  border-radius: .5rem;
+  color: #fafafa;
+  -webkit-transition: background .2s ease-in;
+  transition: background .2s ease-in;
+  font-weight: 700;
+  border: none;
+}
+
+.btn--primary:hover {
+  background: #F0AA00;
+}
+
+.btn--secondary {
+  background: transparent;
+  padding: 1.3rem 3rem;
+  border-radius: .5rem;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  outline: none;
+  font-weight: 700;
+  border: 2px solid #252525;
+}
+
+.btn--secondary:hover {
+  color: #F0AA00;
+  background: rgba(255, 255, 255, 0.5);
+}
+/*# sourceMappingURL=config.css.map */

@@ -1,4 +1,219 @@
 @import '../../utils/config.scss';
 
+.user__container {
+    background: #ffffff;
+    width: 90%;
+    padding: 3rem;
+    border-radius: 3rem;
+    margin: 0 auto;
+
+    .user__row1 {
+        text-align: center;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+
+        .vote {
+            width: 55%;
+            margin: 0 auto;
+            margin-top: 1rem;
+            border-radius: 1rem;
+            background: $brandColorBlue;
+
+            h1 {
+                font-size: 4em;
+                color: #ffffff;
+            }
+
+            span {
+                font-size: .7em;
+            }
+        }
+    }
+
+    .user__row2 {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+
+        &__col1 {
+            width: 50%;
+            padding: 1rem;
+            padding: 2rem;
+            // border: rgb(20, 8, 8) 2px solid;
+            // display: flex;
+            // align-items: center;
+            margin: 0 auto;
 
 
+            h1 {
+                font-size: 4em;
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 2.5em;
+            }
+
+            .quote {
+                font-size: 1.5em;
+            }
+
+            & > div {
+                margin-bottom: 3rem;
+            }
+
+            .label {
+                display: block;
+                font-weight: 700;
+                color: $brandColorBlue;
+                // font-size: large;
+                margin-bottom: 1rem;
+            }
+
+            .paystack--select {
+                padding: 1.2rem;
+                font-weight: 700;
+                margin-right: 1rem;
+                line-height: 3rem;
+                font-family: 'Quicksand', sans-serif;
+                border-radius: .5rem;
+            }
+
+            .btn--paystack {
+                // display: inline;
+                cursor: pointer;
+                background: #181818;
+                padding: 1.5rem 3.2rem;
+                border-radius: .5rem;
+                font-family: 'Quicksand', sans-serif;
+                color: $offWhite;
+                font-weight: 700;
+                border: none;
+            }
+
+            .btn--disabled {
+                // display: inline-block;
+                cursor: not-allowed;
+                background: #5c5c5c;
+                padding: 1.5rem 3.2rem;
+                border-radius: .5rem;
+                font-family: 'Quicksand', sans-serif;
+                color: $offWhite;
+                font-weight: 700;
+                border: none;
+            }
+
+            .pay {
+                border: $brandColorBlue 3px solid;
+                border-radius: 5px;
+                padding: 1rem 3rem;
+
+                .bank {
+                    p {
+                        font-weight: 700;
+                    }
+
+                    .imp {
+                        color: #e45946;
+                    }
+    
+                    h3 {
+                        font-weight: 100;
+                    }
+    
+                    span {
+                        font-weight: 700;
+                    }
+                }
+            }
+
+        }
+
+        &__col2 {
+            width: 50%;
+            // border: brown 2px solid;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                max-width: 100%;
+                border-radius: 5rem;
+                // border: #727272 5px solid;
+                transition: all ease-in .3s;
+
+                &:hover {
+                    transform: scale(1.1);
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
+
+
+@media(max-width: $mobile) {
+    .user__container {
+        width: 100%;
+        // border: rgb(20, 8, 8) 2px solid;
+
+        .user__row1 {
+            // border: rgb(20, 8, 8) 2px solid;
+            width: 100%;
+            padding: 0;
+
+            .vote {
+                width: 70%;
+                padding: 1rem;
+
+                h1 {
+                    font-size: 3em;
+                    line-height: 3rem;
+                }
+
+                span {
+                    font-size: .5em;
+                }
+            }
+        }
+
+        .user__row2 {
+            text-align: center;
+            width: 100%;
+            flex-direction: column;
+            // border: rgb(20, 8, 8) 2px solid;
+
+
+            &__col1 {
+                order: 2;
+                width: 100%;
+                padding: 0;
+
+                h2 {
+                    font-size: 1.5em;
+                }
+
+                h1 {
+                    font-size: 3em;
+                }
+            }  
+
+            &__col2 {
+                width: 70vw;
+                height: 70vw;
+                display: flex;
+                align-items: flex-start;
+                border-radius: 50%;
+                margin-bottom: 2rem;
+
+                img {
+                    max-width: 100%;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
