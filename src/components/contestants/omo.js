@@ -7,7 +7,6 @@ import avatar from './avatar.svg'
 
 import { PaystackButton } from 'react-paystack';
 import { usePaystackPayment } from 'react-paystack';
-
 import '../styles/components/contestants/_user.scss'
 
 
@@ -29,7 +28,7 @@ class User extends React.Component {
         }
 
         this.componentProps = {
-            email: `${this.state.id}@gmail.com`,
+            email: 'kiddiescrown123@gmail.com',
             publicKey: 'pk_live_0a12b040cf7f4b99178257c168881b2825f4415a',
             text: 'Add votes',
             onSuccess: (reference) => this.handlePaystackSuccessAction(reference),

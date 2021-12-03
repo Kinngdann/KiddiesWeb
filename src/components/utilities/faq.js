@@ -2,6 +2,7 @@ import React from 'react';
 import Accordion from './accordion';
 import '../styles/helpers/_faq.scss'
 import picture from './images/faq.jpeg'
+import { Children } from 'react';
 
 const App = () => {
 
@@ -17,9 +18,9 @@ const App = () => {
       content: `Your Child must be in the range of 0 - 10 years old. Please see our Terms & Condition for more information.`
     },
     {
-      title: 'What is the revenue generated through voting used for?',
-      content: `We will use part of it to help the less priviledged, the homeless, especially children. The other part will be use to organize
-      Programs and Competitions for Children.`
+      title: 'Why do I pay to vote?',
+      content: `As part of  our program to help feed homeless children, a percentage of what
+      you pay for vote goes a long way in giving a better life to poor homeless Children.`
     },
     {
       title: 'How do I register?',
@@ -27,6 +28,8 @@ const App = () => {
       your Child's Account Manager, briefing you about the competition.`
     }
   ];
+
+
 
 
   return (
