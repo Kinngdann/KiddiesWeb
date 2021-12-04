@@ -188,7 +188,9 @@ class User extends React.Component {
                                         amount = {this.state.amount * 100} 
                                         className = {this.state.amount? 'btn--paystack' : 'btn--disabled'} 
                                     />
-                                    <div className = 'bank'>
+
+                                    {/*
+                                        <div className = 'bank'>
                                         <p> Want a different payment option? That's fine! </p>
                                         <h3> Account Name: <span> Kiddies Crown </span></h3> 
                                         <h3> Account Number: <span> 0669795144 </span></h3> 
@@ -198,6 +200,8 @@ class User extends React.Component {
                                             and forward the receipt/proof and Contestant's ID.
                                         </p>
                                     </div>
+                                    */}
+
                                 </form>
                             </div>
                         </div>
