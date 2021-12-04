@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles/components/admin/_admin.scss'
-import {Link} from 'react-router-dom'
-// import {Router, Route} from 'react-router-dom'
-// import AddVotes from './admin/addVotes'
+// import {Link} from 'react-router-dom'
+import AddVotes from './admin/addVotes'
+import RmvUsers from './admin/rmvUsers'
+
 // import GetUserData from './admin/getUsersData'
 
 
@@ -18,9 +19,12 @@ class Admin extends React.Component {
             <div className = 'admin'>
                 <h1> Admin Panel </h1>
                 <div className = 'admin__container'>
+                    <AddVotes />                    
+                    {/*
                     <div> <Link to = '/admin/addvote'> <h3> Add Vote </h3> </Link></div>
                     <div> <Link to = '/admin/getlog'> <h3> Get User Log </h3> </Link></div>
                     <div> <Link to = '/admin/rmvusers'> <h3> Delete User(s) </h3> </Link></div>
+                    */}
                 </div>
             </div>
         )
@@ -28,10 +32,3 @@ class Admin extends React.Component {
 }
 
 export default Admin
-
-// <Route exact path = '/admin/:addvote' component = {AddVotes} />
-
-// <Router>
-// <Route exact path = '/admin/:addvote' render = {(props) => <AddVotes {...props} />} />
-// </Router>
-// <Route {...props} render = {(props) => isAuthenticated ? <Component {...props} /> : <Redirect to = '/signin' />} />

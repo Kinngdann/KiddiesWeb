@@ -29,12 +29,10 @@ class AllContestants extends React.Component {
     componentDidMount(){
       axios.get('https://www.kiddiescrown.com/api/user/getUserData')
       .then((response) => {
-          const {search, sortBy} = this.props.sort
-          const users = response.data.data
-  
+          const users = response.data.data  
           this.setState(() => ({
             users: response.data.data,
-            contestants: this.filterContestants(users, {search, sortBy}),
+            contestants: this.filterContestants(users, this.state.search),
             loader: false
           }))
       })
@@ -47,16 +45,11 @@ class AllContestants extends React.Component {
       this.setState({pageNumber, leftItems})
     }
 
-    filterContestants = (contestants, {search, sortBy}) => {
+    filterContestants = (contestants, search) => {
       return contestants.filter((contestant) => {
           return contestant.name.toLowerCase().includes(search.toLowerCase())
       }).sort((a, b) => {
-          if (sortBy === 'name'){
-              return a.name > b.name? 1 : -1
-          } else if (sortBy === 'vote'){
-              return b.votes.stageOne > a.votes.stageOne? 1 : -1
-          }
-          return 1;
+          return a.name > b.name? 1 : -1
       })
     }  
   
@@ -151,10 +144,7 @@ class AllContestants extends React.Component {
         <div >
         {/*
           <form onSubmit = {e => e.preventDefault()}>
-            <input type = 'text' value = {this.state.search} onChange = {this.setSearch} />
-            <select onChange = {this.setSortBy}>
-              <option value = 'name'> Name (A-Z) </option>
-            </select>
+            <input type = 'text' value = {this.state.search} onChange = {this.setSearch} placeholder = 'Name A-Z' />
             <input type = 'button' value = 'Clear' onClick = {this.clearSearch} />
           </form>
         */}
@@ -169,8 +159,8 @@ class AllContestants extends React.Component {
     }
   }
   
-  const mapStateToProps = (state) => ({
-    sort: state.sort
-  })
+  // const mapStateToProps = (state) => ({
+  //   sort: state.sort
+  // })
   
-  export default connect(mapStateToProps)(AllContestants)
+  export default AllContestants

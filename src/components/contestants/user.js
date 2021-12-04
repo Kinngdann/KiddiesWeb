@@ -1,13 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+import { PaystackButton } from 'react-paystack';
+import { v4 as uuidv4 } from 'uuid';
 import Loader from '../utilities/loader'
 import Countdown from '../utilities/countdown'
 import Modal from 'react-modal'
 import avatar from './avatar.svg'
-
-import { PaystackButton } from 'react-paystack';
-import { usePaystackPayment } from 'react-paystack';
-
 import '../styles/components/contestants/_user.scss'
 
 
@@ -29,7 +27,8 @@ class User extends React.Component {
         }
 
         this.componentProps = {
-            email: `${this.state.id}@gmail.com`,
+            // email: `${this.state.id}@gmail.com`,
+            email: uuidv4() + '@gmail.com',
             publicKey: 'pk_live_0a12b040cf7f4b99178257c168881b2825f4415a',
             text: 'Add votes',
             onSuccess: (reference) => this.handlePaystackSuccessAction(reference),
@@ -57,9 +56,7 @@ class User extends React.Component {
 
         // setTimeout(() => {
         //     this.setState({modal: true})
-        // }, 7000);
-
-
+        // }, 3000);
     }
 
 
@@ -120,7 +117,6 @@ class User extends React.Component {
                 console.log(response)
             }
         )
-        // https://www.kiddiescrown.com/api/user/saveLogData/id request: put
     }
     
     handlePaystackCloseAction = () => {
@@ -145,8 +141,8 @@ class User extends React.Component {
                     closeTimeoutMS = {300}
                     className = {'ReactModal__Content'}
                     >
-                    <h1> Help {contestant.name} </h1>
-                    <p> Help this user win the contest </p>
+                    <h1> Help {contestant.name} get </h1>
+                    <p> <span> {200 - this.state.vote } votes </span> to keep {contestant.sex === 'male'? 'him' : 'her'} in the contest </p>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
 
@@ -177,6 +173,7 @@ class User extends React.Component {
                                     <h3 className = 'label'> Select Votes </h3>
                                     <select onChange = {this.setAmount} required className = 'paystack--select' >
                                         <option value = '' > None </option>
+                                        <option value = {50}> 1 votes </option>
                                         <option value = {500}> 10 votes </option>
                                         <option value = {1000}> 20 votes </option>
                                         <option value = {2500}> 50 votes </option>

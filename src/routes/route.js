@@ -1,5 +1,5 @@
 import React from 'react'
-// import Signin from '../components/admin/authentication/signin'
+import Signin from '../components/admin/authentication/signin'
 import ProtectedRoute from '../components/admin/authentication/protectedRoute'
 import Gap from '../components/utilities/gap'
 import Header from '../components/Header'
@@ -14,7 +14,7 @@ import NotFound from '../components/NotFound'
 import Register from '../components/Register'
 import User from '../components/contestants/user'
 
-// import Admin from '../components/Admin'
+import Admin from '../components/Admin'
 // import AddVotes from '../components/admin/addVotes'
 // import GetLog from '../components/admin/getLog'
 // import RmvUsers from '../components/admin/rmvUsers'
@@ -50,12 +50,14 @@ const Nav = () => {
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
-                    <Route exact path = '/signin' component = {ComingSoon} />
-                    <ProtectedRoute exact path = '/admin' component = {ComingSoon} />
+                    <Route exact path = '/signin' component = {Signin} />
+                    <ProtectedRoute exact path = '/admin' component = {Admin} />
+                    {/*
                     <Route exact path = '/admin/addvote' component = {ComingSoon} />
                     <Route exact path = '/admin/getlog' component = {ComingSoon} />
                     <Route exact path = '/admin/rmvusers' component = {ComingSoon} />
                     <Route exact path = '/upload' component = {ComingSoon} />
+                    */}
                     <Route component = {NotFound} />
                 </Switch>
                 <Footer />
