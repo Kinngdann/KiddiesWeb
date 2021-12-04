@@ -173,7 +173,6 @@ class User extends React.Component {
                                     <h3 className = 'label'> Select Votes </h3>
                                     <select onChange = {this.setAmount} required className = 'paystack--select' >
                                         <option value = '' > None </option>
-                                        <option value = {50}> 1 votes </option>
                                         <option value = {500}> 10 votes </option>
                                         <option value = {1000}> 20 votes </option>
                                         <option value = {2500}> 50 votes </option>
