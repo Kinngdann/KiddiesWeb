@@ -28,7 +28,7 @@ const Policy = () => {
                 <p>We use the information we collect in various ways, including to:</p>
                 
                 <ul>
-                    <li> <p>Provide, operate, and maintain our website</p></li>
+                    <li><p>Provide, operate, and maintain our website</p></li>
                     <li><p>Improve, personalize, and expand our website</p></li>
                     <li><p>Understand and analyze how you use our website</p></li>
                     <li><p>Develop new products, services, features, and functionality</p></li>

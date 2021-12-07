@@ -50,14 +50,16 @@ const Nav = () => {
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
-                    <Route exact path = '/signin' component = {Signin} />
-                    <ProtectedRoute exact path = '/admin' component = {Admin} />
+                    <Route exact path = '/signin' component = {ComingSoon} />
+                    <ProtectedRoute exact path = '/admin' component = {ComingSoon} />
+
                     {/*
                     <Route exact path = '/admin/addvote' component = {ComingSoon} />
                     <Route exact path = '/admin/getlog' component = {ComingSoon} />
                     <Route exact path = '/admin/rmvusers' component = {ComingSoon} />
                     <Route exact path = '/upload' component = {ComingSoon} />
                     */}
+                    
                     <Route component = {NotFound} />
                 </Switch>
                 <Footer />

@@ -18,7 +18,7 @@ class Countdown extends React.Component {
     }
 
     startTimer = () => {
-        const endDate = new Date("December 10, 2021").getTime();
+        const endDate = new Date("December 12, 2021").getTime();
         let interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = endDate - now;

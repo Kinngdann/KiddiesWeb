@@ -9,22 +9,38 @@ class AddVotes extends React.Component {
         super()
         this.state = {
             contestant: {},
-            oldVote: '',
             id: '',
             vote: '',
-            confirmation: false,
+            newVote: '',
             modal: false
         }
     }
 
     setID = (e) => {
         const id = e.target.value
-        this.setState({ id })
+        this.setState({id})
+
+        try {
+            axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${id}`, {
+            }).then(
+                (response) => {
+                    const contestant = response.data.data
+                    this.setState(() => ({
+                        contestant,
+                        vote: contestant.votes.stageOne,
+                        id: contestant.id
+                    }))
+                }
+            )
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     setVote = (e) => {
-        const vote = e.target.value
-        this.setState({ vote })
+        const newVote = e.target.value
+        this.setState({ newVote: parseInt(newVote) })
     }
 
     // AddVoteProceed = () => {
@@ -37,43 +53,37 @@ class AddVotes extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-
-        axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${this.state.id}`, {
-        }).then(
-            (response) => {
-                const contestant = response.data.data
-                this.setState(() => ({
-                    contestant,
-                    oldVote: contestant.votes.stageOne,
-                }))
-
-                // console.log('old', this.state.oldVote)
-            }
-        )
-
         if (this.state.id && this.state.vote){
 
             // const foo = this.state.oldVote + this.state.vote
-            console.log('old', this.state.oldVote)
-            console.log('new', this.state.vote)
-            console.log('total', this.state.oldVote + this.state.vote)
+            console.log('vote', this.state.vote)
+            console.log('new', this.state.newVote)
+            console.log('total', this.state.vote + this.state.newVote)
 
-            // axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
-            //     'votes.stageOne': foo
-            // }).then(
-            //     response => {
-            //         console.log(response)
-            //     }
-            // )
+            const total = this.state.vote + this.state.newVote 
+
+            try {
+                axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
+                    'votes.stageOne': total
+                }).then(
+                    response => {
+                        console.log(response)
+                    }
+                )
+
+                axios.put(`https://www.kiddiescrown.com/api/user/saveLogData/${this.state.id}`, {log: this.state.newVote} ).then(
+                    (response) => {
+                        console.log(response)
+                    }
+                )
     
-            // axios.put(`https://www.kiddiescrown.com/api/user/saveLogData/${this.state.id}`, {log: foo} ).then(
-            //     (response) => {
-            //         console.log(response)
-            //     }
-            // )
+                alert('success')
+                this.setState({id: '', amount: ''})
 
-            alert('success')
-            this.setState({id: '', amount: ''})
+            } catch (error) {
+                console.log(error)
+            }
+
         } else {
             alert('ERROR!!')
         }
@@ -101,6 +111,8 @@ class AddVotes extends React.Component {
                     <input type = 'number' value = {this.state.amount} onChange = {this.setVote} placeholder = 'Vote' />
                     <input type = 'submit' value = 'ADD' onSubmit = {this.onSubmit} />
                 </form>
+                {this.state.contestant.name && <h3> Name: {this.state.contestant.name} vote: {this.state.vote} </h3>}
+                {}
             </div>
         )
     }

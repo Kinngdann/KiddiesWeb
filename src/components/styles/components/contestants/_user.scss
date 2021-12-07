@@ -17,6 +17,7 @@
             width: 55%;
             margin: 0 auto;
             margin-top: 1rem;
+            margin-bottom: 1rem;
             border-radius: 1rem;
             background: $brandColorBlue;
 
@@ -29,6 +30,11 @@
                 font-size: .7em;
             }
         }
+
+        .position {
+            color: $brandColorBlue;
+        }
+
     }
 
     .user__row2 {
@@ -38,11 +44,7 @@
 
         &__col1 {
             width: 50%;
-            padding: 1rem;
             padding: 2rem;
-            // border: rgb(20, 8, 8) 2px solid;
-            // display: flex;
-            // align-items: center;
             margin: 0 auto;
 
 
@@ -104,10 +106,22 @@
                 border: none;
             }
 
+            .program {
+                h3 {
+                    font-weight: 500;
+                    font-size: 1em;
+                    margin-top: 1rem;
+                }
+
+                span {
+                    font-weight: 700;
+                }
+            }
+
             .pay {
-                border: $brandColorBlue 3px solid;
-                border-radius: 5px;
-                padding: 1rem 3rem;
+                // border: $brandColorBlue 3px solid;
+                // border-radius: 5px;
+                // padding: 1rem 3rem;
 
                 .bank {
                     p {
@@ -115,7 +129,9 @@
                     }
 
                     .imp {
+                        margin-top: 1em;
                         color: #e45946;
+                        font-size: .7em
                     }
     
                     h3 {
@@ -151,6 +167,10 @@
                 }
             }
         }
+
+        .tick {
+            display: none;
+        }
     }
 }
 
@@ -178,6 +198,11 @@
                     font-size: .5em;
                 }
             }
+
+            .comment {
+                margin-top: .5rem;
+                font-size: .8em;
+            }
         }
 
         .user__row2 {
@@ -202,12 +227,25 @@
 
                 .pay {
 
-                    .paystack--select {
-                        color: blue;
+                    .program {
+                        text-align: left;
                     }
 
                 }
+
+                .bank {
+                    margin-top: 2rem;
+                    text-align: left;
+
+                }
             }  
+
+            .tick {
+                position: relative;
+                bottom: -250px;
+                right: -200px;
+                display: inline;
+            }
 
             &__col2 {
                 width: 70vw;

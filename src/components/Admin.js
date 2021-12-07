@@ -1,11 +1,6 @@
 import React from 'react';
-import './styles/components/admin/_admin.scss'
-// import {Link} from 'react-router-dom'
+// import './styles/components/admin/_admin.scss'
 import AddVotes from './admin/addVotes'
-import RmvUsers from './admin/rmvUsers'
-
-// import GetUserData from './admin/getUsersData'
-
 
 class Admin extends React.Component {
 
@@ -19,7 +14,7 @@ class Admin extends React.Component {
             <div className = 'admin'>
                 <h1> Admin Panel </h1>
                 <div className = 'admin__container'>
-                    <AddVotes />                    
+                    <AddVotes />     
                     {/*
                     <div> <Link to = '/admin/addvote'> <h3> Add Vote </h3> </Link></div>
                     <div> <Link to = '/admin/getlog'> <h3> Get User Log </h3> </Link></div>
