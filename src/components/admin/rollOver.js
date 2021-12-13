@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 
-class RmvUsers extends React.Component {
+class RollOver extends React.Component {
     constructor(){
         super()
         this.state = {
@@ -27,44 +27,41 @@ class RmvUsers extends React.Component {
         })
     }
 
-    // setID = (e) => {
-    //     const id = e.target.value
-    //     this.setState({id})
-    //     try {
-    //         axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${id}`, {
-    //         }).then(
-    //             (response) => {
-    //                 const contestant = response.data.data
-    //                 this.setState(() => ({
-    //                     contestant,
-    //                     vote: contestant.votes.stageOne,
-    //                 }))
-    //             }
-    //         )
 
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-
-    delUsers = (e) => {
+    rollOver = (e) => {
         e.preventDefault()
         const {contestants} = this.state
 
         for(let i = 0; i < contestants.length; i++){
-            if (contestants[i].votes.stageOne < 200){
+            if (contestants[i].votes.stageOne > 200){
+
+                // const vote = 200
+                // const remainder = contestants[i].votes.stageOne - vote
 
                 // try {
-                //     axios.delete(`https://www.kiddiescrown.com/api/user/deleteSingleUserData/${contestants[i].id}`, {
+                //     axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${contestants[i].id}`, {
+                //         'votes.stageTwo': remainder
                 //     }).then(
-                //         (response) => {
+                //         response => {
                 //             console.log(response)
                 //         }
                 //     )
 
+                //     axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${contestants[i].id}`, {
+                //         'votes.stageOne': vote
+                //     }).then(
+                //         response => {
+                //             console.log(response)
+                //         }
+                //     )
+        
+                //     console.log(contestants[i].id)
+    
                 // } catch (error) {
                 //     console.log(error)
                 // }
+
+
             }
         }
     }
@@ -75,10 +72,10 @@ class RmvUsers extends React.Component {
     render(){
         return (
             <div>
-                <input type = 'button' value = 'delete < 200' onClick = {this.delUsers} />
+                <input type = 'button' value = 'Roll Over' onClick = {this.rollOver} />
             </div>
         )
     }
 }
 
-export default RmvUsers
+export default RollOver

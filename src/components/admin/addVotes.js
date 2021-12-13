@@ -60,6 +60,7 @@ class AddVotes extends React.Component {
             console.log('new', this.state.newVote)
             console.log('total', this.state.vote + this.state.newVote)
 
+
             const total = this.state.vote + this.state.newVote 
 
             try {

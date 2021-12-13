@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import { PaystackButton } from 'react-paystack';
-import { v4 as uuidv4 } from 'uuid';
+import { PaystackButton } from 'react-paystack'
+import { v4 as uuidv4 } from 'uuid'
 import {Link} from 'react-router-dom'
 import Loader from '../utilities/loader'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Video from '../utilities/video'
 import Faq from '../utilities/faq'
 import Modal from 'react-modal'
@@ -56,7 +56,6 @@ class User extends React.Component {
         }
 
         this.componentProps = {
-            // email: this.state.id + uuidv4() + '@gmail.com',
             email: `${this.state.id}${uuidv4()}@gmail.com`,
             publicKey: 'pk_live_0a12b040cf7f4b99178257c168881b2825f4415a',
             text: 'Add votes',
@@ -65,11 +64,7 @@ class User extends React.Component {
         }
     }
 
-    titleCase(str) {
-        return str.toLowerCase().split(' ').map((word) => {
-            return (word.charAt(0).toUpperCase() + word.slice(1))
-        }).join(' ')
-    }
+    
 
     componentDidMount(){
         window.scrollTo(0, 0)
@@ -81,7 +76,7 @@ class User extends React.Component {
         }, 1000);
 
         setTimeout(() => {
-            if (parseInt(this.state.vote) < 200) {
+            if (parseInt(this.state.vote) < 300) {
                 this.setState({modal: true})
             }
         }, 5000)        
@@ -94,7 +89,7 @@ class User extends React.Component {
                 const user = response.data.data
                 this.setState(() => ({
                     contestant: user,
-                    vote: user.votes.stageOne,
+                    vote: user.votes.stageTwo,
                     picture: user.pictures
                 }))
             }
@@ -107,8 +102,9 @@ class User extends React.Component {
             const contestants = response.data.data  
             this.setState({sorted: this.sort(contestants)})
             this.setPosition()
+
             // this.state.sorted.map((i, j) => {
-            //     console.log('name:', i.name, 'vote:', i.votes.stageOne, 'position:', this.nth(j + 1), 'id:', i.id)
+            //     console.log('name:', i.name, 'vote:', i.votes.stageTwo, 'position:', this.nth(j + 1), 'id:', i.id)
             // })
         })
         .catch( (error) => {
@@ -118,19 +114,19 @@ class User extends React.Component {
 
     sort = (contestants) => {
         return contestants.sort((a, b) => {
-            return b.votes.stageOne > a.votes.stageOne? 1 : -1
+            return b.votes.stageTwo > a.votes.stageTwo? 1 : -1
         })
     }
 
     setPosition = () => {
         this.state.sorted.map((user, index) => {
-            if (user.votes.stageOne === this.state.vote){
+            if (user.votes.stageTwo === this.state.vote){
                 this.setState({  position: index + 1 })
                 if (index !== 0){
-                    let offset = this.state.sorted[index - 1].votes.stageOne
-                    this.setState({comment: `Tip: You need a minimum of ${(offset + 1) - this.state.vote} vote(s) to claim the ${this.nth(this.state.position - 1)} position.`})
+                    let offset = this.state.sorted[index - 1].votes.stageTwo
+                    this.setState({comment: `Tip: This contestant needs ${(offset + 1) - this.state.vote} vote(s) to claim the ${this.nth(this.state.position - 1)} position.`})
                 } else {
-                    this.setState({comment: 'Well done! You are leading.'})
+                    this.setState({comment: 'Well done! You are taking leading.'})
                 }
             }
             return user 
@@ -149,8 +145,9 @@ class User extends React.Component {
     handlePaystackSuccessAction = (reference) => {
         console.log(reference)
         const vote = (this.state.amount / 50) + this.state.vote
+
         axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
-            'votes.stageOne': vote
+            'votes.stageTwo': vote
         }).then(
             response => {
                 window.scrollTo(0, 0)
@@ -166,7 +163,7 @@ class User extends React.Component {
     }
     
     handlePaystackCloseAction = () => {
-        alert('comment')
+        console.log('closed')
     }
 
     closeModal = () => {
@@ -174,13 +171,19 @@ class User extends React.Component {
     }
 
     tick = (vote) => {
-        if(vote > 499 ){
+        if(vote > 1000 ){
             return goldTick
-        } else if (vote > 199 ) {
+        } else if (vote >= 300 ) {
             return blueTick
-        } else if (vote > 0 && vote < 200) {
+        } else if (vote > 0 && vote < 300) {
             return grayTick
         }
+    }
+
+    titleCase(str) {
+        return str.toLowerCase().split(' ').map((word) => {
+            return (word.charAt(0).toUpperCase() + word.slice(1))
+        }).join(' ')
     }
 
     render() {     
@@ -199,14 +202,14 @@ class User extends React.Component {
                     className = {'ReactModal__Content'}
                     >
                     <h1> Help {contestant.name} </h1>
-                    <h2>get a minimum of <span> {200 - this.state.vote } votes </span> to keep {contestant.sex === 'male'? 'him' : 'her'} in the contest </h2>
+                    <h2> get a minimum of <span> {300 - this.state.vote } votes </span> to keep {contestant.sex === 'male'? 'him' : 'her'} in the contest </h2>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
 
                 <div className = 'user__container'>
                     <div className = 'user__row1'>
-                        <h2> Stage One </h2>
-                        <div className = 'vote'> <h1> {vote} <span>{vote > 1? 'votes' : 'vote'} </span> </h1> </div>
+                        <h2> Stage Two </h2>
+                        <div className = 'vote'> <h1> {vote} <span> {vote > 1? 'votes' : 'vote'} </span> </h1> </div>
                         {this.state.position < 71 && <h3 className = 'position'> Position: {this.nth(this.state.position)} </h3>}
                         {this.state.position < 71 && <h3 className = 'comment'> {this.state.comment} </h3>}
                     </div>
@@ -239,8 +242,6 @@ class User extends React.Component {
                                         <option value = {10000}> 200 votes </option>
                                         <option value = {25000}> 500 votes </option>
                                         <option value = {50000}> 1000 votes </option>
-                                        <option value = {100000}> 2000 votes </option>
-                                        <option value = {250000}> 5000 votes </option>
                                     </select>
                                     <PaystackButton 
                                         {...this.componentProps} reference = {(new Date()).getTime().toString()} 
@@ -248,7 +249,6 @@ class User extends React.Component {
                                         className = {this.state.amount? 'btn--paystack' : 'btn--disabled'}
                                     />
 
-                                    
                                     <div className = 'program'>
                                         <h3> 
                                             <span>Note: </span>you pay to vote as part of our program to help feed thousands

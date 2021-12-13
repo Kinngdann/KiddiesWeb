@@ -1,6 +1,8 @@
 import React from 'react';
-// import './styles/components/admin/_admin.scss'
+import './styles/components/admin/_admin.scss'
 import AddVotes from './admin/addVotes'
+import ChangeImage from './admin/changeImage'
+import RollOver from './admin/rollOver'
 
 class Admin extends React.Component {
 
@@ -14,12 +16,9 @@ class Admin extends React.Component {
             <div className = 'admin'>
                 <h1> Admin Panel </h1>
                 <div className = 'admin__container'>
-                    <AddVotes />     
-                    {/*
-                    <div> <Link to = '/admin/addvote'> <h3> Add Vote </h3> </Link></div>
-                    <div> <Link to = '/admin/getlog'> <h3> Get User Log </h3> </Link></div>
-                    <div> <Link to = '/admin/rmvusers'> <h3> Delete User(s) </h3> </Link></div>
-                    */}
+                    <AddVotes />
+                    <ChangeImage />
+                    <RollOver />
                 </div>
             </div>
         )
