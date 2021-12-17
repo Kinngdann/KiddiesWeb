@@ -31,16 +31,18 @@ class RollOver extends React.Component {
     rollOver = (e) => {
         e.preventDefault()
         const {contestants} = this.state
+        const vote = 300
 
         for(let i = 0; i < contestants.length; i++){
-            if (contestants[i].votes.stageOne > 200){
+            if (contestants[i].votes.stageTwo > vote){
 
-                // const vote = 200
-                // const remainder = contestants[i].votes.stageOne - vote
+
+
+                // const remainder = contestants[i].votes.stageTwo - vote
 
                 // try {
                 //     axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${contestants[i].id}`, {
-                //         'votes.stageTwo': remainder
+                //         'votes.stageThree': remainder
                 //     }).then(
                 //         response => {
                 //             console.log(response)
@@ -48,7 +50,7 @@ class RollOver extends React.Component {
                 //     )
 
                 //     axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${contestants[i].id}`, {
-                //         'votes.stageOne': vote
+                //         'votes.stageTwo': vote
                 //     }).then(
                 //         response => {
                 //             console.log(response)

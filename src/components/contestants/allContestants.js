@@ -68,12 +68,12 @@ class AllContestants extends React.Component {
     tick = (vote) => {
       if(vote > 1000 ){
           return goldTick
-      } else if (vote >= 300 ) {
+      } else if (vote >= 500 ) {
           return blueTick
-      } else if (vote > 0 && vote < 300) {
+      } else if (vote > 300) {
           return grayTick
       }
-  }
+    }
 
     showItems = () => {
       const {from, to} = this.state
@@ -90,7 +90,7 @@ class AllContestants extends React.Component {
               {this.state.search? this.state.contestants.map((contestant, index) => {
                   return (
                     <div key = {index} className = 'contestant__item'>
-                    {contestant.votes.stageTwo > 0 && <img src = {this.tick(contestant.votes.stageTwo)} alt = 'tick' width = '50' className = 'tick'/>}
+                    {contestant.votes.stageThree > 0 && <img src = {this.tick(contestant.votes.stageThree)} alt = 'tick' width = '50' className = 'tick'/>}
                       <div className = 'wrapper'>
                         <div className = 'contestant__item__img'> 
                           <LazyLoadImage
@@ -111,7 +111,7 @@ class AllContestants extends React.Component {
               }) : currentItems.map((contestant, index) => {
                 return (
                   <div key = {index} className = 'contestant__item'> 
-                    {contestant.votes.stageTwo > 0 && <img src = {this.tick(contestant.votes.stageTwo)} alt = 'tick' width = '50' className = 'tick'/>}
+                    {contestant.votes.stageThree > 0 && <img src = {this.tick(contestant.votes.stageThree)} alt = 'tick' width = '50' className = 'tick'/>}
                     <div className = 'wrapper'> 
                       <div className = 'contestant__item__img'> 
                         <LazyLoadImage

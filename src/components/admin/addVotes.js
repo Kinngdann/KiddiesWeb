@@ -27,7 +27,7 @@ class AddVotes extends React.Component {
                     const contestant = response.data.data
                     this.setState(() => ({
                         contestant,
-                        vote: contestant.votes.stageOne,
+                        vote: contestant.votes.stageTwo,
                         id: contestant.id
                     }))
                 }
@@ -43,19 +43,10 @@ class AddVotes extends React.Component {
         this.setState({ newVote: parseInt(newVote) })
     }
 
-    // AddVoteProceed = () => {
-    //     this.setState({confirmation: true, modal: false})
-    // }
-
-    // AddVoteReject = () => {
-    //     this.setState({confirmation: false, modal: false})
-    // }
-
     onSubmit = (e) => {
         e.preventDefault()
         if (this.state.id && this.state.vote){
 
-            // const foo = this.state.oldVote + this.state.vote
             console.log('vote', this.state.vote)
             console.log('new', this.state.newVote)
             console.log('total', this.state.vote + this.state.newVote)
@@ -65,7 +56,7 @@ class AddVotes extends React.Component {
 
             try {
                 axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
-                    'votes.stageOne': total
+                    'votes.stageTwo': total
                 }).then(
                     response => {
                         console.log(response)

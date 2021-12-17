@@ -18,7 +18,7 @@ class Countdown extends React.Component {
     }
 
     startTimer = () => {
-        const endDate = new Date("December 17, 2021").getTime();
+        const endDate = new Date("December 24, 2021").getTime();
         let interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = endDate - now;
@@ -40,7 +40,7 @@ class Countdown extends React.Component {
         return (
             <div className = 'countdown'>
                 <div className = 'countdown__text'>
-                    <h1> Stage Two Ends </h1>
+                    <h1> FINAL Stage Ends </h1>
                 </div>
 
                 <div className = 'countdown__time'>

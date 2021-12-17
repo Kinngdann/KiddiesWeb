@@ -51,22 +51,23 @@ class RmvUsers extends React.Component {
         e.preventDefault()
         const {contestants} = this.state
 
-        for(let i = 0; i < contestants.length; i++){
-            if (contestants[i].votes.stageOne < 200){
+        // for(let i = 0; i < contestants.length; i++){
+        //     if (contestants[i].votes.stageTwo < 300){
 
-                // try {
-                //     axios.delete(`https://www.kiddiescrown.com/api/user/deleteSingleUserData/${contestants[i].id}`, {
-                //     }).then(
-                //         (response) => {
-                //             console.log(response)
-                //         }
-                //     )
+        //         try {
+        //             axios.delete(`https://www.kiddiescrown.com/api/user/deleteSingleUserData/${contestants[i].id}`, {
+        //             }).then(
+        //                 (response) => {
+        //                     console.log(response)
+        //                     console.log(contestants[i].name, 'deleted')
+        //                 }
+        //             )
 
-                // } catch (error) {
-                //     console.log(error)
-                // }
-            }
-        }
+        //         } catch (error) {
+        //             console.log(error)
+        //         }
+        //     }
+        // }
     }
 
 
@@ -75,7 +76,7 @@ class RmvUsers extends React.Component {
     render(){
         return (
             <div>
-                <input type = 'button' value = 'delete < 200' onClick = {this.delUsers} />
+                <input type = 'button' value = 'delete < 300' onClick = {this.delUsers} />
             </div>
         )
     }

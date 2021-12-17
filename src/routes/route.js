@@ -43,7 +43,7 @@ const Nav = () => {
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
-                    <Route exact path = '/signin' component = {Signin} />
+                    <Route exact path = '/signin' component = {ComingSoon} />
                     <ProtectedRoute exact path = '/admin' component = {ComingSoon} />
                     <Route component = {NotFound} />
                 </Switch>
