@@ -34,15 +34,20 @@ class ChangeImage extends React.Component {
                 'pic'
             )
 
-            // http://143.244.174.52:4000/api/user/updateUserData/id request: put
-            // https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}
+            // axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, formData).then(
+            //     (response) => {
+            //         console.log(response)
+            //     }
+            // ).then(
+            //     response => {console.log(response)}
+            // )
 
-            axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, formData).then(
-                (response) => {
+            axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
+            'pictures': formData
+            }).then(
+                response => {
                     console.log(response)
                 }
-            ).then(
-                response => {console.log(response)}
             )
         }
     }
