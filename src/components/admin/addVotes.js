@@ -27,7 +27,7 @@ class AddVotes extends React.Component {
                     const contestant = response.data.data
                     this.setState(() => ({
                         contestant,
-                        vote: contestant.votes.stageTwo,
+                        vote: contestant.votes.stageThree,
                         id: contestant.id
                     }))
                 }
@@ -56,7 +56,7 @@ class AddVotes extends React.Component {
 
             try {
                 axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
-                    'votes.stageTwo': total
+                    'votes.stageThree': total
                 }).then(
                     response => {
                         console.log(response)

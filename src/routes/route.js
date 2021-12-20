@@ -24,7 +24,6 @@ import {
     Route,
 } from "react-router-dom"
 
-
 const Nav = () => {
 
     return (
@@ -36,7 +35,7 @@ const Nav = () => {
                 <Whatsapp />
                 <Switch>
                     <Route exact path = '/' component = {Home} />
-                    <Route exact path = '/elites' component = {ComingSoon} />
+                    <Route exact path = '/elites' component = {Elite} />
                     <Route exact path = '/about' component = {About} />
                     <Route exact path = '/contestants' component = {Contestants} />
                     <Route exact path = '/contestant/:id' component = {User} /> 

@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ScrollToTop from "react-scroll-to-top";
 import avatar from './images/avatar.svg'
-import goldTick from './images/goldTick.svg'
-import blueTick from './images/blueTick.svg'
-import grayTick from './images/grayTick.svg'
-import search from './images/search.svg'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import '../styles/components/contestants/_allcontestants.scss'
 
@@ -28,21 +24,24 @@ class AllContestants extends React.Component {
       this.trueContestants = true
     }
   
-    componentDidMount(){
-      axios.get('https://www.kiddiescrown.com/api/user/getUserData')
-      .then((response) => {
-          const users = response.data.data  
-          this.setState(() => ({
-            users: response.data.data,
+    componentDidMount() {
+      this.getUserData()
+    }
+
+    async getUserData() {
+      try {
+        const response = await axios.get('https://www.kiddiescrown.com/api/user/getUserData')
+        const users = response.data.data
+        // console.log(users)
+        this.setState(() => ({
             contestants: this.filterContestants(users, ''),
             loader: false
-          }))
-      })
-      .catch( (error) => {
-          console.log(error);
-      })
+        }))
+        window.scrollTo(0, 0)
 
-      window.scrollTo(0, 0)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     filterContestants = (contestants, search) => {
@@ -65,53 +64,21 @@ class AllContestants extends React.Component {
       }))
     }
 
-    tick = (vote) => {
-      if(vote > 1000 ){
-          return goldTick
-      } else if (vote >= 500 ) {
-          return blueTick
-      } else if (vote > 300) {
-          return grayTick
-      }
-    }
-
     showItems = () => {
-      const {from, to} = this.state
-      const currentItems = this.state.contestants.slice(from, to)
+      // const {from, to} = this.state
+      // const currentItems = this.state.contestants.slice(from, to)
 
-      if (!this.state.contestants) {
-        this.setState({checkContestant: false})
-      }  
+      // if (!this.state.contestants) {
+      //   this.setState({checkContestant: false})
+      // }  
 
 
       return ( 
         <div>
             <div className = 'contestant'>
-              {this.state.search? this.state.contestants.map((contestant, index) => {
-                  return (
-                    <div key = {index} className = 'contestant__item'>
-                    {contestant.votes.stageThree > 0 && <img src = {this.tick(contestant.votes.stageThree)} alt = 'tick' width = '50' className = 'tick'/>}
-                      <div className = 'wrapper'>
-                        <div className = 'contestant__item__img'> 
-                          <LazyLoadImage
-                            alt = 'contestant'
-                            src = { contestant.pictures? `http://143.244.174.52:4000/${contestant.pictures}` : avatar}
-                            width = '250'
-                            effect = 'Black and white'
-                          />
-                        </div>
-                        <h3 className = 'name'> {contestant.name} </h3>
-                        <h4> {contestant.sex} | {contestant.age} Year(s) </h4>
-                        <div className = 'link'>
-                          <Link to = {`contestant/${contestant.id}`}> <h3> view </h3> </Link>
-                        </div>
-                      </div>
-                    </div>
-                )
-              }) : currentItems.map((contestant, index) => {
+              {this.state.contestants.map((contestant, index) => {
                 return (
                   <div key = {index} className = 'contestant__item'> 
-                    {contestant.votes.stageThree > 0 && <img src = {this.tick(contestant.votes.stageThree)} alt = 'tick' width = '50' className = 'tick'/>}
                     <div className = 'wrapper'> 
                       <div className = 'contestant__item__img'> 
                         <LazyLoadImage
@@ -142,7 +109,6 @@ class AllContestants extends React.Component {
         to: this.state.to + 20,
       }))
 
-      this.setState({loader: true})
       window.scrollTo(0, 0)
     }
 
@@ -164,21 +130,30 @@ class AllContestants extends React.Component {
         <div >
           <ScrollToTop smooth />
           <div className = 'allcontestant__row1'>
-            <form onSubmit = {this.onSubmit} className = 'form--search'>
-              <input type = 'text' value = {this.state.search} onChange = {this.setSearch} placeholder = 'Search...' className = 'first--input'/>
-              <div onClick = {this.onSubmit}> <img src = {search} width = '20' alt = 'search icon' /> </div>
-            </form>
+
+            {/*
+              <form onSubmit = {this.onSubmit} className = 'form--search'>
+                <input type = 'text' value = {this.state.search} onChange = {this.setSearch} placeholder = 'Search...' className = 'first--input'/>
+                <div onClick = {this.onSubmit}> <img src = {search} width = '20' alt = 'search icon' /> </div>
+              </form>
+            */}
+
+
           </div>
 
           <this.showItems/>
 
-          {this.state.contestants.length > 0? (<div className = 'btns'>
+
+        {/*
+            {this.state.contestants.length > 0? (<div className = 'btns'>
             <input type = 'button' value = 'Prev' onClick = {this.prevList} className = 'btn--prev' />
             <input type = 'button' value = 'Next' onClick = {this.nextList} className = 'btn--next'/>
           </div>) : (<div className = 'no-user-found'>
             <h3> No user found.. </h3>
             <input type = 'button' value = 'Back' onClick = {this.restoreSearch} className = 'btn--next'/>
           </div>)}
+        */}
+
         </div> 
       )
     }

@@ -1,0 +1,199 @@
+@import '../../utils/config.scss';
+
+.board {
+
+    & > div {
+        width: 90%;
+        height: 25rem;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+        padding: 0 3rem;
+    }
+
+    .item {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        // justify-content: space-around;
+
+        .img {
+            margin-right: 5rem;
+            &__rounded {
+                width: 20rem;
+                height: 20rem;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+        }
+
+        .info {
+            &__name {
+                font-size: 2em;
+            }
+
+            &__others {
+                display: flex;
+                align-items: center;
+
+                .position {
+                    h2 {
+                        font-size: 2em;
+                    }
+                }
+
+                .index_first {
+                    font-size: 1.5em;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #ffffff;
+                    background: #c59b6d;
+                    margin-left: 2rem;
+                }
+
+                .index_others {
+                    font-size: 1.5em;
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #ffffff;
+                    background: $brandColorBlue;
+                    margin-left: 2rem;
+                }
+            }
+        }
+    }
+
+    .view {
+        font-size: 1.5em;
+        position: absolute;
+        right: 20rem;
+    }
+}
+
+.intro {
+    background: $brandColorBlue;
+    margin: 5rem 0;
+    padding: 3rem;
+    color: #ffffff;
+
+    &__text {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+
+        h1 {
+            font-size: 3em;
+        }
+    }
+}
+
+@media(max-width: $mobile){
+    .board {
+
+        & > div {
+            height: 15rem;
+            width: 100%;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .item {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+
+            .img {
+                margin-right: 2rem;
+
+                &__rounded {
+
+                    img {
+                        max-width: 100%;
+                    }
+
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+            }
+    
+            .info {
+                &__name {
+                    font-size: .8em;
+                }
+    
+                &__others {
+                    display: flex;
+                    align-items: center;
+                    margin-top: .5rem;
+    
+                    .position {
+                        h2 {
+                            font-size: 1em;
+                        }
+
+                        h4 {
+                            font-size: .5em;
+                        }
+                    }
+    
+                    .index_first {
+                        font-size: .7em;
+                        width: 3rem;
+                        height: 3rem;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #ffffff;
+                        background: #c59b6d;
+                        margin-left: 1rem;
+                    }
+    
+                    .index_others {
+                        font-size: .7em;
+                        width: 3rem;
+                        height: 3rem;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #ffffff;
+                        background: $brandColorBlue;
+                        margin-left: 1rem;
+                    }
+                }
+            }
+        }
+
+        .view {
+            font-size: .7em;
+            position: absolute;
+            right: 1.5rem;
+        }
+    }
+
+    .intro {
+        margin: 1rem 0;
+
+        &__text {
+            h1 {
+                font-size: 1em;
+            }
+
+            h3 {
+                font-size: .6em;
+            }
+        }
+    }
+}
+
+

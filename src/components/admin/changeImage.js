@@ -21,6 +21,7 @@ class ChangeImage extends React.Component {
         const file = e.target.files[0]
         const imagePath = URL.createObjectURL(file)
         this.setState(() => ({ file, imagePath }))
+        console.log(file)
     }
 
     onSubmit = () => {
@@ -28,21 +29,14 @@ class ChangeImage extends React.Component {
         if (this.state.file){
             const formData = new FormData()
             const file = this.state.file
+
             formData.append(
                 'image',
                 file,
                 'pic'
             )
 
-            // axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, formData).then(
-            //     (response) => {
-            //         console.log(response)
-            //     }
-            // ).then(
-            //     response => {console.log(response)}
-            // )
-
-            axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
+            axios.put(`http://143.244.174.52:4000/api/user/uploadProfileImage/${this.state.id}`, {
             'pictures': formData
             }).then(
                 response => {

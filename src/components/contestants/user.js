@@ -78,18 +78,19 @@ class User extends React.Component {
         }, 5000)        
     }
 
-    fetchUser = () => {
-        axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${this.state.id}`, {
-        }).then(
-            (response) => {
-                const user = response.data.data
-                this.setState(() => ({
-                    contestant: user,
-                    vote: user.votes.stageThree,
-                    picture: user.pictures
-                }))
-            }
-        )
+    async fetchUser() {
+        try {
+            const response = await axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${this.state.id}`)
+            const user = response.data.data
+            this.setState(() => ({
+                contestant: user,
+                vote: user.votes.stageThree,
+                picture: user.pictures
+            }))
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
     loadAllUsers = () => {
@@ -99,9 +100,9 @@ class User extends React.Component {
             this.setState({sorted: this.sort(contestants)})
             this.setPosition()
 
-            this.state.sorted.map((i, j) => {
-                console.log('name:', i.name, 'vote:', i.votes.stageThree, 'position:', this.nth(j + 1), 'id:', i.id)
-            })
+            // this.state.sorted.map((i, j) => {
+            //     console.log('name:', i.name, 'vote:', i.votes.stageThree, 'position:', this.nth(j + 1), 'id:', i.id)
+            // })
         })
         .catch( (error) => {
             console.log(error);
@@ -116,13 +117,14 @@ class User extends React.Component {
 
     setPosition = () => {
         this.state.sorted.map((user, index) => {
+            console.log(user)
             if (user.votes.stageThree === this.state.vote){
                 this.setState({  position: index + 1 })
                 if (index !== 0){
                     let offset = this.state.sorted[index - 1].votes.stageThree
                     this.setState({comment: `Tip: This contestant needs ${(offset + 1) - this.state.vote} vote(s) to claim the ${this.nth(this.state.position - 1)} position.`})
                 } else {
-                    this.setState({comment: 'Well done! You are taking the lead.'})
+                    this.setState({comment: 'Well done! This Contestant is taking the lead.'})
                 }
             }
             return user 
@@ -247,8 +249,8 @@ class User extends React.Component {
 
                                     <div className = 'program'>
                                         <h3> 
-                                            <span>Note: </span>you pay to vote as part of our program to help feed thousands
-                                            of homeless children this year. <Link to = '/about'> learn more </Link>
+                                            <span>Note: </span>you pay to vote as part of our program to help feed 
+                                            homeless children this year. <Link to = '/about'> learn more </Link>
                                         </h3>
                                     </div>
                                 </form>
