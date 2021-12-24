@@ -51,23 +51,23 @@ class RmvUsers extends React.Component {
         e.preventDefault()
         const {contestants} = this.state
 
-        // for(let i = 0; i < contestants.length; i++){
-        //     if (contestants[i].votes.stageTwo < 300){
+        for(let i = 0; i < contestants.length; i++){
+            if (contestants[i].votes.stageThree < 2360){
 
-        //         try {
-        //             axios.delete(`https://www.kiddiescrown.com/api/user/deleteSingleUserData/${contestants[i].id}`, {
-        //             }).then(
-        //                 (response) => {
-        //                     console.log(response)
-        //                     console.log(contestants[i].name, 'deleted')
-        //                 }
-        //             )
+                try {
+                    axios.delete(`https://www.kiddiescrown.com/api/user/deleteSingleUserData/${contestants[i].id}`, {
+                    }).then(
+                        (response) => {
+                            console.log(response)
+                            console.log(contestants[i].name, 'deleted')
+                        }
+                    )
 
-        //         } catch (error) {
-        //             console.log(error)
-        //         }
-        //     }
-        // }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }
     }
 
 

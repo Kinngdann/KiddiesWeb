@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/components/admin/_admin.scss'
 import AddVotes from './admin/addVotes'
 import ChangeImage from './admin/changeImage'
-// import RmvUsers from './admin/rmvUsers'
+import RmvUsers from './admin/rmvUsers'
 
 class Admin extends React.Component {
 
@@ -17,7 +17,7 @@ class Admin extends React.Component {
                 <h1> Admin Panel </h1>
                 <div className = 'admin__container'>
                     <AddVotes />
-                    <ChangeImage />
+                    <RmvUsers />
                 </div>
             </div>
         )

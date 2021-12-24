@@ -228,6 +228,7 @@ class User extends React.Component {
                                 </h3>
                             </div>
 
+                            {/*
                             <div className = 'pay'>
                                 <form onSubmit = {(e) => {e.preventDefault()}}>
                                     <h3 className = 'label'> Select Votes </h3>
@@ -255,19 +256,22 @@ class User extends React.Component {
                                     </div>
                                 </form>
 
-                                <div className = 'bank'>
-                                    <p> Want a different payment option? That's fine! </p>
-                                    <h4> Account Name: <span> Kiddies Crown </span></h4> 
-                                    <h4> Account Number: <span> 0669795144 </span></h4> 
-                                    <h4> Bank: <span> GTB </span></h4> 
-                                    <h4 className = 'imp'> 
-                                        After transfer/deposit to the our GTB account, click on the whatsapp icon (buttom-left) 
-                                        and forward the receipt, Contestant's name and ID for verification and vote update.
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
 
+                                
+                                    <div className = 'bank'>
+                                        <p> Want a different payment option? That's fine! </p>
+                                        <h4> Account Name: <span> Kiddies Crown </span></h4> 
+                                        <h4> Account Number: <span> 0669795144 </span></h4> 
+                                        <h4> Bank: <span> GTB </span></h4> 
+                                        <h4 className = 'imp'> 
+                                            After transfer/deposit to the our GTB account, click on the whatsapp icon (buttom-left) 
+                                            and forward the receipt, Contestant's name and ID for verification and vote update.
+                                        </h4>
+                                    </div>
+                            </div>
+                        */}
+                        
+                        </div>
                         {vote > 0 && <img src = {this.tick(vote)} alt = 'tick' width = '70' className = 'tick'/>}
                         <div className = 'user__row2__col2'>
                             <LazyLoadImage
