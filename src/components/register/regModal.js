@@ -9,7 +9,7 @@ const RegModal = (props) => {
 
     return (
         <div>
-            <Modal 
+            <Modal
                 isOpen = {props.active}
                 shouldFocusAfterRender = {true}
                 preventScroll = {true}
@@ -20,7 +20,15 @@ const RegModal = (props) => {
                 <h1> Registration Status </h1>
                 <p> {props.message} </p>
                 {props.id && <h2> ID: {props.id} </h2>}
-                <Link to = '/'> <input type = 'button' value = 'Okay' onClick = {props.rmvModal} className = 'btn--primary'/> </Link>
+                <Link 
+                    to = '/'> 
+                        <input 
+                            type = 'button' 
+                            value = 'Okay' 
+                            onClick = {props.rmvModal} 
+                            className = 'btn--primary'
+                        /> 
+                </Link>
             </Modal>
         </div>
     )

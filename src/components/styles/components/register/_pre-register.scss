@@ -1,0 +1,48 @@
+@import '../../utils/config.scss';
+
+.pre-register {
+    padding: 2rem 0;
+    width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    text-align: center;
+
+    h3 {
+        margin-bottom: 2rem;
+    }
+
+    form {
+        input {
+            padding: 1rem;
+            width: 100%;
+            max-width: 80vw;
+            line-height: 3rem;
+            font-weight: 100;
+            border-radius: 50;
+            margin-bottom: 1rem;
+
+            &[type='submit']{
+                width: 100%;
+                padding: 1rem;
+                line-height: 3rem;
+                background: $brandColorBlue;
+                color: #ffffff;
+                font-size: medium;
+                font-weight: 600;
+                border-radius: .5rem;
+                transition: background, .3s ease-in;
+                border: none;
+                cursor: pointer;
+            
+                &:hover {
+                    background: darken($color: $brandColorBlue, $amount: 50%)
+                }
+            
+                &:disabled {
+                    background: lighten($color: $brandColorBlue, $amount: 20%);
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}

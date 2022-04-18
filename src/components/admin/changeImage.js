@@ -25,6 +25,7 @@ class ChangeImage extends React.Component {
     }
 
     onSubmit = () => {
+        const id = '051'
 
         if (this.state.file){
             const formData = new FormData()
@@ -36,7 +37,7 @@ class ChangeImage extends React.Component {
                 'pic'
             )
 
-            axios.put(`http://143.244.174.52:4000/api/user/uploadProfileImage/${this.state.id}`, {
+            axios.put(`http://143.244.174.52:4000/api/user/uploadProfileImage/${id}`, {
             'pictures': formData
             }).then(
                 response => {
@@ -58,7 +59,6 @@ class ChangeImage extends React.Component {
                         <input type = 'button' value = 'upload' onClick = {this.onSubmit} />
                     </label>
                 </form>
-                
             </div>
         )
     }

@@ -17,7 +17,8 @@ class Admin extends React.Component {
                 <h1> Admin Panel </h1>
                 <div className = 'admin__container'>
                     <AddVotes />
-                    <RmvUsers />
+                    <ChangeImage />
+                    <RmvUsers/>
                 </div>
             </div>
         )

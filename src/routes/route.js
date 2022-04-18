@@ -11,6 +11,7 @@ import Elite from '../components/Elite'
 // import Terms from '../components/Terms'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
+import PreRegister from '../components/register/preRegister';
 import User from '../components/contestants/user'
 
 import Admin from '../components/Admin'
@@ -42,6 +43,7 @@ const Nav = () => {
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
+                    <Route exact path = '/pre-register' component = {PreRegister} />
                     <Route exact path = '/signin' component = {Signin} />
                     <ProtectedRoute exact path = '/admin' component = {Admin} />
                     <Route component = {NotFound} />

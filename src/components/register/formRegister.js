@@ -156,7 +156,8 @@ class FormRegister extends React.Component{
             formData.append(
                 'user', JSON.stringify(userData)
             )
-    
+
+
             if (this.state.file){
                 const file = this.state.file
                 formData.append(
@@ -168,7 +169,7 @@ class FormRegister extends React.Component{
             
             axios.post('https://www.kiddiescrown.com/api/user/saveUserData', formData).then(
                 (response) => {
-                    console.log(response)
+                    console.log(response)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
                     if (response.request.status === 200){
                         localStorage.setItem('isRegistered', 'true')
                         this.setState(() => ({

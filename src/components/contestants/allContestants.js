@@ -7,7 +7,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import '../styles/components/contestants/_allcontestants.scss'
 
 class AllContestants extends React.Component {
-
     constructor(props){
       super()
       this.state = {
