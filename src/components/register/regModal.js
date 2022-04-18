@@ -1,7 +1,7 @@
-import React from 'react'
-import Modal from 'react-modal'
-import {Link} from 'react-router-dom'
-import '../styles/components/register/_regModal.scss'
+import React from 'react';
+import Modal from 'react-modal';
+import {Link} from 'react-router-dom';
+import '../styles/components/register/_regModal.scss';
 
 const RegModal = (props) => {
 
