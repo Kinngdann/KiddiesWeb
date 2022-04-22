@@ -134,7 +134,11 @@ class FormRegister extends React.Component{
             }
 
             try {
-                const {status, data} = await axios.post('https://kiddiescrown.com/api/user/new', formData)
+                const {status, data} = await axios.post(
+                    'https://kiddiescrown.com/api/user/new',
+                    // 'http://localhost:4000/api/user/new',
+                    formData
+                )
                 if (status === 200){
                     localStorage.setItem('isRegistered', true)
                     this.setState(()=>({
@@ -204,7 +208,7 @@ class FormRegister extends React.Component{
                         
 
                         <label className = 'pic-label'> Upload Picture of Child
-                            <input type = 'file' accept = 'image/png, image/jpeg' onChange = {this.setImage} />
+                            <input type = 'file' accept = 'image/png, image/jpeg' onChange = {this.setImage} required />
                             <img src = {this.state.imagePath} alt = '' width = '150' />
                         </label>
                     </section>

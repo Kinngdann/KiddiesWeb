@@ -15,7 +15,7 @@ const Action = () => {
                     We really can't wait to have your Child onboard. Register and get the chance to meet
                     other awesome contestants. Click the button below to get started.
                 </p>
-                <Link to = '/pre-register'> <input type = 'button' value = 'Get Started' className = 'btn--primary' /> </Link>
+                <Link to = '/register'> <input type = 'button' value = 'Get Started' className = 'btn--primary' /> </Link>
             </div>
         </div>
     )
