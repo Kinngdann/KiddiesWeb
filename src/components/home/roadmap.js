@@ -80,9 +80,9 @@ const Roadmap = () => {
                         <div> 
                             <h3> Win </h3>
                             <p> 
-                                The Winner will be publicly announced when the contest ends.
-                                The Winner will be crowned <span>Mr/Miss Crown</span>, cash Prize of <span>N500,000.00</span>, ipad
-                                and lots of other benefits.
+                                The Winner will be publicly announced at the end of the contest.
+                                The Winner will be crowned <span>Mr/Miss Crown</span>, cash prize of <span>N500,000.00</span>, and 
+                                <span> 300,000 </span> in worth.
                             </p>
                         </div>
                     </div>

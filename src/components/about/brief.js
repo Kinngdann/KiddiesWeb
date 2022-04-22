@@ -43,9 +43,13 @@ const Brief = () => {
                 </div>
 
                 <div className = 'brief__col1__text'>
-                    <p> 
-                        Kiddies Crown Contest is a kiddies competition that is centered around the love a mother shares with her Child. We created this platform to help parents prove to the world how much they love their child and how far they're willing to go for them. This contest also help showcase the great qualities of a child.
-                        Kiddies Crown Contest will be held virtually (on our website) which will allow contestants within the bounds of Nigeria to participate and contest for the Mr/Miss Crown 2021/2022 and also stand a chance to win great prizes.
+                    <p> Kiddies Crown Contest is a kiddies competition that is centered around the love a mother shares with her Child.</p>
+                    <p>
+                        We created this platform to help parents prove to the world how much they love their child and how far they're willing to go for them.
+                        This contest also help showcase the great qualities of a child.
+                    </p>
+                    <p>
+                        Kiddies Crown Contest will be held virtually (on our website) which will allow contestants within the bounds of Nigeria to participate and contest for the Mr/Miss Crown 2022 and also stand a chance to win exciting prizes.
                         Participation in the contest constitutes acceptance of the Kiddies Crown Contest’s rules.
                     </p>
 

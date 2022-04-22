@@ -14,7 +14,7 @@ const Hero = () => {
 
                 <div className = 'hero__col1__btn'> 
                     <Link to = '/about'><input type = 'button' value = 'Learn More' className = 'learn btn--secondary' /></Link>
-                    <Link to = '/pre-register'> <input type = 'button' value = 'Register' className = 'register btn--primary' /> </Link>
+                    <Link to = '/register'> <input type = 'button' value = 'Register' className = 'register btn--primary' /> </Link>
                 </div>
             </div>
             <div className = 'hero__col2'>

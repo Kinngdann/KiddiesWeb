@@ -12,7 +12,7 @@ const Top5 = () => {
                     <img src = {top5} alt = 'cup-icon' width = '150'/>
                 </div>
                 <div className = 'top5__col1__text'>
-                    <h1 className = 'rmv'> TOP 5 </h1>
+                    <h1 className = 'rmv'> TOP 4 </h1>
                     <h3 className = 'rmv'> GETS </h3>
                     <hr className = 'winner__col1__line' />
                 </div>
@@ -20,7 +20,7 @@ const Top5 = () => {
 
             <div className = 'top5__col2'>
                 <img src = {gift} alt = 'crown-icon' className = 'top5__col2__img' />
-                <p> Our <span> Top 5 </span> Contestants aren't left out. We've got lots of consolation prizes for them.. </p>
+                <p> Our <span> Top 4 </span> Contestants aren't left out. We've got lots of consolation prizes for them.. </p>
             </div>
 
             <div className = 'top5__col3'>

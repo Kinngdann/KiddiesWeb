@@ -14,7 +14,7 @@ const HeadTop = () => {
 
                 <div className = 'headtop__text__item'>
                     <img src = {tel} width = '15' alt = 'phone icon'/>
-                    <h4> +234 708 860 6079 </h4>
+                    <h4> +234 802 441 8127 </h4>
                 </div>
 
                 <div className = 'headtop__text__item'>
@@ -24,7 +24,7 @@ const HeadTop = () => {
 
                 <div className = 'headtop__text__item'>
                     <img src = {location} width = '13' alt = 'address icon' />
-                    <h4> 27, Limpopo Street, Maitama, Abuja - FCT </h4>
+                    <h4> 27b, Limpopo Street, Maitama, Abuja - FCT </h4>
                 </div>
 
             </div>
@@ -38,9 +38,9 @@ const HeadTop = () => {
                     <img src = {fb} width = '8' alt = 'social icon' className = 'headtop__social__icon'/>
                 </a>
 
-                <a href = 'https://wa.me/message/TL45QZQF2XXLE1' >
+                {/*<a href = 'https://wa.me/message/TL45QZQF2XXLE1' >
                     <img src = {wa} width = '15' alt = 'social icon' className = 'headtop__social__icon'/>
-                </a>
+                </a>*/}
             </div>
         </div>
     )

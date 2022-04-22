@@ -7,11 +7,8 @@ import '../styles/components/register/_register.scss'
 class FormRegister extends React.Component{
     constructor(props){
         super(props)
-
         this.state = {
-            id: '',
-            regUsers: '',
-            userLimit: 999,
+            data: {},
             modal: false,
             loader: true,
             name: '',
@@ -19,33 +16,20 @@ class FormRegister extends React.Component{
             sex: '',
             location: '',
             description: '',
-            tel: '',
+            phone1: '',
+            phone2: '',
             parentName: '',
             deserveCrown: '',
             isWhatsapp: false,
-            whatsapp: '',
-            email: '',
             relationship: '',
-            tc: false,
             file: null,
             imagePath: '',
-            message: ''
+            comment: ''
         }
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({loader: false})
-        }, 2000)
-
-        axios.get('https://www.kiddiescrown.com/api/user/getUserData')
-        .then((response) => {
-            const users = response.data.data
-            this.setState({regUsers: users.length})
-        })
-        .catch( (error) =>  {
-            console.log(error);
-        })
+        this.setState({loader: false})
     }
 
     setName = (e) => {
@@ -78,9 +62,18 @@ class FormRegister extends React.Component{
         this.setState(() => ({ parentName }))
     }
 
-    setTel = (e) => {
-        const tel = e.target.value
-        this.setState(() => ({ tel }))
+    setPhone1 = (e) => {
+        const phone1 = e.target.value
+        this.setState(() => ({ phone1 }))
+    }
+    
+    setPhone2 = (e) => {
+        const phone2 = e.target.value
+        this.setState(() => ({ phone2 }))
+    }
+
+    isWhatsapp = () => {
+        this.setState(() => ({isWhatsapp: !this.state.isWhatsapp}))
     }
 
     setDeserveCrown = (e) => {
@@ -88,32 +81,9 @@ class FormRegister extends React.Component{
         this.setState(() => ({ deserveCrown }))
     }
 
-    isWhatsapp = () => {
-        this.setState(() => ({isWhatsapp: !this.state.isWhatsapp}))
-    }
-
-    setWhatsapp = (e) => {
-        const whatsapp = e.target.value
-        this.setState(() => ({ whatsapp }))
-    }
-
-    setEmail = (e) => {
-        const email = e.target.value
-        this.setState(() => ({ email }))
-    }
-
     setRelationship = (e) => {
         const relationship = e.target.value
         this.setState(() => ({ relationship }))
-    }
-
-    isTC = () => {
-        this.setState(() => ({ tc: !this.state.tc}))
-    }
-
-    isPrivacy = () => {
-        this.setState(() => ({ privacy: !this.state.privacy}))
-        console.log(this.state.privacy)
     }
 
     setImage = (e) => {
@@ -126,30 +96,27 @@ class FormRegister extends React.Component{
         this.setState({modal: false})
     }
 
-    onSubmit = (e) => {
-        e.preventDefault()
+    onSubmit = async (e) => {
+        e.preventDefault();
         this.setState({loader: true})
-
         const check = localStorage.getItem('isRegistered')
         if (check) {
-            this.setState({loader: false, message: 'We\'re sorry, you can only register one contestant/family', modal: true})
+            this.setState({
+                loader: false,
+                comment: 'We\'re sorry, you can only register one contestant/household',
+                modal: true
+            })
         } else {
             const userData = {
                 name: this.state.name,
                 age: this.state.age,
-                sex: this.state.sex,
+                gender: this.state.sex,
                 location: this.state.location,
                 description: this.state.description,
-                tel: this.state.tel,
-                whatsapp: this.state.whatsapp || this.state.tel,
+                phone1: this.state.phone1,
+                phone2: this.state.phone2 || this.state.phone1,
                 parentName: this.state.parentName,
-                email: this.state.email,
                 relationship: this.state.relationship,
-                votes: {
-                    stageOne: 0,
-                    stageTwo: 0,
-                    stageThree: 0
-                }
             }
     
             const formData = new FormData()
@@ -157,32 +124,29 @@ class FormRegister extends React.Component{
                 'user', JSON.stringify(userData)
             )
 
-
             if (this.state.file){
                 const file = this.state.file
                 formData.append(
-                    'image',
+                    'picture',
                     file,
-                    'pic'
+                    'picture'
                 )
             }
-            
-            axios.post('https://www.kiddiescrown.com/api/user/saveUserData', formData).then(
-                (response) => {
-                    console.log(response)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                    if (response.request.status === 200){
-                        localStorage.setItem('isRegistered', 'true')
-                        this.setState(() => ({
-                            id: response.data.data.id,
-                            loader: false, 
-                            message: 'Your registration was successful!',
-                            modal: true,
-                        }))
-                    } else {
-                        this.setState({loader: false})
-                    }
+
+            try {
+                const {status, data} = await axios.post('https://kiddiescrown.com/api/user/new', formData)
+                if (status === 200){
+                    localStorage.setItem('isRegistered', true)
+                    this.setState(()=>({
+                        data,
+                        loader: false,
+                        comment: 'Your registration was successful!',
+                        modal: true
+                    }))
                 }
-            )
+            } catch (error) {
+                alert(error.message);
+            }
         }
     }
 
@@ -190,7 +154,12 @@ class FormRegister extends React.Component{
     render(){
         return(
             <div className = 'form-div'>
-                <RegModal active = {this.state.modal} id = {this.state.id} rmvModal = {this.rmvModal} message = {this.state.message} />
+                <RegModal 
+                    active = {this.state.modal} 
+                    data = {this.state.data} 
+                    rmvModal = {this.rmvModal}
+                    comment = {this.state.comment}
+                />
                 <Loader load = {this.state.loader} />
                 <form onSubmit = {this.onSubmit} className = 'register'>
                     <section className = 'contestant'>
@@ -215,7 +184,7 @@ class FormRegister extends React.Component{
                             </select>
                         </label> 
 
-                        <label> Sex
+                        <label> Gender
                         <br/>
                             <label className = 'register_thin'> <input type = 'radio' name = 'radio_btn_sex' value = 'male' checked = {this.state.sex === 'male'} onChange = {this.setSex} /> Male </label>
                             <label className = 'register_thin'> <input type = 'radio' name = 'radio_btn_sex' value = 'female' checked = {this.state.sex === 'female'} onChange = {this.setSex} className = 'last-child'/> Female </label>
@@ -243,12 +212,11 @@ class FormRegister extends React.Component{
                     <section className = 'parent'>
                         <h2> Parent's Information </h2>
                         <label> Name <input type = 'text' value = {this.state.parentName} onChange = {this.setParentName} placeholder = "Parent's Name (optional)" /> </label>
-                        <label> Phone Number <input type = 'tel' value = {this.state.tel} onChange = {this.setTel} maxLength = '11' required  placeholder = 'Phone Number'/> </label>
+                        <label> Phone Number <input type = 'tel' value = {this.state.phone1} onChange = {this.setPhone1} maxLength = '11' required  placeholder = 'Phone Number'/> </label>
                         <label className = 'register_thin'> <input type = 'checkbox' onChange = {this.isWhatsapp} /> same as whatsapp number? </label>
-                        {!this.state.isWhatsapp && <label> Whatsapp Number <input type = 'tel' onChange = {this.setWhatsapp} required placeholder = 'Whatsapp Contact' /> </label>}
-                        <label> Email <input type = 'email' value = {this.state.email} onChange = {this.setEmail} placeholder = 'Email Address (optional)'/> </label>
+                        {!this.state.isWhatsapp && <label> Whatsapp Number <input type = 'tel' value={this.state.phone2} onChange = {this.setPhone2} required placeholder = 'Whatsapp Contact' /> </label>}
 
-                        <label> Relationship with Child 
+                        <label> Relationship with Child
                             <select onChange = {this.setRelationship} required>
                                 <option value = ''> None </option>
                                 <option value = 'Son / Daughter'> Son / Daughter </option>
@@ -258,7 +226,7 @@ class FormRegister extends React.Component{
                             </select>
                         </label>
 
-                        <input type = 'submit' value = 'REGISTRATION CLOSED' disabled />
+                        <input type = 'submit' value = 'REGISTER' />
                     </section>
                 </form>
             </div>
