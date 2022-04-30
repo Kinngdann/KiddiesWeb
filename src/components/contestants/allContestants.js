@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ScrollToTop from "react-scroll-to-top";
 import avatar from './images/avatar.svg'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import '../styles/components/contestants/_allcontestants.scss'
 
 class AllContestants extends React.Component {
@@ -80,11 +79,10 @@ class AllContestants extends React.Component {
                   <div key = {index} className = 'contestant__item'> 
                     <div className = 'wrapper'> 
                       <div className = 'contestant__item__img'> 
-                        <LazyLoadImage
+                        <img
                           alt = 'contestant'
                           src = { contestant.pictures? `http://143.244.174.52:4000/${contestant.pictures}` : avatar}
                           width = '250'
-                          effect = 'Black and white'
                         />
                       </div>
                       <h3 className = 'name'> {contestant.name} </h3>
