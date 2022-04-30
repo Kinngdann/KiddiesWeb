@@ -38,9 +38,9 @@ const HeadTop = () => {
                     <img src = {fb} width = '8' alt = 'social icon' className = 'headtop__social__icon'/>
                 </a>
 
-                {/*<a href = 'https://wa.me/message/TL45QZQF2XXLE1' >
+                <a href = 'https://wa.me/message/WPNWKSRUU2FCG1' >
                     <img src = {wa} width = '15' alt = 'social icon' className = 'headtop__social__icon'/>
-                </a>*/}
+                </a>
             </div>
         </div>
     )

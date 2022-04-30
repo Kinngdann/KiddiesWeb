@@ -1,20 +1,15 @@
-import React from 'react'
-import axios from 'axios'
-import { PaystackButton } from 'react-paystack'
-import { v4 as uuidv4 } from 'uuid'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+// import {Link} from 'react-router-dom'
 import Loader from '../utilities/loader'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import Video from '../utilities/video'
 import Faq from '../utilities/faq'
 import Modal from 'react-modal'
-import avatar from './images/avatar.svg'
-import '../styles/components/contestants/_user.scss'
+import '../styles/components/contestants/_user.scss';
 import ScrollToTop from 'react-scroll-to-top'
-import goldTick from './images/goldTick.svg'
-import blueTick from './images/blueTick.svg'
-import grayTick from './images/grayTick.svg'
-
+import PaymentAuth from './paymentAuth';
+import Button from '@mui/material/Button';
 
 const accordionData = [
     {
@@ -35,24 +30,29 @@ const accordionData = [
     }
 ]
 
-
 class User extends React.Component {
     constructor(props){
         super()
 
         this.state = {
+            user: {
+                id: '',
+                name: '',
+                description: '',
+                picture: '',
+                gender: '',
+                votes: {
+                    stage1: ''
+                },
+            },
+            position: {
+                index: null,
+                nextScore: null
+            },
             loader: true,
-            modal: false,
+            // modal: false,
             id: props.match.params.id,
-            contestant: {},
-            sorted: [],
-            contestants: [],
-            picture: '',
-            vote: '',
-            amount: 0,
-            newVote: '',
-            position: '',
-            comment: ''
+            showModal: false
         }
 
         this.componentProps = {
@@ -65,117 +65,38 @@ class User extends React.Component {
     }
 
     componentDidMount(){
-        window.scrollTo(0, 0)
-        this.fetchUser()
-        this.loadAllUsers()
-
-        setTimeout(() => {
-            this.setState({loader: false})
-        }, 1000);
-
-        setTimeout(() => {
-            this.setState({modal: true})
-        }, 5000)        
+        window.scrollTo(0, 0);
+        this.fetchUser();
     }
 
-    async fetchUser() {
-        try {
-            const response = await axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${this.state.id}`)
-            const user = response.data.data
-            this.setState(() => ({
-                contestant: user,
-                vote: user.votes.stageThree,
-                picture: user.pictures
-            }))
-        } catch (error) {
-            console.log(error)
-        }
+    async fetchUser(){
+        const { data } = await axios.get(`https//kiddiescrown.com/api/user/getUser/${this.state.id}`);
+        this.setState({...data})
+        console.log(data);
         
-    }
+        if(data.user.votes.stage1 < 200){
+            setTimeout(() => {
+                this.setState({showModal: true})
+            }, 5000);
+        }
 
-    loadAllUsers = () => {
-        axios.get('https://www.kiddiescrown.com/api/user/getUserData')
-        .then((response) => {
-            const contestants = response.data.data  
-            this.setState({sorted: this.sort(contestants)})
-            this.setPosition()
-
-            // this.state.sorted.map((i, j) => {
-            //     console.log('name:', i.name, 'vote:', i.votes.stageThree, 'position:', this.nth(j + 1), 'id:', i.id)
-            // })
-        })
-        .catch( (error) => {
-            console.log(error);
-        })
-    }
-
-    sort = (contestants) => {
-        return contestants.sort((a, b) => {
-            return b.votes.stageThree > a.votes.stageThree? 1 : -1
-        })
-    }
-
-    setPosition = () => {
-        this.state.sorted.map((user, index) => {
-            console.log(user)
-            if (user.votes.stageThree === this.state.vote){
-                this.setState({  position: index + 1 })
-                if (index !== 0){
-                    let offset = this.state.sorted[index - 1].votes.stageThree
-                    this.setState({comment: `Tip: This contestant needs ${(offset + 1) - this.state.vote} vote(s) to claim the ${this.nth(this.state.position - 1)} position.`})
-                } else {
-                    this.setState({comment: 'Well done! This Contestant is taking the lead.'})
-                }
-            }
-            return user 
-        })
+        this.setState({loader: false});
     }
 
     nth(n){
         return[`${n}st`, `${n}nd`, `${n}rd`][ ((n+90) % 100-10) % 10-1]||`${n}th`
     }
-
-    setAmount = (e) => {
-        const amount = parseInt(e.target.value)
-        this.setState({ amount })
-    }
-
-    handlePaystackSuccessAction = (reference) => {
-        console.log(reference)
-        const vote = (this.state.amount / 50) + this.state.vote
-
-        axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
-            'votes.stageThree': vote
-        }).then(
-            response => {
-                window.scrollTo(0, 0)
-                this.setState({ vote })
-            }
-        )
-
-        axios.put(`https://www.kiddiescrown.com/api/user/saveLogData/${this.state.id}`, {log: this.state.amount / 50} ).then(
-            (response) => {
-                console.log(response)
-            }
-        )
-    }
     
-    handlePaystackCloseAction = () => {
-        console.log('closed')
+    getComment(index, nextScore){
+        const comment = {
+            leading: `Congratulations! You're currently leading.`,
+            other: `You need a minimum of ${nextScore===0? 10 : nextScore+5} to claim the ${this.nth(index-1)} position`
+        }
+        return index > 1? comment.other : comment.leading;
     }
 
     closeModal = () => {
-        this.setState({modal: false})
-    }
-
-    tick = (vote) => {
-        if(vote > 1000 ){
-            return goldTick
-        } else if (vote >= 500 ) {
-            return blueTick
-        } else if (vote > 300) {
-            return grayTick
-        }
+        this.setState({showModal: false})
     }
 
     titleCase(str) {
@@ -184,106 +105,75 @@ class User extends React.Component {
         }).join(' ')
     }
 
-    render() {     
-        const { contestant, vote, modal } = this.state;
-
+    render() {
+        const { user, position, loader, showModal } = this.state;
         return (
             <div>
                 <ScrollToTop smooth />
-                <Loader load = {this.state.loader} />
-                <Modal 
-                    isOpen = {modal}
+                <Loader load = {loader} />
+                <Modal
+                    isOpen = {showModal}
                     shouldFocusAfterRender = {true}
                     preventScroll = {true}
-                    contentLabel = 'Help This User'
+                    contentLabel = 'Help This Contestant'
                     closeTimeoutMS = {300}
                     className = {'ReactModal__Content'}
-                    >
-                    <h1> Help {contestant.name} </h1>
-                    <h2> get as much votes as possible to help {contestant.sex === 'male'? 'him' : 'her'} win this Contest </h2>
+                >
+                    <h1> Help {user.name} </h1>
+                    <h2> get atleast {200-user.votes.stage1} votes to help {user.gender === 'male'? 'him' : 'her'} remain in the Contest.</h2>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
-
+        
                 <div className = 'user__container'>
                     <div className = 'user__row1'>
-                        <h2> Stage 3 (FINAL) </h2>
-                        <div className = 'vote'> <h1> {vote} <span> {vote > 1? 'votes' : 'vote'} </span> </h1> </div>
-                        <h3 className = 'position'> Position: {this.nth(this.state.position)} </h3>
-                        <h3 className = 'comment'> {this.state.comment} </h3>
+                        <h2> Stage 1 </h2>
+                        <div className = 'vote'> <h1> {user.votes.stage1} <span> {user.votes.stage1 > 1? 'votes' : 'vote'} </span> </h1> </div>
+                        <h3 className = 'position'> Position: {this.nth(position.index)} </h3>
+                        <h3 className = 'comment'> {this.getComment(position.index, position.nextScore)} </h3>
                     </div>
-
+                
                     <div className = 'user__row2'>
                         <div className = 'user__row2__col1'>
                             <div>
                                 <h2>Hi, I'm </h2>
-                                <h1> {this.titleCase(`${contestant.name}`)} </h1>
-                                <h3> Contestant ID: {contestant.id} </h3>
+                                <h1> {this.titleCase(`${user.name}`)} </h1>
+                                <h3> Contestant ID: {user.id} </h3>
                             </div>
-
+                
                             <div className = 'quote'>
                                 <h3>
-                                    "{contestant.description? contestant.description : `${contestant.name} 
-                                    deserves to win this contest because ${contestant.sex === 'male'? 'he' : 'she' } 
-                                    is everything a mother can ever wish for.`}"
+                                    "{user.description? user.description : `${user.name} 
+                                    deserves to win this contest because ${user.gender === 'male'? 'he' : 'she' } 
+                                    is everything a parent can ever wish for.`}"
                                 </h3>
                             </div>
-
-                            {/*
+                            
                             <div className = 'pay'>
-                                <form onSubmit = {(e) => {e.preventDefault()}}>
-                                    <h3 className = 'label'> Select Votes </h3>
-                                    <select onChange = {this.setAmount} required className = 'paystack--select' >
-                                        <option value = '' > None </option>
-                                        <option value = {500}> 10 votes </option>
-                                        <option value = {1000}> 20 votes </option>
-                                        <option value = {2500}> 50 votes </option>
-                                        <option value = {5000}> 100 votes </option>
-                                        <option value = {10000}> 200 votes </option>
-                                        <option value = {25000}> 500 votes </option>
-                                        <option value = {50000}> 1000 votes </option>
-                                    </select>
-                                    <PaystackButton 
-                                        {...this.componentProps} reference = {(new Date()).getTime().toString()} 
-                                        amount = {this.state.amount * 100}
-                                        className = {this.state.amount? 'btn--paystack' : 'btn--disabled'}
-                                    />
+                                <PaymentAuth id={this.state.id}/>
+                                <div className = 'bank'>
+                                    <p> Want a fund transfer payment option? </p>
+                                    <h4> Account Name: <span> Kiddies Crown </span></h4> 
+                                    <h4> Account Number: <span> 0669795144 </span></h4> 
+                                    <h4> Bank: <span> GTB </span></h4> 
+                                    <Button variant="outlined" href="https://wa.me/message/WPNWKSRUU2FCG1"> WhatsApp </Button>
 
-                                    <div className = 'program'>
-                                        <h3> 
-                                            <span>Note: </span>you pay to vote as part of our program to help feed 
-                                            homeless children this year. <Link to = '/about'> learn more </Link>
-                                        </h3>
-                                    </div>
-                                </form>
-
-
-                                
-                                    <div className = 'bank'>
-                                        <p> Want a different payment option? That's fine! </p>
-                                        <h4> Account Name: <span> Kiddies Crown </span></h4> 
-                                        <h4> Account Number: <span> 0669795144 </span></h4> 
-                                        <h4> Bank: <span> GTB </span></h4> 
-                                        <h4 className = 'imp'> 
-                                            After transfer/deposit to the our GTB account, click on the whatsapp icon (buttom-left) 
-                                            and forward the receipt, Contestant's name and ID for verification and vote update.
-                                        </h4>
-                                    </div>
+                                    <h4 className = 'imp'> 
+                                        After transfer/deposit to the our GTB account, click on the whatsapp icon below
+                                        and forward the receipt, Contestant's name and ID for confirmation and vote update.
+                                    </h4>
+                                </div>
                             </div>
-                        */}
                         
                         </div>
-                        {vote > 0 && <img src = {this.tick(vote)} alt = 'tick' width = '70' className = 'tick'/>}
                         <div className = 'user__row2__col2'>
-                            <LazyLoadImage
-                                alt = 'contestant'
-                                src = { contestant.pictures? `http://143.244.174.52:4000/${contestant.pictures}` : avatar}
+                            <img 
+                                alt=''
+                                src={`https://kiddiescrown.com/${user.picture}`}
                                 width = '500'
-                                effect = 'Black and white'
                             />
                         </div>
                     </div>
-                    <div> 
-                        {/*<Countdown />*/}
+                    <div>
                         <Faq accordionData = {accordionData} />
                         <Video />
                     </div>
@@ -293,4 +183,4 @@ class User extends React.Component {
     }
 }
 
-export default User
+export default User;

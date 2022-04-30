@@ -12,7 +12,7 @@ import Elite from '../components/Elite'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
 import PreRegister from '../components/register/preRegister';
-import User from '../components/contestants/user'
+// import User from '../components/contestants/user'
 
 import Admin from '../components/Admin'
 import ComingSoon from '../components/utilities/comingSoon'
@@ -24,9 +24,9 @@ import {
     Switch,
     Route,
 } from "react-router-dom"
+import Countdown from '../components/Countdown';
 
 const Nav = () => {
-
     return (
         <Router>
             <div>
@@ -39,7 +39,7 @@ const Nav = () => {
                     <Route exact path = '/elites' component = {Elite} />
                     <Route exact path = '/about' component = {About} />
                     <Route exact path = '/contestants' component = {Contestants} />
-                    <Route exact path = '/contestant/:id' component = {User} /> 
+                    <Route exact path = '/vote/:id' component = {Countdown} />
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
