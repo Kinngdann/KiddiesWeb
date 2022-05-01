@@ -230,7 +230,7 @@ class FormRegister extends React.Component{
                             </select>
                         </label>
 
-                        <input type = 'submit' value = 'REGISTER' />
+                        <input type = 'submit' value = 'REGISTRATION CLOSED' disabled />
                     </section>
                 </form>
             </div>

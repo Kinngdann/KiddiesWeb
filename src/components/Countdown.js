@@ -13,10 +13,10 @@ export default function Countdown(){
 
     React.useEffect(() => {
         startTimer();
-    }, [timer]);
+    }, []);
 
     function startTimer() {
-        const endDate = new Date("May 1, 2022").getTime();
+        const endDate = new Date("May 9, 2022").getTime();
         let interval = setInterval(() => {
             const now = new Date().getTime();
             const timeDiff = endDate - now;
@@ -45,7 +45,7 @@ export default function Countdown(){
                 <h1> #KiddiesCrownContest</h1>
             </div>
             <div className = 'countdown__text'>
-                <h1> STAGE 1 Starts: </h1>
+                <h1> Comming Soon! </h1>
             </div>
 
             <div className = 'countdown__time'>
@@ -71,7 +71,7 @@ export default function Countdown(){
             </div>
             <div className='countdown__comment'>
                 <h3>
-                    Kindly note: This portal will be opened for voting activities on Sunday, 1st May, 2022.
+                    This section will be opened during the 2nd stage of the #KiddiesCrownContest.
                 </h3>
             </div>
         </div>

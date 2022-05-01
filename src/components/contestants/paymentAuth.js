@@ -19,8 +19,8 @@ class PaymentAuth extends React.Component{
     
     paystackProps = {
         email: `${this.props.id}-${uuidv4()}@gmail.com`,
-        // publicKey: 'pk_live_0a12b040cf7f4b99178257c168881b2825f4415a',
-        publicKey: 'pk_test_5e3696a3645df2464029ea462a20dd5a2e7a2a22',
+        publicKey: 'pk_live_0a12b040cf7f4b99178257c168881b2825f4415a',
+        // publicKey: 'pk_test_5e3696a3645df2464029ea462a20dd5a2e7a2a22',
         text: 'Add votes',
         onSuccess: (reference) => this.handlePaystackSuccessAction(reference),
         onClose: this.handlePaystackCloseAction,
@@ -31,7 +31,7 @@ class PaymentAuth extends React.Component{
         this.updateVote();
     }
     
-    async updateVote() {
+    async updateVote(){
         try {
             const response = await axios.post(`https://kiddiescrown.com/api/user/updateVote/${this.state.id}`, {
                 voteCount: this.state.amount / 50,
@@ -40,7 +40,8 @@ class PaymentAuth extends React.Component{
             console.log(response);
             window.location.reload();
         } catch (error) {
-            console.log(error)
+            // console.log(error)
+            alert(error);
         }
     }
     

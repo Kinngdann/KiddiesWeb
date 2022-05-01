@@ -5,14 +5,14 @@ import Gap from '../components/utilities/gap'
 import Header from '../components/Header'
 import NavBar from '../components/header/navBar'
 import About from '../components/About'
-import Contestants from '../components/Contestants'
+// import Contestants from '../components/Contestants'
 import Home from '../components/Home'
-import Elite from '../components/Elite'
+// import Elite from '../components/Elite'
 // import Terms from '../components/Terms'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
 import PreRegister from '../components/register/preRegister';
-// import User from '../components/contestants/user'
+import User from '../components/contestants/user'
 
 import Admin from '../components/Admin'
 import ComingSoon from '../components/utilities/comingSoon'
@@ -36,10 +36,10 @@ const Nav = () => {
                 <Whatsapp />
                 <Switch>
                     <Route exact path = '/' component = {Home} />
-                    <Route exact path = '/elites' component = {Elite} />
+                    <Route exact path = '/elites' component = {Countdown} />
                     <Route exact path = '/about' component = {About} />
-                    <Route exact path = '/contestants' component = {Contestants} />
-                    <Route exact path = '/vote/:id' component = {Countdown} />
+                    <Route exact path = '/contestants' component = {Countdown} />
+                    <Route exact path = '/vote/:id' component = {User} />
                     <Route exact path = '/terms' component = {ComingSoon} />
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />

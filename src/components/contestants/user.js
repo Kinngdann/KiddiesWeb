@@ -1,15 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 // import {Link} from 'react-router-dom'
 import Loader from '../utilities/loader'
 import Video from '../utilities/video'
 import Faq from '../utilities/faq'
 import Modal from 'react-modal'
-import '../styles/components/contestants/_user.scss';
 import ScrollToTop from 'react-scroll-to-top'
 import PaymentAuth from './paymentAuth';
 import Button from '@mui/material/Button';
+import Timer from '../utilities/timer';
+import '../styles/components/contestants/_user.scss';
 
 const accordionData = [
     {
@@ -54,14 +55,6 @@ class User extends React.Component {
             id: props.match.params.id,
             showModal: false
         }
-
-        this.componentProps = {
-            email: `${this.state.id}${uuidv4()}@gmail.com`,
-            publicKey: 'pk_live_0a12b040cf7f4b99178257c168881b2825f4415a',
-            text: 'Add votes',
-            onSuccess: (reference) => this.handlePaystackSuccessAction(reference),
-            onClose: this.handlePaystackCloseAction,
-        }
     }
 
     componentDidMount(){
@@ -70,7 +63,7 @@ class User extends React.Component {
     }
 
     async fetchUser(){
-        const { data } = await axios.get(`https//kiddiescrown.com/api/user/getUser/${this.state.id}`);
+        const { data } = await axios.get(`https://kiddiescrown.com/api/user/getUser/${this.state.id}`);
         this.setState({...data})
         console.log(data);
         
@@ -89,8 +82,8 @@ class User extends React.Component {
     
     getComment(index, nextScore){
         const comment = {
-            leading: `Congratulations! You're currently leading.`,
-            other: `You need a minimum of ${nextScore===0? 10 : nextScore+5} to claim the ${this.nth(index-1)} position`
+            leading: `Welldone! ${this.state.user.name} is currently leading.`,
+            other: `${this.state.user.name} needs about ${nextScore+10} votes to claim the ${this.nth(index-1)} position`
         }
         return index > 1? comment.other : comment.leading;
     }
@@ -120,7 +113,7 @@ class User extends React.Component {
                     className = {'ReactModal__Content'}
                 >
                     <h1> Help {user.name} </h1>
-                    <h2> get atleast {200-user.votes.stage1} votes to help {user.gender === 'male'? 'him' : 'her'} remain in the Contest.</h2>
+                    <h2> get atleast {200-user.votes.stage1} votes to help {user.gender === 'male'? 'him' : 'her'} keep {user.gender === 'male'? 'him' : 'her'} in the Contest.</h2>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
         
@@ -128,8 +121,9 @@ class User extends React.Component {
                     <div className = 'user__row1'>
                         <h2> Stage 1 </h2>
                         <div className = 'vote'> <h1> {user.votes.stage1} <span> {user.votes.stage1 > 1? 'votes' : 'vote'} </span> </h1> </div>
-                        <h3 className = 'position'> Position: {this.nth(position.index)} </h3>
-                        <h3 className = 'comment'> {this.getComment(position.index, position.nextScore)} </h3>
+                        {position.index < 101 && <h3 className = 'position'> Position: {this.nth(position.index)} </h3>}
+                        {position.index < 101 && <h3 className = 'comment'> {this.getComment(position.index, position.nextScore)} </h3>}
+                        <Timer />
                     </div>
                 
                     <div className = 'user__row2'>
@@ -155,12 +149,12 @@ class User extends React.Component {
                                     <h4> Account Name: <span> Kiddies Crown </span></h4> 
                                     <h4> Account Number: <span> 0669795144 </span></h4> 
                                     <h4> Bank: <span> GTB </span></h4> 
-                                    <Button variant="outlined" href="https://wa.me/message/WPNWKSRUU2FCG1"> WhatsApp </Button>
-
+                                    
                                     <h4 className = 'imp'> 
-                                        After transfer/deposit to the our GTB account, click on the whatsapp icon below
-                                        and forward the receipt, Contestant's name and ID for confirmation and vote update.
+                                        After transfer/deposit to the our GTB account, click on the whatsapp icon bolow
+                                        and forward the receipt, Contestant's name, ID and amount paid in for confirmation and vote update.
                                     </h4>
+                                    <Button variant="outlined" href="https://wa.me/message/WPNWKSRUU2FCG1"> WhatsApp </Button>
                                 </div>
                             </div>
                         
