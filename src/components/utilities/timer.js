@@ -14,7 +14,7 @@ export default function Profile(){
     }, []);
     
     function startTimer() {
-        const endDate = new Date("May 9, 2022").getTime();
+        const endDate = new Date("May 16, 2022").getTime();
         let interval = setInterval(() => {
             const now = new Date().getTime();
             const timeDiff = endDate - now;

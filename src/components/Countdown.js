@@ -16,7 +16,7 @@ export default function Countdown(){
     }, []);
 
     function startTimer() {
-        const endDate = new Date("May 9, 2022").getTime();
+        const endDate = new Date("May 16, 2022").getTime();
         let interval = setInterval(() => {
             const now = new Date().getTime();
             const timeDiff = endDate - now;
@@ -71,7 +71,7 @@ export default function Countdown(){
             </div>
             <div className='countdown__comment'>
                 <h3>
-                    This section will be opened during the 2nd stage of the #KiddiesCrownContest.
+                    This section will be opened during the 3rd stage of the #KiddiesCrownContest.
                 </h3>
             </div>
         </div>

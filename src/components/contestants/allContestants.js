@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ScrollToTop from "react-scroll-to-top";
-import avatar from './images/avatar.svg'
 import '../styles/components/contestants/_allcontestants.scss'
 
 class AllContestants extends React.Component {
@@ -14,12 +13,8 @@ class AllContestants extends React.Component {
         contestants: [],
         currentItems: [],
         search: '',
-        checkContestant: true,
-        from: 0,
-        to: 20
+        searched: false,
       }
-
-      this.trueContestants = true
     }
   
     componentDidMount() {
@@ -28,13 +23,13 @@ class AllContestants extends React.Component {
 
     async getUserData() {
       try {
-        const response = await axios.get('https://www.kiddiescrown.com/api/user/getUserData')
-        const users = response.data.data
+        const {data} = await axios.get('https://www.kiddiescrown.com/api/user/getUsers');
+        const contestants = data.sort((a, b)=> {
+          return a.name > b.name
+        })
+        
         // console.log(users)
-        this.setState(() => ({
-            contestants: this.filterContestants(users, ''),
-            loader: false
-        }))
+        this.setState({contestants, loader: false})
         window.scrollTo(0, 0)
 
       } catch (error) {
@@ -42,35 +37,36 @@ class AllContestants extends React.Component {
       }
     }
 
-    filterContestants = (contestants, search) => {
+    filterContestants = (contestants) => {
+      const keyword = this.state.search;
       return contestants.filter((contestant) => {
-          return contestant.name.toLowerCase().includes(search.toLowerCase())
+          return contestant.name.toLowerCase().includes(keyword.toLowerCase())
       }).sort((a, b) => {
           return a.name > b.name? 1 : -1
       })
     }  
   
     setSearch = (e) => {
-      const search = e.target.value
+      const search = e.target.value;
       this.setState({search})
     }
 
     onSubmit = (e) => {
-      e.preventDefault()
-      this.setState(() => ({
-        contestants : this.filterContestants(this.state.users, this.state.search)
-      }))
+      e.preventDefault();
+      if(this.state.searched){
+        this.setState(() => ({
+          contestants : this.filterContestants(this.state.contestants),
+          searched: true
+        }))} else {
+          this.restoreSearch();
+      }
+    }
+    
+    restoreSearch = () => {
+      window.location.reload();
     }
 
     showItems = () => {
-      // const {from, to} = this.state
-      // const currentItems = this.state.contestants.slice(from, to)
-
-      // if (!this.state.contestants) {
-      //   this.setState({checkContestant: false})
-      // }  
-
-
       return ( 
         <div>
             <div className = 'contestant'>
@@ -81,14 +77,14 @@ class AllContestants extends React.Component {
                       <div className = 'contestant__item__img'> 
                         <img
                           alt = 'contestant'
-                          src = { contestant.pictures? `http://143.244.174.52:4000/${contestant.pictures}` : avatar}
+                          src={`https://kiddiescrown.com/${contestant.picture}`}
                           width = '250'
                         />
                       </div>
                       <h3 className = 'name'> {contestant.name} </h3>
                       <h4> {contestant.sex} | {contestant.age} Year(s) </h4>
                       <div className = 'link'>
-                        <Link to = {`contestant/${contestant.id}`}> <h3> view </h3> </Link>
+                        <Link to = {`vote/${contestant.id}`}> <h3> view </h3> </Link>
                       </div>
                     </div>
                 </div>
@@ -99,47 +95,19 @@ class AllContestants extends React.Component {
       )
     }
 
-    nextList = () => {
 
-      this.setState(() => ({
-        from: this.state.from + 20,
-        to: this.state.to + 20,
-      }))
-
-      window.scrollTo(0, 0)
-    }
-
-    prevList = () => {
-      this.setState(() => ({
-        from: this.state.from - 20,
-        to: this.state.to - 20,
-      }))
-
-      window.scrollTo(0, 0)
-    }
-
-    restoreSearch = () => {
-      window.location.reload();
-    }
   
   render () {
       return (
         <div >
           <ScrollToTop smooth />
           <div className = 'allcontestant__row1'>
-
-            {/*
-              <form onSubmit = {this.onSubmit} className = 'form--search'>
+              <form onSubmit = {()=>this.onSubmit} className = 'form--search'>
                 <input type = 'text' value = {this.state.search} onChange = {this.setSearch} placeholder = 'Search...' className = 'first--input'/>
-                <div onClick = {this.onSubmit}> <img src = {search} width = '20' alt = 'search icon' /> </div>
+                <div onClick = {()=>this.onSubmit}> <input type='button' value={this.state.searched? 'Reset' : 'Search'} /> </div>
               </form>
-            */}
-
-
           </div>
-
           <this.showItems/>
-
 
         {/*
             {this.state.contestants.length > 0? (<div className = 'btns'>

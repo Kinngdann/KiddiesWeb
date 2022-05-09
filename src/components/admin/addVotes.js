@@ -1,110 +1,58 @@
 import React from 'react';
-import axios from 'axios'
-import Modal from 'react-modal'
-
+import axios from 'axios';
 
 class AddVotes extends React.Component {
 
     constructor(props){
         super()
         this.state = {
-            contestant: {},
             id: '',
-            vote: '',
-            newVote: '',
-            modal: false
+            amount: '',
         }
     }
 
     setID = (e) => {
-        const id = e.target.value
+        const id = e.target.value;
+        console.log(typeof(id))
         this.setState({id})
-
-        try {
-            axios.get(`https://www.kiddiescrown.com/api/user/getSingleUserData/${id}`, {
-            }).then(
-                (response) => {
-                    const contestant = response.data.data
-                    this.setState(() => ({
-                        contestant,
-                        vote: contestant.votes.stageThree,
-                        id: contestant.id
-                    }))
-                }
-            )
-
-        } catch (error) {
-            console.log(error)
-        }
     }
 
-    setVote = (e) => {
-        const newVote = e.target.value
-        this.setState({ newVote: parseInt(newVote) })
+    setAmount = (e) => {
+        const amount = parseInt(e.target.value);
+        console.log(typeof(amount))
+        this.setState({ amount})
     }
 
-    onSubmit = (e) => {
-        e.preventDefault()
-        if (this.state.id && this.state.vote){
+    onSubmit = async(e) => {
+        e.preventDefault();
 
-            console.log('vote', this.state.vote)
-            console.log('new', this.state.newVote)
-            console.log('total', this.state.vote + this.state.newVote)
-
-
-            const total = this.state.vote + this.state.newVote 
-
+        const {id, amount} = this.state;
+        if (id && amount ){
             try {
-                axios.put(`https://www.kiddiescrown.com/api/user/updateUserData/${this.state.id}`, {
-                    'votes.stageThree': total
-                }).then(
-                    response => {
-                        console.log(response)
-                    }
-                )
-
-                axios.put(`https://www.kiddiescrown.com/api/user/saveLogData/${this.state.id}`, {log: this.state.newVote} ).then(
-                    (response) => {
-                        console.log(response)
-                    }
-                )
-    
-                alert('success')
-                this.setState({id: '', amount: ''})
-
+                const {status} = await axios.post(`https://kiddiescrown.com/api/user/updateVote/${id}`, {
+                    voteCount: Math.floor(amount/50),
+                    method: 'admin'
+                });
+                if (status === 200){
+                    alert('SUCCESS');
+                }
             } catch (error) {
                 console.log(error)
             }
 
         } else {
-            alert('ERROR!!')
+            console.log('ERROR!!')
         }
-
-
     }
 
     render(){
         return (
             <div>
-                <Modal 
-                    isOpen = {this.state.modal}
-                    shouldFocusAfterRender = {true}
-                    preventScroll = {true}
-                    contentLabel = 'Help This User'
-                    className = {'ReactModal__Content'}
-                    >
-
-                    <input type = 'button' value = 'cancel' onClick = {this.AddVoteReject} className = 'btn--secondary'/>
-                    <input type = 'button' value = 'Proceed' onClick = {this.AddVoteProceed} className = 'btn--primary'/>
-                </Modal>
-
                 <form onSubmit = {this.onSubmit}>
                     <input type = 'text' value = {this.state.id} onChange = {this.setID} placeholder = 'ID' />
-                    <input type = 'number' value = {this.state.amount} onChange = {this.setVote} placeholder = 'Vote' />
-                    <input type = 'submit' value = 'ADD' onSubmit = {this.onSubmit} />
+                    <input type = 'number' value = {this.state.amount} onChange = {this.setAmount} placeholder = 'AMOUNT' />
+                    <input type = 'submit' value = 'UPDATE' onSubmit = {this.onSubmit} />
                 </form>
-                {this.state.contestant.name && <h3> Name: {this.state.contestant.name} vote: {this.state.vote} </h3>}
-                {}
             </div>
         )
     }

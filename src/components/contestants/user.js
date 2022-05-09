@@ -65,9 +65,9 @@ class User extends React.Component {
     async fetchUser(){
         const { data } = await axios.get(`https://kiddiescrown.com/api/user/getUser/${this.state.id}`);
         this.setState({...data})
-        console.log(data);
+        // console.log(data);
         
-        if(data.user.votes.stage1 < 200){
+        if(data.user.votes.stage2 < 300){
             setTimeout(() => {
                 this.setState({showModal: true})
             }, 5000);
@@ -81,9 +81,10 @@ class User extends React.Component {
     }
     
     getComment(index, nextScore){
+        const username = this.titleCase(this.state.user.name);
         const comment = {
-            leading: `Welldone! ${this.state.user.name} is currently leading.`,
-            other: `${this.state.user.name} needs about ${nextScore+10} votes to claim the ${this.nth(index-1)} position`
+            leading: `Welldone! ${username} is currently leading.`,
+            other: `${username} needs about ${nextScore+10} votes to claim the ${this.nth(index-1)} position`
         }
         return index > 1? comment.other : comment.leading;
     }
@@ -112,17 +113,18 @@ class User extends React.Component {
                     closeTimeoutMS = {300}
                     className = {'ReactModal__Content'}
                 >
-                    <h1> Help {user.name} </h1>
-                    <h2> get atleast {200-user.votes.stage1} votes to help {user.gender === 'male'? 'him' : 'her'} keep {user.gender === 'male'? 'him' : 'her'} in the Contest.</h2>
+                    <h1> Help {this.titleCase(user.name)} </h1>
+                    <h2> get atleast {300-user.votes.stage2} votes to help {user.gender === 'male'? 'him' : 'her'} keep {user.gender === 'male'? 'him' : 'her'} in the Contest.</h2>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
         
                 <div className = 'user__container'>
                     <div className = 'user__row1'>
-                        <h2> Stage 1 </h2>
-                        <div className = 'vote'> <h1> {user.votes.stage1} <span> {user.votes.stage1 > 1? 'votes' : 'vote'} </span> </h1> </div>
-                        {position.index < 101 && <h3 className = 'position'> Position: {this.nth(position.index)} </h3>}
-                        {position.index < 101 && <h3 className = 'comment'> {this.getComment(position.index, position.nextScore)} </h3>}
+                        <h6>(Stage1: {user.votes.stage1})</h6>
+                        <h2> Stage 2 </h2>
+                        <div className = 'vote'> <h1> {user.votes.stage2} <span> {user.votes.stage2 > 1? 'votes' : 'vote'} </span> </h1> </div>
+                        <h3 className = 'position'> Position: {this.nth(position.index)} </h3>
+                        <h3 className = 'comment'> {this.getComment(position.index, position.nextScore)} </h3>
                         <Timer />
                     </div>
                 
