@@ -25,7 +25,7 @@ class AllContestants extends React.Component {
       try {
         const {data} = await axios.get('https://www.kiddiescrown.com/api/user/getUsers');
         const contestants = data.sort((a, b)=> {
-          return a.name > b.name
+          return a.name > b.name? 1 : -1
         })
         
         // console.log(users)
@@ -69,12 +69,12 @@ class AllContestants extends React.Component {
     showItems = () => {
       return ( 
         <div>
-            <div className = 'contestant'>
+            <div className = 'contestants'>
               {this.state.contestants.map((contestant, index) => {
                 return (
-                  <div key = {index} className = 'contestant__item'> 
+                  <div key = {index} className = 'contestants__item'> 
                     <div className = 'wrapper'> 
-                      <div className = 'contestant__item__img'> 
+                      <div className = 'contestants__item__img'> 
                         <img
                           alt = 'contestant'
                           src={`https://kiddiescrown.com/${contestant.picture}`}
@@ -101,12 +101,12 @@ class AllContestants extends React.Component {
       return (
         <div >
           <ScrollToTop smooth />
-          <div className = 'allcontestant__row1'>
+          {/*<div className = 'allcontestant__row1'>
               <form onSubmit = {()=>this.onSubmit} className = 'form--search'>
                 <input type = 'text' value = {this.state.search} onChange = {this.setSearch} placeholder = 'Search...' className = 'first--input'/>
                 <div onClick = {()=>this.onSubmit}> <input type='button' value={this.state.searched? 'Reset' : 'Search'} /> </div>
               </form>
-          </div>
+      </div>*/}
           <this.showItems/>
 
         {/*
