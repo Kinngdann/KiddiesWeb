@@ -47,11 +47,10 @@ class User extends React.Component {
                 },
             },
             position: {
-                index: null,
-                nextScore: null
+                index: '',
+                nextScore: ''
             },
             loader: true,
-            // modal: false,
             id: props.match.params.id,
             showModal: false
         }
@@ -65,13 +64,11 @@ class User extends React.Component {
     async fetchUser(){
         const { data } = await axios.get(`https://kiddiescrown.com/api/user/getUser/${this.state.id}`);
         this.setState({...data})
-        // console.log(data);
+        console.log(data);
         
-        if(data.user.votes.stage2 < 300){
-            setTimeout(() => {
-                this.setState({showModal: true})
-            }, 5000);
-        }
+        setTimeout(() => {
+            this.setState({showModal: true})
+        }, 3000);
 
         this.setState({loader: false});
     }
@@ -80,7 +77,8 @@ class User extends React.Component {
         return[`${n}st`, `${n}nd`, `${n}rd`][ ((n+90) % 100-10) % 10-1]||`${n}th`
     }
     
-    getComment(index, nextScore){
+    getComment(){
+        const {index, nextScore} = this.state.position;
         const username = this.titleCase(this.state.user.name);
         const comment = {
             leading: `Welldone! ${username} is currently leading.`,
@@ -113,8 +111,9 @@ class User extends React.Component {
                     closeTimeoutMS = {300}
                     className = {'ReactModal__Content'}
                 >
-                    <h1> Help {this.titleCase(user.name)} </h1>
-                    <h2> get atleast {300-user.votes.stage2} votes to help {user.gender === 'male'? 'him' : 'her'} keep {user.gender === 'male'? 'him' : 'her'} in the Contest.</h2>
+                    {/*<h1> Help {this.titleCase(user.name)} </h1>
+                    <h2> get atleast {300-user.votes.stage2} votes to help {user.gender === 'male'? 'him' : 'her'} keep {user.gender === 'male'? 'him' : 'her'} in the Contest.</h2>*/}
+                    <h2>The Final Stage begins tomorrow, 17th March 2022.</h2>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
         
@@ -123,8 +122,8 @@ class User extends React.Component {
                         <h6>(Stage1: {user.votes.stage1})</h6>
                         <h2> Stage 2 </h2>
                         <div className = 'vote'> <h1> {user.votes.stage2} <span> {user.votes.stage2 > 1? 'votes' : 'vote'} </span> </h1> </div>
-                        <h3 className = 'position'> Position: {this.nth(position.index)} </h3>
-                        <h3 className = 'comment'> {this.getComment(position.index, position.nextScore)} </h3>
+                        {/*<h3 className = 'position'> Position: {this.nth(position.index)} </h3>
+                        <h3 className = 'comment'> {this.getComment()} </h3>*/}
                         <Timer />
                     </div>
                 
@@ -144,7 +143,7 @@ class User extends React.Component {
                                 </h3>
                             </div>
                             
-                            <div className = 'pay'>
+                            {/*<div className = 'pay'>
                                 <PaymentAuth id={this.state.id}/>
                                 <div className = 'bank'>
                                     <p> Want a fund transfer payment option? </p>
@@ -158,7 +157,7 @@ class User extends React.Component {
                                     </h4>
                                     <Button variant="outlined" href="https://wa.me/message/WPNWKSRUU2FCG1"> WhatsApp </Button>
                                 </div>
-                            </div>
+                            </div>*/}
                         
                         </div>
                         <div className = 'user__row2__col2'>

@@ -82,7 +82,7 @@ class AllContestants extends React.Component {
                         />
                       </div>
                       <h3 className = 'name'> {contestant.name} </h3>
-                      <h4> {contestant.sex} | {contestant.age} Year(s) </h4>
+                      <h4> {contestant.gender} | {contestant.age} Year(s) </h4>
                       <div className = 'link'>
                         <Link to = {`vote/${contestant.id}`}> <h3> view </h3> </Link>
                       </div>

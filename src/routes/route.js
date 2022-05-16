@@ -7,7 +7,7 @@ import NavBar from '../components/header/navBar'
 import About from '../components/About'
 import Contestants from '../components/Contestants'
 import Home from '../components/Home'
-// import Elite from '../components/Elite'
+import Elite from '../components/Elite'
 // import Terms from '../components/Terms'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
@@ -37,7 +37,7 @@ const Nav = () => {
                 <Whatsapp />
                 <Switch>
                     <Route exact path = '/' component = {Home} />
-                    <Route exact path = '/elites' component = {Countdown} />
+                    <Route exact path = '/elites' component = {Elite} />
                     <Route exact path = '/about' component = {About} />
                     <Route exact path = '/contestants' component = {Contestants} />
                     <Route exact path = '/vote/:id' component = {User} />

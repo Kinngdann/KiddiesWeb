@@ -6,47 +6,33 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import '../styles/components/elites/_eliteboard.scss'
 
 class EliteBoard extends React.Component {
-
     constructor(){
         super()
         this.state = {
             loader: true,
             sorted: [],
-            topContestants: []
         }
     }
 
     componentDidMount() {
-        this.getUsers()
+        this.getUsers();
     }
 
-
     getUsers = async () => {
-
         try {
-            let response = await axios.get('https://www.kiddiescrown.com/api/user/getUserData')
-            const contestants = response.data.data
+            let response = await axios.get('http://localhost:4000/api/user/getTop5');
+            const contestants = response.data;
+            console.log(contestants)
 
             this.setState({
-                sorted: this.sort(contestants),
+                sorted: contestants,
                 loader: false
             })
-            this.setTopContestants()
 
         } catch (error) {
             console.log(error)
         }
 
-    }
-
-    sort = (contestants) => {
-        return contestants.sort((a, b) => {
-            return b.votes.stageThree > a.votes.stageThree? 1 : -1
-        })
-    }
-
-    setTopContestants = () => {
-        this.setState({topContestants: this.state.sorted.slice(0, 6)})
     }
 
     nth(n){
@@ -60,18 +46,18 @@ class EliteBoard extends React.Component {
     }
 
     showContestants = () => {
-        const {topContestants} = this.state
+        const {sorted} = this.state;
 
         return (
             <div board className = 'board'>
-                {topContestants.map((contestant, index) => {
+                {sorted.map((contestant, index) => {
                     return (
                         <div key = {index} className = 'item'>
                             <div className = 'img'>
                                 <div className = 'img__rounded'>
                                     <LazyLoadImage
                                         alt = 'contestant'
-                                        src = {`http://143.244.174.52:4000/${contestant.pictures}`}
+                                        src = {`https://www.kiddiescrown.com/uploads/${contestant.picture}`}
                                         width = '200'
                                         effect = 'Black and white'
                                     />
@@ -93,7 +79,7 @@ class EliteBoard extends React.Component {
                             </div>
                             <div className = 'view'>
                                 <div> 
-                                    <Link to = {`contestant/${contestant.id}`}> <h3> VIEW </h3> </Link>
+                                    <Link to = {`vote/${contestant.id}`}> <h3> VIEW </h3> </Link>
                                 </div>
                             </div>
                         </div>
