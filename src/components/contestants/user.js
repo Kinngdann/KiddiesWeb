@@ -113,7 +113,7 @@ class User extends React.Component {
                 >
                     {/*<h1> Help {this.titleCase(user.name)} </h1>
                     <h2> get atleast {300-user.votes.stage2} votes to help {user.gender === 'male'? 'him' : 'her'} keep {user.gender === 'male'? 'him' : 'her'} in the Contest.</h2>*/}
-                    <h2>The Final Stage begins tomorrow, 17th March 2022.</h2>
+                    <h2>The Final Stage begins tomorrow, 17th May 2022.</h2>
                     <input type = 'button' value = 'Okay' onClick = {this.closeModal} className = 'btn--primary'/>
                 </Modal>
         
