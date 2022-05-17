@@ -8,6 +8,7 @@ class AddVotes extends React.Component {
         this.state = {
             id: '',
             amount: '',
+            disabled: false
         }
     }
 
@@ -25,6 +26,7 @@ class AddVotes extends React.Component {
 
     onSubmit = async(e) => {
         e.preventDefault();
+        this.setState({disabled: true});
 
         const {id, amount} = this.state;
         if (id && amount ){
@@ -35,6 +37,7 @@ class AddVotes extends React.Component {
                 });
                 if (status === 200){
                     alert('SUCCESS');
+                    this.setState({disabled: false});
                 }
             } catch (error) {
                 console.log(error)
@@ -51,7 +54,7 @@ class AddVotes extends React.Component {
                 <form onSubmit = {this.onSubmit}>
                     <input type = 'text' value = {this.state.id} onChange = {this.setID} placeholder = 'ID' />
                     <input type = 'number' value = {this.state.amount} onChange = {this.setAmount} placeholder = 'AMOUNT' />
-                    <input type = 'submit' value = 'UPDATE' onSubmit = {this.onSubmit} />
+                    <input type = 'submit' value = 'UPDATE' onSubmit = {this.onSubmit} disabled={this.state.disabled}/>
                 </form>
             </div>
         )

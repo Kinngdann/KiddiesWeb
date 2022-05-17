@@ -10,7 +10,7 @@ class EliteBoard extends React.Component {
         super()
         this.state = {
             loader: true,
-            sorted: [],
+            contestants: [],
         }
     }
 
@@ -20,12 +20,12 @@ class EliteBoard extends React.Component {
 
     getUsers = async () => {
         try {
-            let response = await axios.get('http://localhost:4000/api/user/getTop5');
+            let response = await axios.get('https://kiddiescrown.com/api/user/getTop5');
             const contestants = response.data;
             console.log(contestants)
 
             this.setState({
-                sorted: contestants,
+                contestants,
                 loader: false
             })
 
@@ -46,18 +46,18 @@ class EliteBoard extends React.Component {
     }
 
     showContestants = () => {
-        const {sorted} = this.state;
+        const {contestants} = this.state;
 
         return (
             <div board className = 'board'>
-                {sorted.map((contestant, index) => {
+                {contestants.map((contestant, index) => {
                     return (
                         <div key = {index} className = 'item'>
                             <div className = 'img'>
                                 <div className = 'img__rounded'>
                                     <LazyLoadImage
                                         alt = 'contestant'
-                                        src = {`https://www.kiddiescrown.com/uploads/${contestant.picture}`}
+                                        src = {`https://www.kiddiescrown.com/${contestant.picture}`}
                                         width = '200'
                                         effect = 'Black and white'
                                     />

@@ -68,6 +68,8 @@ class PaymentAuth extends React.Component{
                         <option value = {10000}> 200 votes </option>
                         <option value = {25000}> 500 votes </option>
                         <option value = {50000}> 1000 votes </option>
+                        <option value = {100000}> 2000 votes </option>
+
                     </select>
                     <PaystackButton
                         {...this.paystackProps} reference = {(new Date()).getTime().toString()}

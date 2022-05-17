@@ -14,7 +14,7 @@ export default function Profile(){
     }, []);
     
     function startTimer() {
-        const endDate = new Date("May 17, 2022").getTime();
+        const endDate = new Date("May 24, 2022").getTime();
         let interval = setInterval(() => {
             const now = new Date().getTime();
             const timeDiff = endDate - now;
@@ -41,7 +41,7 @@ export default function Profile(){
     
     return (
         <div className='bnxn'>
-            <p className='time-left'> FINAL starts: <span style={{fontWeight: '900'}}>{time}</span> </p>
+            <p className='time-left'> FINAL Ends in: <span style={{fontWeight: '900'}}>{time}</span> </p>
         </div>            
     )
 }

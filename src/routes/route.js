@@ -8,7 +8,6 @@ import About from '../components/About'
 import Contestants from '../components/Contestants'
 import Home from '../components/Home'
 import Elite from '../components/Elite'
-// import Terms from '../components/Terms'
 import NotFound from '../components/NotFound'
 import Register from '../components/Register'
 import PreRegister from '../components/register/preRegister';
@@ -25,7 +24,7 @@ import {
     Switch,
     Route,
 } from "react-router-dom"
-import Countdown from '../components/Countdown';
+// import Countdown from '../components/Countdown';
 
 const Nav = () => {
     return (
@@ -45,9 +44,9 @@ const Nav = () => {
                     <Route exact path = '/privacy' component = {Privacy} />
                     <Route exact path = '/register' component = {Register} />
                     <Route exact path = '/pre-register' component = {PreRegister} />
-                    <Route exact path = '/signin' component = {Signin} />
                     <Route exact path = '/bnxn' component = {Imgform} />
-                    <ProtectedRoute exact path = '/admin' component = {Admin} />
+                    {/*<Route exact path = '/signin' component = {Signin} />
+                    <ProtectedRoute exact path = '/admin' component = {Admin} />*/}
                     <Route component = {NotFound} />
                 </Switch>
                 <Footer />
