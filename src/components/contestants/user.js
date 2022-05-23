@@ -66,9 +66,9 @@ class User extends React.Component {
         this.setState({...data});
         // console.log(data);
         
-        setTimeout(() => {
-            this.setState({showModal: true})
-        }, 3000);
+        // setTimeout(() => {
+        //     this.setState({showModal: true})
+        // }, 3000);
 
         this.setState({loader: false});
     }
@@ -118,11 +118,11 @@ class User extends React.Component {
         
                 <div className = 'user__container'>
                     <div className = 'user__row1'>
-                        <h6>(Stage2: {user.votes.stage2})</h6>
+                        {/*<h6>(Stage2: {user.votes.stage2})</h6>*/}
                         <h2> FINAL </h2>
                         <div className = 'vote'> <h1> {user.votes.stage3} <span> {user.votes.stage3 > 1? 'votes' : 'vote'} </span> </h1> </div>
                         <h3 className = 'position'> Position: {this.nth(position.index)} </h3>
-                        <h3 className = 'comment'> {this.getComment()} </h3>
+                        {/*<h3 className = 'comment'> {this.getComment()} </h3>*/}
                         <Timer />
                     </div>
                 
@@ -142,7 +142,7 @@ class User extends React.Component {
                                 </h3>
                             </div>
                             
-                            <div className = 'pay'>
+                            {/*<div className = 'pay'>
                                 <PaymentAuth id={this.state.id}/>
                                 <div className = 'bank'>
                                     <p> Want a fund transfer payment option? </p>
@@ -156,7 +156,7 @@ class User extends React.Component {
                                     </h4>
                                     <Button variant="outlined" href="https://wa.me/message/WPNWKSRUU2FCG1"> WhatsApp </Button>
                                 </div>
-                            </div>
+                            </div>*/}
                         
                         </div>
                         <div className = 'user__row2__col2'>

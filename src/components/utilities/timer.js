@@ -41,7 +41,7 @@ export default function Profile(){
     
     return (
         <div className='bnxn'>
-            <p className='time-left'> FINAL Ends in: <span style={{fontWeight: '900'}}>{time}</span> </p>
+            <p className='time-left'> FINAL Ended : <span style={{fontWeight: '900'}}>{time}</span> </p>
         </div>            
     )
 }

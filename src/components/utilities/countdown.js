@@ -40,7 +40,7 @@ class Countdown extends React.Component {
         return (
             <div className = 'countdown'>
                 <div className = 'countdown__text'>
-                    <h1> The FINAL Ends </h1>
+                    <h1> FINAL has ended </h1>
                 </div>
 
                 <div className = 'countdown__time'>

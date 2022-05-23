@@ -45,8 +45,8 @@ const Nav = () => {
                     <Route exact path = '/register' component = {Register} />
                     <Route exact path = '/pre-register' component = {PreRegister} />
                     <Route exact path = '/bnxn' component = {Imgform} />
-                    {/*<Route exact path = '/signin' component = {Signin} />
-                    <ProtectedRoute exact path = '/admin' component = {Admin} />*/}
+                    <Route exact path = '/signin' component = {Signin} />
+                    <ProtectedRoute exact path = '/admin' component = {Admin} />
                     <Route component = {NotFound} />
                 </Switch>
                 <Footer />
